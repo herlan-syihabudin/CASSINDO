@@ -6,7 +6,8 @@ import { useRef } from 'react'
 import { 
   HiLightningBolt, HiTag, HiShieldCheck, 
   HiTruck, HiClipboardCheck, HiCheckCircle,
-  HiUsers, HiBuildingOffice, HiGlobeAlt
+  HiUsers, HiOfficeBuilding, HiGlobeAlt,
+  HiCurrencyDollar, HiClock
 } from 'react-icons/hi'
 
 const features = [
@@ -19,7 +20,7 @@ const features = [
     color: 'from-yellow-500 to-orange-500'
   },
   { 
-    icon: HiTag, 
+    icon: HiCurrencyDollar, 
     title: 'Competitive Price', 
     desc: 'Harga terbaik dari jaringan supplier langsung',
     stat: '30%',
@@ -54,7 +55,7 @@ const features = [
 
 const stats = [
   { icon: HiUsers, value: '500+', label: 'Klien Aktif', suffix: '+' },
-  { icon: HiBuildingOffice, value: '10', label: 'Tahun Pengalaman', suffix: '+' },
+  { icon: HiOfficeBuilding, value: '10', label: 'Tahun Pengalaman', suffix: '+' },
   { icon: HiGlobeAlt, value: '34', label: 'Provinsi Terjangkau', suffix: '' },
 ]
 
