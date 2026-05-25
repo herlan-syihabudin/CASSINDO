@@ -11,39 +11,22 @@ const config: Config = {
       colors: {
         primary: '#1E5EFF',
         accent: '#7ED957',
-        dark: '#0F172A',
-        gray: {
-          50: '#F9FAFB',
-          100: '#F3F4F6',
-          200: '#E5E7EB',
-          300: '#D1D5DB',
-          400: '#9CA3AF',
-          500: '#6B7280',
-          600: '#4B5563',
-          700: '#374151',
-          800: '#1F2937',
-          900: '#111827',
-        },
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
       },
-      animation: {
-        'fade-up': 'fadeUp 0.6s ease-out',
-        'fade-in': 'fadeIn 0.5s ease-out',
-      },
-      keyframes: {
-        fadeUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
+      screens: {
+        'xs': '475px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
       },
     },
   },
   plugins: [],
 }
+
+export default config
