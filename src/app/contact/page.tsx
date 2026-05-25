@@ -4,9 +4,9 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { 
-  HiLocationMarker, HiPhone, HiMail, HiClock, 
-  HiCheckCircle, HiArrowRight, HiBuildingOffice,
-  HiUser, HiEnvelope, HiDeviceMobile, HiChatAlt
+  HiLocationMarker, HiMail, HiPhone, HiClock, 
+  HiCheckCircle, HiArrowRight, HiOfficeBuilding,
+  HiUser, HiChatAlt, HiDeviceMobile
 } from 'react-icons/hi'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -26,7 +26,6 @@ export default function ContactPage() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
-    // Clear error when user types
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }))
     }
@@ -51,24 +50,19 @@ export default function ContactPage() {
     }
 
     setIsSubmitting(true)
-    
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500))
-    
     setIsSubmitting(false)
     setIsSubmitted(true)
     setFormData({ name: '', email: '', phone: '', company: '', message: '' })
-    
-    // Reset success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000)
   }
 
   const contactInfo = [
-    { icon: HiLocationMarker, title: 'Alamat', content: 'Wisma 46, Kota BNI, Jakarta Selatan 10220', color: 'text-primary' },
-    { icon: HiPhone, title: 'Telepon', content: '+62 21 1234 5678', link: 'tel:+622112345678', color: 'text-primary' },
-    { icon: HiDeviceMobile, title: 'WhatsApp', content: '+62 812 3456 7890', link: 'https://wa.me/6281234567890', color: 'text-green-500' },
-    { icon: HiMail, title: 'Email', content: 'info@cassindo.com', link: 'mailto:info@cassindo.com', color: 'text-primary' },
-    { icon: HiClock, title: 'Jam Operasional', content: 'Senin-Jumat: 08.00-17.00 WIB', color: 'text-primary' },
+    { icon: HiLocationMarker, title: 'Alamat', content: 'Wisma 46, Kota BNI, Jakarta Selatan 10220' },
+    { icon: HiPhone, title: 'Telepon', content: '+62 21 1234 5678', link: 'tel:+622112345678' },
+    { icon: HiDeviceMobile, title: 'WhatsApp', content: '+62 812 3456 7890', link: 'https://wa.me/6281234567890' },
+    { icon: HiMail, title: 'Email', content: 'info@cassindo.com', link: 'mailto:info@cassindo.com' },
+    { icon: HiClock, title: 'Jam Operasional', content: 'Senin-Jumat: 08.00-17.00 WIB' },
   ]
 
   const officeHours = [
@@ -98,7 +92,6 @@ export default function ContactPage() {
             </h1>
             <p className="text-gray-500 text-lg max-w-2xl mx-auto">
               Tim kami siap memberikan solusi terbaik untuk kebutuhan pengadaan Anda.
-              Isi form atau hubungi langsung melalui kontak di bawah.
             </p>
           </motion.div>
 
@@ -149,7 +142,7 @@ export default function ContactPage() {
                     Email <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
-                    <HiEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <HiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input
                       type="email"
                       name="email"
@@ -187,7 +180,7 @@ export default function ContactPage() {
                 <div>
                   <label className="block text-dark font-medium mb-2">Perusahaan</label>
                   <div className="relative">
-                    <HiBuildingOffice className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <HiOfficeBuilding className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input
                       type="text"
                       name="company"
@@ -243,23 +236,17 @@ export default function ContactPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="space-y-6"
             >
-              {/* Contact Cards */}
               <div className="grid gap-4">
                 {contactInfo.map((info, idx) => (
                   <div key={idx} className="bg-white rounded-2xl p-5 shadow-md hover:shadow-lg transition group">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition">
-                        <info.icon className={`text-xl group-hover:text-white transition ${info.color}`} />
+                        <info.icon className="text-xl text-primary group-hover:text-white transition" />
                       </div>
                       <div>
                         <h3 className="font-semibold text-dark">{info.title}</h3>
                         {info.link ? (
-                          <a 
-                            href={info.link} 
-                            target={info.link.startsWith('http') ? '_blank' : '_self'}
-                            rel="noopener noreferrer"
-                            className="text-gray-600 hover:text-primary transition"
-                          >
+                          <a href={info.link} className="text-gray-600 hover:text-primary transition">
                             {info.content}
                           </a>
                         ) : (
@@ -307,7 +294,7 @@ export default function ContactPage() {
             </motion.div>
           </div>
 
-          {/* Google Maps Placeholder */}
+          {/* Google Maps */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -322,7 +309,6 @@ export default function ContactPage() {
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
                 title="Office Location"
               />
             </div>
