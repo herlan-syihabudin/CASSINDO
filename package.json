@@ -1,5 +1,3 @@
-# Buka file package.json dan ganti dengan ini
-cat > package.json << 'EOF'
 {
   "name": "cassindo-web",
   "version": "1.0.0",
@@ -29,4 +27,3 @@ cat > package.json << 'EOF'
     "typescript": "^5.7.2"
   }
 }
-EOF
