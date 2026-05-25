@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'  // ← INI YANG KURANG!
 import { HiPlus, HiMinus, HiMail, HiPhone } from 'react-icons/hi'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
