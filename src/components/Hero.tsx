@@ -1,64 +1,96 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
-  HiPhone, HiDocumentText, HiShieldCheck, 
+  HiPhone, HiEye, HiShieldCheck, 
   HiBadgeCheck, HiUserGroup, HiLightningBolt, 
-  HiChip, HiArrowRight, HiInformationCircle
+  HiChip, HiArrowRight, HiInformationCircle,
+  HiBriefcase, HiCalendar, HiSupport, HiGlobeAlt,
+  HiOfficeBuilding, HiCog, HiHome, HiBeaker, HiBanknotes
 } from 'react-icons/hi'
 
 export default function Hero() {
   const [activeValue, setActiveValue] = useState<string | null>(null)
+  const [isMobile, setIsMobile] = useState(false)
 
-  // Core Values with descriptions
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Handle tooltip toggle for mobile
+  const handleValueClick = (valueName: string) => {
+    if (isMobile) {
+      setActiveValue(activeValue === valueName ? null : valueName)
+    }
+  }
+
+  // Trust Signals
+  const trustSignals = [
+    { value: '500+', label: 'Projects Delivered', icon: HiBriefcase },
+    { value: '12+', label: 'Years Experience', icon: HiCalendar },
+    { value: '24/7', label: 'Support Ready', icon: HiSupport },
+    { value: '34', label: 'Cities Covered', icon: HiGlobeAlt },
+  ]
+
+  // Industries Served
+  const industries = [
+    { name: 'Manufacturing', icon: HiOfficeBuilding, color: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
+    { name: 'Construction', icon: HiHome, color: 'bg-orange-500/10 text-orange-400 border-orange-500/20' },
+    { name: 'Mining', icon: HiCog, color: 'bg-gray-500/10 text-gray-400 border-gray-500/20' },
+    { name: 'Oil & Gas', icon: HiBeaker, color: 'bg-red-500/10 text-red-400 border-red-500/20' },
+    { name: 'Government', icon: HiBanknotes, color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' },
+  ]
+
+  // Core Values with SHORT descriptions & STATIC classes (no dynamic Tailwind)
   const coreValues = [
     { 
       icon: HiShieldCheck, 
       name: 'Trusted', 
       color: 'text-blue-400', 
-      bg: 'bg-blue-500/20',
-      hoverBg: 'bg-blue-500/30',
-      description: 'Lebih dari 500+ klien mempercayakan kebutuhan supply chain mereka kepada kami sejak 2014.',
-      longDesc: 'Kami berkomitmen memberikan layanan terpercaya dengan integritas tinggi.'
+      bgClass: 'bg-blue-500/20',
+      hoverClass: 'hover:bg-blue-500/30',
+      description: '500+ trusted clients nationwide',
     },
     { 
       icon: HiBadgeCheck, 
       name: 'Quality', 
       color: 'text-green-400', 
-      bg: 'bg-green-500/20',
-      hoverBg: 'bg-green-500/30',
-      description: 'Produk bersertifikasi ISO 9001:2021 dengan quality control ketat sebelum pengiriman.',
-      longDesc: 'Setiap produk melalui inspeksi menyeluruh untuk memastikan kualitas terbaik.'
+      bgClass: 'bg-green-500/20',
+      hoverClass: 'hover:bg-green-500/30',
+      description: 'ISO 9001:2021 certified',
     },
     { 
       icon: HiUserGroup, 
       name: 'Partnership', 
       color: 'text-purple-400', 
-      bg: 'bg-purple-500/20',
-      hoverBg: 'bg-purple-500/30',
-      description: 'Membangun hubungan jangka panjang dengan klien dan supplier terpercaya.',
-      longDesc: 'Kami percaya kesuksesan bersama adalah kunci pertumbuhan berkelanjutan.'
+      bgClass: 'bg-purple-500/20',
+      hoverClass: 'hover:bg-purple-500/30',
+      description: 'Long-term client relationships',
     },
     { 
       icon: HiLightningBolt, 
       name: 'Efficiency', 
       color: 'text-yellow-400', 
-      bg: 'bg-yellow-500/20',
-      hoverBg: 'bg-yellow-500/30',
-      description: 'Respon cepat &lt; 2x24 jam dengan proses yang terintegrasi dan efisien.',
-      longDesc: 'Sistem manajemen modern untuk mempercepat proses pengadaan.'
+      bgClass: 'bg-yellow-500/20',
+      hoverClass: 'hover:bg-yellow-500/30',
+      description: 'Fast response & delivery',
     },
     { 
       icon: HiChip, 
       name: 'Innovation', 
       color: 'text-cyan-400', 
-      bg: 'bg-cyan-500/20',
-      hoverBg: 'bg-cyan-500/30',
-      description: 'Terbuka dengan teknologi baru untuk solusi pengadaan yang lebih baik.',
-      longDesc: 'Kami terus berinovasi untuk memberikan nilai lebih kepada klien.'
+      bgClass: 'bg-cyan-500/20',
+      hoverClass: 'hover:bg-cyan-500/30',
+      description: 'Modern procurement solutions',
     },
   ]
 
@@ -144,7 +176,7 @@ export default function Hero() {
           className="object-cover"
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
       </div>
 
       {/* Content */}
@@ -153,7 +185,7 @@ export default function Hero() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl"
+          className="max-w-5xl"
         >
           {/* Badge/Highlight */}
           <motion.div
@@ -161,7 +193,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"
           >
             <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-            <span className="text-white/90 text-sm font-medium">Indonesia's Trusted Supply Partner</span>
+            <span className="text-white/90 text-sm font-medium">Indonesia's Trusted Supply Partner Since 2014</span>
           </motion.div>
 
           {/* Main Heading */}
@@ -169,18 +201,63 @@ export default function Hero() {
             variants={itemVariants}
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-5"
           >
-            Trusted Supply & 
-            <span className="text-accent block md:inline"> Solutions Partner</span>
+            Your Strategic 
+            <span className="text-accent block"> Procurement Partner</span>
+            <span className="text-white/80 text-2xl md:text-3xl block mt-2">Across Indonesia</span>
           </motion.h1>
 
           {/* Description */}
           <motion.p 
             variants={itemVariants}
-            className="text-base md:text-lg lg:text-xl text-white/90 mb-8 leading-relaxed max-w-2xl"
+            className="text-base md:text-lg lg:text-xl text-white/80 mb-8 leading-relaxed max-w-2xl"
           >
-            Reliable procurement solutions for industrial, commercial, 
-            and project needs across Indonesia. <span className="text-accent font-semibold">24/7 Support.</span>
+            Empowering industrial growth through reliable, efficient, 
+            and innovative supply chain solutions.
           </motion.p>
+
+          {/* Trust Signals */}
+          <motion.div 
+            variants={itemVariants}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8"
+          >
+            {trustSignals.map((signal, idx) => (
+              <motion.div
+                key={signal.label}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 + idx * 0.1 }}
+                className="flex items-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10"
+              >
+                <signal.icon className="text-accent text-xl" />
+                <div>
+                  <p className="text-white font-bold text-lg">{signal.value}</p>
+                  <p className="text-white/50 text-xs">{signal.label}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Industries Served - NEW SECTION */}
+          <motion.div 
+            variants={itemVariants}
+            className="mb-8"
+          >
+            <p className="text-white/50 text-xs uppercase tracking-wider mb-3">Industries We Serve</p>
+            <div className="flex flex-wrap gap-2">
+              {industries.map((industry, idx) => (
+                <motion.div
+                  key={industry.name}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5 + idx * 0.05 }}
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${industry.color} backdrop-blur-sm border`}
+                >
+                  <industry.icon className="text-xs" />
+                  <span className="text-xs font-medium">{industry.name}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div 
@@ -219,37 +296,38 @@ export default function Hero() {
                 className="btn-outline group"
                 aria-label="View our services"
               >
-                <HiDocumentText />
-                <span>Contact Sales</span>
+                <HiEye />
+                <span>Explore Services</span>
                 <HiArrowRight className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
               </Link>
             </motion.div>
           </motion.div>
 
-          {/* Core Values - 5 Pillars with Tooltips */}
+          {/* Core Values - FIXED Tailwind classes (no dynamic) */}
           <motion.div 
             variants={itemVariants}
-            className="mt-12"
+            className="mt-10"
           >
-            <div className="flex items-center gap-2 mb-4">
-              <p className="text-white/60 text-sm uppercase tracking-wider">Our Core Values</p>
-              <HiInformationCircle className="text-white/40 text-xs" />
+            <div className="flex items-center gap-2 mb-3">
+              <p className="text-white/50 text-xs uppercase tracking-wider">Our Core Values</p>
+              <HiInformationCircle className="text-white/30 text-xs" />
             </div>
-            <div className="flex flex-wrap gap-3">
-              {coreValues.map((value, idx) => (
+            <div className="flex flex-wrap gap-2">
+              {coreValues.map((value) => (
                 <div
                   key={value.name}
                   className="relative"
-                  onMouseEnter={() => setActiveValue(value.name)}
-                  onMouseLeave={() => setActiveValue(null)}
+                  onMouseEnter={() => !isMobile && setActiveValue(value.name)}
+                  onMouseLeave={() => !isMobile && setActiveValue(null)}
+                  onClick={() => handleValueClick(value.name)}
                 >
                   <motion.div
                     variants={valueVariants}
                     whileHover="hover"
-                    className={`flex items-center gap-2 px-4 py-2 rounded-full ${value.bg} backdrop-blur-sm border border-white/10 cursor-pointer transition-all duration-300 hover:${value.hoverBg}`}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full ${value.bgClass} ${value.hoverClass} backdrop-blur-sm border border-white/10 cursor-pointer transition-all duration-300`}
                   >
-                    <value.icon className={`text-sm ${value.color}`} />
-                    <span className="text-white text-sm font-medium">{value.name}</span>
+                    <value.icon className={`text-xs ${value.color}`} />
+                    <span className="text-white text-xs font-medium">{value.name}</span>
                   </motion.div>
 
                   {/* Tooltip */}
@@ -260,22 +338,16 @@ export default function Hero() {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 z-20"
+                        className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 z-20"
                       >
-                        <div className="bg-gray-900/95 backdrop-blur-md rounded-xl p-3 shadow-xl border border-white/10">
-                          <div className="flex items-center gap-2 mb-2">
-                            <value.icon className={`text-sm ${value.color}`} />
-                            <h4 className="text-white font-semibold text-sm">{value.name}</h4>
+                        <div className="bg-gray-900/95 backdrop-blur-md rounded-lg p-2.5 shadow-xl border border-white/10">
+                          <div className="flex items-center gap-1.5">
+                            <value.icon className={`text-xs ${value.color}`} />
+                            <h4 className="text-white font-semibold text-xs">{value.name}</h4>
                           </div>
-                          <p className="text-gray-300 text-xs leading-relaxed">
+                          <p className="text-gray-300 text-xs leading-relaxed mt-1">
                             {value.description}
                           </p>
-                          <div className="mt-2 pt-2 border-t border-white/10">
-                            <p className="text-gray-400 text-xs italic">
-                              {value.longDesc}
-                            </p>
-                          </div>
-                          {/* Tooltip Arrow */}
                           <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900/95 rotate-45 border-r border-b border-white/10" />
                         </div>
                       </motion.div>
