@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { 
   HiPhone, HiDocumentText, HiShieldCheck, 
-  HiBadgeCheck, HiHandshake, HiLightningBolt, 
+  HiBadgeCheck, HiUserGroup, HiLightningBolt, 
   HiChip, HiArrowRight 
 } from 'react-icons/hi'
 
@@ -14,7 +14,7 @@ export default function Hero() {
   const coreValues = [
     { icon: HiShieldCheck, name: 'Trusted', color: 'text-blue-400', bg: 'bg-blue-500/20' },
     { icon: HiBadgeCheck, name: 'Quality', color: 'text-green-400', bg: 'bg-green-500/20' },
-    { icon: HiHandshake, name: 'Partnership', color: 'text-purple-400', bg: 'bg-purple-500/20' },
+    { icon: HiUserGroup, name: 'Partnership', color: 'text-purple-400', bg: 'bg-purple-500/20' },
     { icon: HiLightningBolt, name: 'Efficiency', color: 'text-yellow-400', bg: 'bg-yellow-500/20' },
     { icon: HiChip, name: 'Innovation', color: 'text-cyan-400', bg: 'bg-cyan-500/20' },
   ]
@@ -179,7 +179,6 @@ export default function Hero() {
                   key={value.name}
                   variants={valueVariants}
                   whileHover="hover"
-                  custom={idx}
                   className={`flex items-center gap-2 px-4 py-2 rounded-full ${value.bg} backdrop-blur-sm border border-white/10`}
                 >
                   <value.icon className={`text-sm ${value.color}`} />
