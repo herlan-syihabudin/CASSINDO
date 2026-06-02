@@ -3,10 +3,23 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { HiPhone, HiDocumentText, HiArrowDown } from 'react-icons/hi'
+import { 
+  HiPhone, HiDocumentText, HiShieldCheck, 
+  HiBadgeCheck, HiHandshake, HiLightningBolt, 
+  HiChip, HiArrowRight 
+} from 'react-icons/hi'
 
 export default function Hero() {
-  // Variants for animations
+  // Core Values
+  const coreValues = [
+    { icon: HiShieldCheck, name: 'Trusted', color: 'text-blue-400', bg: 'bg-blue-500/20' },
+    { icon: HiBadgeCheck, name: 'Quality', color: 'text-green-400', bg: 'bg-green-500/20' },
+    { icon: HiHandshake, name: 'Partnership', color: 'text-purple-400', bg: 'bg-purple-500/20' },
+    { icon: HiLightningBolt, name: 'Efficiency', color: 'text-yellow-400', bg: 'bg-yellow-500/20' },
+    { icon: HiChip, name: 'Innovation', color: 'text-cyan-400', bg: 'bg-cyan-500/20' },
+  ]
+
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -43,6 +56,19 @@ export default function Hero() {
     },
   }
 
+  const valueVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.4, ease: 'easeOut' },
+    },
+    hover: {
+      y: -5,
+      transition: { duration: 0.2 },
+    },
+  }
+
   return (
     <section 
       className="relative min-h-screen flex items-center overflow-hidden"
@@ -59,7 +85,7 @@ export default function Hero() {
           className="object-cover"
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
       </div>
 
       {/* Content */}
@@ -68,15 +94,15 @@ export default function Hero() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-3xl"
+          className="max-w-4xl"
         >
           {/* Badge/Highlight */}
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"
           >
             <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-            <span className="text-white/90 text-sm font-medium">Indonesia's Trusted Partner</span>
+            <span className="text-white/90 text-sm font-medium">Indonesia's Trusted Supply Partner</span>
           </motion.div>
 
           {/* Main Heading */}
@@ -136,38 +162,36 @@ export default function Hero() {
               >
                 <HiDocumentText />
                 <span>Contact Sales</span>
+                <HiArrowRight className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
               </Link>
             </motion.div>
           </motion.div>
 
-          {/* Trust Indicators */}
+          {/* Core Values - 5 Pillars */}
           <motion.div 
             variants={itemVariants}
-            className="mt-12 flex flex-wrap gap-6"
+            className="mt-12"
           >
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <span className="text-accent text-sm font-bold">✓</span>
-              </div>
-              <span className="text-white/80 text-sm">ISO 9001:2021</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <span className="text-accent text-sm font-bold">✓</span>
-              </div>
-              <span className="text-white/80 text-sm">Nationwide Coverage</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <span className="text-accent text-sm font-bold">✓</span>
-              </div>
-              <span className="text-white/80 text-sm">10+ Years Experience</span>
+            <p className="text-white/60 text-sm uppercase tracking-wider mb-4">Our Core Values</p>
+            <div className="flex flex-wrap gap-3">
+              {coreValues.map((value, idx) => (
+                <motion.div
+                  key={value.name}
+                  variants={valueVariants}
+                  whileHover="hover"
+                  custom={idx}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full ${value.bg} backdrop-blur-sm border border-white/10`}
+                >
+                  <value.icon className={`text-sm ${value.color}`} />
+                  <span className="text-white text-sm font-medium">{value.name}</span>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Scroll Indicator - Improved */}
+      {/* Scroll Indicator */}
       <motion.div 
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         animate={{ y: [0, 10, 0] }}
