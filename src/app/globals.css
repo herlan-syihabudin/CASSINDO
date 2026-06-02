@@ -15,27 +15,35 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    overflow-x: hidden;
   }
   
   body {
     @apply bg-white text-gray-900 font-sans;
-    overflow-x: hidden;
     width: 100%;
+    overflow-x: hidden;
+    position: relative;
   }
   
   h1, h2, h3, h4 {
     @apply font-poppins;
   }
 
-  img {
+  img, video, iframe {
     max-width: 100%;
     height: auto;
     display: block;
   }
+
+  /* Fix untuk input di mobile agar tidak zoom */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
 }
 
 @layer components {
-  /* Container Responsive */
+  /* Container Responsive - semua device */
   .container-custom {
     width: 100%;
     max-width: 1280px;
@@ -45,49 +53,126 @@
     padding-right: 1rem;
   }
 
-  /* Tablet */
-  @media (min-width: 768px) {
+  /* Extra small devices (phones, 0 - 480px) */
+  @media (max-width: 480px) {
+    .container-custom {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+    
+    .section-padding {
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+  }
+
+  /* Small devices (tablets, 481px - 768px) */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .container-custom {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    
+    .section-padding {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+
+  /* Medium devices (small laptops, 769px - 1024px) */
+  @media (min-width: 769px) and (max-width: 1024px) {
     .container-custom {
       padding-left: 2rem;
       padding-right: 2rem;
     }
-  }
-
-  /* Desktop */
-  @media (min-width: 1024px) {
-    .container-custom {
-      padding-left: 3rem;
-      padding-right: 3rem;
+    
+    .section-padding {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
     }
   }
 
-  /* Section Padding Responsive */
-  .section-padding {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  @media (min-width: 768px) {
+  /* Large devices (desktops, 1025px - 1280px) */
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    .container-custom {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+    
     .section-padding {
       padding-top: 5rem;
       padding-bottom: 5rem;
     }
   }
 
-  @media (min-width: 1024px) {
-    .section-padding {
-      padding-top: 7rem;
-      padding-bottom: 7rem;
+  /* Extra large devices (large desktops, 1281px - 1536px) */
+  @media (min-width: 1281px) and (max-width: 1536px) {
+    .container-custom {
+      max-width: 1280px;
+      padding-left: 3rem;
+      padding-right: 3rem;
     }
+    
+    .section-padding {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  /* 2K screens (1537px - 2560px) */
+  @media (min-width: 1537px) and (max-width: 2560px) {
+    .container-custom {
+      max-width: 1536px;
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+    
+    .section-padding {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+    
+    .section-title {
+      font-size: 3.5rem !important;
+    }
+  }
+
+  /* 4K screens (2561px and above) */
+  @media (min-width: 2561px) {
+    .container-custom {
+      max-width: 1920px;
+      padding-left: 6rem;
+      padding-right: 6rem;
+    }
+    
+    .section-padding {
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+    }
+    
+    .section-title {
+      font-size: 4rem !important;
+    }
+    
+    .section-subtitle {
+      font-size: 1.5rem !important;
+    }
+  }
+
+  /* Section Padding */
+  .section-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   /* Button Primary */
   .btn-primary {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background-color: #1E5EFF;
+    background: linear-gradient(135deg, #1E5EFF 0%, #0e48cc 100%);
     color: white;
     font-weight: 600;
     border-radius: 9999px;
@@ -96,10 +181,22 @@
     text-decoration: none;
     cursor: pointer;
     border: none;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  /* Mobile button full width */
+  @media (max-width: 640px) {
+    .btn-primary, .btn-outline {
+      width: 100%;
+      white-space: normal;
+      font-size: 0.875rem;
+      padding: 0.75rem 1rem;
+    }
   }
 
   .btn-primary:hover {
-    background-color: #0e48cc;
+    background: linear-gradient(135deg, #0e48cc 0%, #0c3da8 100%);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(30, 94, 255, 0.4);
   }
@@ -108,6 +205,7 @@
   .btn-outline {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
     background-color: transparent;
@@ -118,6 +216,8 @@
     text-decoration: none;
     cursor: pointer;
     border: 2px solid white;
+    font-size: 0.875rem;
+    white-space: nowrap;
   }
 
   .btn-outline:hover {
@@ -147,13 +247,19 @@
     }
   }
 
-  /* Section Title */
+  /* Section Title - Responsive */
   .section-title {
-    font-size: 1.875rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #0F172A;
     margin-bottom: 1rem;
     line-height: 1.2;
+  }
+
+  @media (min-width: 640px) {
+    .section-title {
+      font-size: 1.875rem;
+    }
   }
 
   @media (min-width: 768px) {
@@ -171,14 +277,20 @@
   /* Section Subtitle */
   .section-subtitle {
     color: #6B7280;
-    font-size: 1rem;
+    font-size: 0.875rem;
     max-width: 42rem;
     margin-left: auto;
     margin-right: auto;
     line-height: 1.6;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
+    .section-subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
     .section-subtitle {
       font-size: 1.125rem;
     }
@@ -187,11 +299,12 @@
   /* Grid System */
   .grid-custom {
     display: grid;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   @media (min-width: 640px) {
     .grid-custom {
+      gap: 1.5rem;
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -200,6 +313,15 @@
     .grid-custom {
       grid-template-columns: repeat(3, 1fr);
     }
+  }
+
+  /* Navbar transition */
+  nav {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  }
+
+  nav a, nav button {
+    transition: color 0.2s ease, background-color 0.2s ease;
   }
 
   /* Animations */
@@ -243,15 +365,27 @@
   .animate-ping {
     animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
+
+  .btn-primary .group-hover\:rotate-12 {
+    transition: transform 0.2s ease;
+  }
 }
 
-/* Utility Classes for Responsive */
+/* Utility Classes for Responsive Text */
 .responsive-text {
-  font-size: clamp(1rem, 4vw, 1.25rem);
+  font-size: clamp(0.875rem, 4vw, 1.125rem);
 }
 
 .responsive-heading {
-  font-size: clamp(1.875rem, 6vw, 3.75rem);
+  font-size: clamp(1.5rem, 6vw, 3.5rem);
+}
+
+.responsive-sm {
+  font-size: clamp(0.75rem, 3vw, 0.875rem);
+}
+
+.responsive-lg {
+  font-size: clamp(1rem, 5vw, 1.25rem);
 }
 
 /* Hide scrollbar but keep functionality */
@@ -264,26 +398,39 @@
   display: none;
 }
 
- nav {
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
-}
-
-nav a, nav button {
-  transition: color 0.2s ease, background-color 0.2s ease;
-}
-
- /* Tambahkan ini di globals.css */
-.btn-primary group-hover\:rotate-12 {
-  transition: transform 0.2s ease;
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
 /* Better focus outline for accessibility */
 button:focus-visible, a:focus-visible {
   outline: 2px solid #7ED957;
   outline-offset: 2px;
+}
+
+/* Fix untuk hero section di mobile */
+@media (max-width: 640px) {
+  .hero-content {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Landscape mode fix untuk mobile */
+@media (max-width: 896px) and (orientation: landscape) {
+  .min-h-screen {
+    min-height: 100vh;
+  }
+  
+  .hero-section {
+    min-height: 100vh;
+  }
+}
+
+/* Touch device improvements */
+@media (hover: none) and (pointer: coarse) {
+  .btn-primary, .btn-outline, .card {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .btn-primary:active, .btn-outline:active {
+    transform: scale(0.98);
+  }
 }
