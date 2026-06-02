@@ -76,7 +76,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <span className="font-poppins font-bold text-2xl text-white">Cassindo</span>
-                  <span className="block text-xs text-accent">General Supplier & Trading</span>
+                  <span className="block text-xs text-accent">Core Advanced Supply Solution</span>
                 </div>
               </div>
               <p className="text-sm leading-relaxed text-gray-400 mb-4">
