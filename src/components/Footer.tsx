@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { 
   HiLocationMarker, HiMail, HiPhone, HiClock, 
-  HiArrowRight, HiCheckCircle, HiMap, HiBuildingOffice 
+  HiArrowRight, HiCheckCircle
 } from 'react-icons/hi'
 import { FaWhatsapp, FaLinkedin, FaInstagram, FaYoutube, FaTiktok } from 'react-icons/fa'
 
@@ -48,7 +48,7 @@ export default function Footer() {
   }
 
   const socialLinks = [
-    { icon: FaWhatsapp, href: 'https://wa.me/6281234567890', label: 'WhatsApp', color: '#25D366' },
+    { icon: FaWhatsapp, href: 'https://wa.me/6281776848333', label: 'WhatsApp', color: '#25D366' },
     { icon: FaLinkedin, href: 'https://linkedin.com/company/cassindo', label: 'LinkedIn', color: '#0077B5' },
     { icon: FaInstagram, href: 'https://instagram.com/cassindo', label: 'Instagram', color: '#E4405F' },
     { icon: FaYoutube, href: 'https://youtube.com/c/cassindo', label: 'YouTube', color: '#FF0000' },
@@ -61,7 +61,7 @@ export default function Footer() {
       <div className="container-custom pt-16 pb-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           
-          {/* Company Info - 1.5 kolom */}
+          {/* Company Info - Logo sama dengan navbar */}
           <div className="lg:col-span-1.5">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -70,16 +70,21 @@ export default function Footer() {
               viewport={{ once: true }}
               className="mb-6"
             >
-              <div className="flex items-center gap-2 mb-4 group">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-                  <span className="text-white font-bold text-2xl">C</span>
+              <Link href="/" className="flex items-center gap-3 group">
+                {/* Logo - border outline, tanpa background warna */}
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 border-2 border-white/80 bg-transparent">
+                  <span className="font-bold text-base text-white">CSS</span>
                 </div>
                 <div>
-                  <span className="font-poppins font-bold text-2xl text-white">Cassindo</span>
-                  <span className="block text-xs text-accent">Core Advanced Supply Solution</span>
+                  <span className="font-poppins font-bold text-xl text-white">
+                    Cassindo
+                  </span>
+                  <span className="block text-xs text-white/60">
+                    Core Advanced Supply Solution
+                  </span>
                 </div>
-              </div>
-              <p className="text-sm leading-relaxed text-gray-400 mb-4">
+              </Link>
+              <p className="text-sm leading-relaxed text-gray-400 mt-4 mb-4">
                 Mitra terpercaya untuk solusi pengadaan industri, material proyek, 
                 dan distribusi nasional sejak 2021.
               </p>
@@ -151,17 +156,18 @@ export default function Footer() {
               <div className="flex items-start gap-3 group">
                 <HiLocationMarker className="text-primary mt-0.5 group-hover:scale-110 transition" />
                 <div>
-                  <p>Gedung Jaya Lantai 9 Blok A02 JL. M.H. Thamrin No. 12, Kebon Sirih, Menteng,</p>
+                  <p>Gedung Jaya Lantai 9 Blok A02</p>
+                  <p>JL. M.H. Thamrin No. 12, Kebon Sirih, Menteng,</p>
                   <p className="text-gray-500">Jakarta Pusat, 10340</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 group">
                 <HiPhone className="text-primary group-hover:rotate-12 transition" />
-                <a href="tel:+622112345678" className="hover:text-primary transition">+62 21 1234 5678</a>
+                <a href="tel:+6281776848333" className="hover:text-primary transition">+62 817 7684 8333</a>
               </div>
               <div className="flex items-center gap-3 group">
                 <HiMail className="text-primary group-hover:-translate-y-0.5 transition" />
-                <a href="mailto:info@cassindo.com" className="hover:text-primary transition">sales@cassindo.com</a>
+                <a href="mailto:sales@cassindo.com" className="hover:text-primary transition">sales@cassindo.com</a>
               </div>
               <div className="flex items-center gap-3 group">
                 <HiClock className="text-primary" />
@@ -202,7 +208,7 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        {/* Newsletter Section - Full Width */}
+        {/* Newsletter Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
