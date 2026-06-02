@@ -6,11 +6,13 @@ import { usePathname } from 'next/navigation'
 import { HiMenu, HiX, HiPhone, HiArrowRight, HiCheckCircle, HiClock } from 'react-icons/hi'
 import { motion, AnimatePresence } from 'framer-motion'
 
+// Tambah menu "Solusi" setelah Beranda
 const NAV_ITEMS = [
   { href: '/', label: 'Beranda' },
-  { href: '/about', label: 'Tentang' },
-  { href: '/services', label: 'Layanan' },
+  { href: '/solutions', label: 'Solusi' },        // ← TAMBAH INI
+  { href: '/services', label: 'Produk' },         // ← Ganti "Layanan" jadi "Produk"
   { href: '/projects', label: 'Proyek' },
+  { href: '/about', label: 'Tentang' },
   { href: '/contact', label: 'Kontak' },
 ]
 
