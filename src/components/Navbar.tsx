@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { HiMenu, HiX } from 'react-icons/hi'
+import { HiMenu, HiX, HiPhone } from 'react-icons/hi'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
@@ -26,20 +26,12 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
-  // Reset scroll ke atas saat pindah halaman
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
-
-  // Cek posisi scroll
+  // Cek posisi scroll dengan threshold lebih tinggi
   useEffect(() => {
     const checkScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      setIsScrolled(window.scrollY > 50)
     }
-    
-    // Cek langsung saat mount
     checkScroll()
-    
     window.addEventListener('scroll', checkScroll, { passive: true })
     return () => window.removeEventListener('scroll', checkScroll)
   }, [])
@@ -65,8 +57,10 @@ export default function Navbar() {
     setIsMobileMenuOpen(false)
   }, [])
 
-  // Determine if navbar should be white based on scroll AND pathname
-  const isWhiteNavbar = isScrolled || pathname !== '/'
+  // Determine navbar style
+  const isHeroPage = pathname === '/'
+  const isTransparent = isHeroPage && !isScrolled
+  const isWhiteNavbar = !isTransparent
 
   return (
     <>
@@ -74,59 +68,91 @@ export default function Navbar() {
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           isWhiteNavbar
             ? 'bg-white shadow-lg py-3' 
-            : 'bg-transparent py-5'
+            : 'bg-white/5 backdrop-blur-md py-5 border-b border-white/10'
         }`}
         role="navigation"
         aria-label="Main navigation"
       >
         <div className="container-custom flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo - dengan border outline, tanpa background di tengah */}
           <Link 
             href="/" 
             className="flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
             aria-label="Cassindo Home"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition">
-              <span className="text-white font-bold text-xl">CSS</span>
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 ${
+              isWhiteNavbar 
+                ? 'border-2 border-primary bg-white' 
+                : 'border-2 border-white/80 bg-transparent'
+            }`}>
+              <span className={`font-bold text-lg ${
+                isWhiteNavbar ? 'text-primary' : 'text-white'
+              }`}>C</span>
             </div>
             <div>
-              <span className="font-poppins font-bold text-xl bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+              <span className={`font-poppins font-bold text-xl ${
+                isWhiteNavbar 
+                  ? 'bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent' 
+                  : 'text-white'
+              }`}>
                 Cassindo
               </span>
-              <span className="text-xs text-accent block -mt-1">Core Advanced Supply Solution</span>
+              <span className={`text-xs block -mt-1 ${
+                isWhiteNavbar ? 'text-primary/60' : 'text-white/60'
+              }`}>
+                Core Advanced Supply Solution
+              </span>
             </div>
           </Link>
 
-          {/* Desktop Menu - Warna dinamis berdasarkan isWhiteNavbar */}
-          <div className="hidden md:flex gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`font-medium transition-colors duration-300 ${
-                  isWhiteNavbar
-                    ? 'text-gray-700 hover:text-primary' 
-                    : 'text-white hover:text-accent'
-                } ${pathname === link.href ? 'text-primary' : ''}`}
-              >
-                {link.label}
-                {pathname === link.href && (
-                  <span className={`block h-0.5 rounded-full mt-1 ${
-                    isWhiteNavbar ? 'bg-primary' : 'bg-accent'
+          {/* Desktop Menu - dengan underline animation */}
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative font-medium transition-colors duration-300 py-2 group ${
+                    isWhiteNavbar
+                      ? 'text-gray-600 hover:text-primary' 
+                      : 'text-white/80 hover:text-white'
+                  } ${isActive ? (isWhiteNavbar ? 'text-primary' : 'text-white') : ''}`}
+                >
+                  {link.label}
+                  {/* Underline animation - elegant */}
+                  <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full ${
+                    isActive ? 'w-full' : 'w-0'
                   }`} />
-                )}
-              </Link>
-            ))}
+                </Link>
+              )
+            })}
+            
+            {/* Contact Quick Action - Phone Number */}
+            <div className="flex items-center gap-4 ml-4 pl-4 border-l border-gray-200">
+              <a 
+                href="tel:+6281234567890" 
+                className={`flex items-center gap-2 text-sm font-medium transition-colors ${
+                  isWhiteNavbar 
+                    ? 'text-gray-600 hover:text-primary' 
+                    : 'text-white/80 hover:text-white'
+                }`}
+              >
+                <HiPhone className="text-sm" />
+                <span className="hidden lg:inline">+62 812 3456 7890</span>
+                <span className="lg:hidden">Call</span>
+              </a>
+            </div>
           </div>
 
           {/* CTA Button Desktop */}
           <div className="hidden md:block">
             <Link 
               href="/contact" 
-              className={`px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 hover:-translate-y-1 ${
+              className={`px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 ${
                 isWhiteNavbar
-                  ? 'bg-primary text-white shadow-lg shadow-primary/30 hover:bg-primary-dark'
-                  : 'bg-white text-primary shadow-lg hover:bg-gray-100'
+                  ? 'bg-primary text-white shadow-md shadow-primary/30 hover:bg-primary-dark'
+                  : 'bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20'
               }`}
             >
               Request Quote
@@ -149,7 +175,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Full width lebih lega */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
@@ -163,15 +189,24 @@ export default function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
             />
             
-            {/* Menu Panel */}
+            {/* Menu Panel - Full width atau max-w-sm sesuai device */}
             <motion.div
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-40 pt-20 px-6 md:hidden"
+              className="fixed top-0 right-0 w-full max-w-sm h-full bg-white shadow-2xl z-40 pt-20 px-6 md:hidden"
             >
               <div className="flex flex-col gap-4">
+                {/* Phone number di mobile menu */}
+                <a 
+                  href="tel:+6281234567890"
+                  className="flex items-center gap-3 py-3 px-4 bg-primary/10 rounded-xl text-primary font-semibold"
+                >
+                  <HiPhone className="text-lg" />
+                  <span>+62 812 3456 7890</span>
+                </a>
+                
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.href}
@@ -184,7 +219,7 @@ export default function Navbar() {
                       onClick={handleLinkClick}
                       className={`block py-3 px-4 rounded-xl font-medium transition-all duration-300 ${
                         pathname === link.href
-                          ? 'bg-primary/10 text-primary font-semibold'
+                          ? 'bg-primary text-white'
                           : 'text-gray-700 hover:bg-gray-100 hover:text-primary'
                       }`}
                     >
