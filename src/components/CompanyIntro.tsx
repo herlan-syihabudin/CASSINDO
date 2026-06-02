@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { useRef } from 'react'
 import { 
   HiOutlineEye, HiOutlineStar, HiOutlineChip, 
-  HiOutlineUserGroup, HiOutlineShieldCheck, HiOutlineLightningBolt,
-  HiArrowRight, HiCheckCircle, HiTruck
+  HiOutlineShieldCheck, HiOutlineLightningBolt,
+  HiArrowRight, HiTruck
 } from 'react-icons/hi'
 
 export default function CompanyIntro() {
@@ -45,7 +45,7 @@ export default function CompanyIntro() {
               <span className="text-primary text-sm font-semibold tracking-wide">Tentang Cassindo</span>
             </div>
 
-            {/* Main Title - Baru */}
+            {/* Main Title */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-4 leading-tight">
               Driving Reliable Procurement &
               <span className="text-accent block"> Supply Chain Solutions</span>
@@ -64,7 +64,7 @@ export default function CompanyIntro() {
               keberlangsungan dan pertumbuhan bisnis mereka.
             </p>
 
-            {/* Vision & Mission Cards - SEDERHANA */}
+            {/* Vision & Mission Cards */}
             <div className="grid sm:grid-cols-2 gap-6 mb-8">
               {/* Vision Card */}
               <div className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border border-gray-100">
@@ -86,22 +86,22 @@ export default function CompanyIntro() {
                 <h3 className="font-bold text-dark text-lg mb-2">Misi</h3>
                 <div className="space-y-2">
                   <div className="flex items-start gap-2 text-gray-500 text-xs">
-                    <HiOutlineChip className="text-accent text-xs mt-0.5 flex-shrink-0" />
+                    <HiOutlineChip className="text-accent text-xs mt-0.5" />
                     <span>Solusi pengadaan efisien & transparan</span>
                   </div>
                   <div className="flex items-start gap-2 text-gray-500 text-xs">
-                    <HiOutlineShieldCheck className="text-accent text-xs mt-0.5 flex-shrink-0" />
+                    <HiOutlineShieldCheck className="text-accent text-xs mt-0.5" />
                     <span>Kualitas melalui mitra terpercaya</span>
                   </div>
                   <div className="flex items-start gap-2 text-gray-500 text-xs">
-                    <HiOutlineLightningBolt className="text-accent text-xs mt-0.5 flex-shrink-0" />
+                    <HiOutlineLightningBolt className="text-accent text-xs mt-0.5" />
                     <span>Inovasi berkelanjutan</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Stats - Tanpa Icon */}
+            {/* Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
               {stats.map((stat, idx) => (
                 <motion.div
@@ -117,7 +117,7 @@ export default function CompanyIntro() {
               ))}
             </div>
 
-            {/* Legalitas - Simplified */}
+            {/* Legalitas */}
             <div className="bg-gray-50 rounded-2xl p-5 border border-gray-100">
               <h4 className="font-semibold text-dark mb-3 text-sm">Legalitas & Sertifikasi</h4>
               <div className="grid grid-cols-2 gap-2 text-xs">
@@ -154,12 +154,13 @@ export default function CompanyIntro() {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10" />
+              {/* FIX: Hanya 1 tag img */}
               <img 
-                <img src="/images/warehouse/main.jpg" 
+                src="/images/warehouse/main.jpg" 
                 alt="Warehouse Cassindo"
                 className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
               />
-              {/* Badge overlay - Simplified */}
+              {/* Badge overlay */}
               <div className="absolute bottom-4 left-4 right-4 z-20">
                 <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/20">
                   <div className="flex items-center gap-3">
