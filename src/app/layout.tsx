@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -7,14 +7,22 @@ export const metadata: Metadata = {
   keywords: 'general supplier, general trading, industrial supply, procurement Indonesia, B2B supply chain',
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
+}
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="id">
-      <body>
+    <html lang="id" suppressHydrationWarning>
+      <body suppressHydrationWarning>
         {children}
       </body>
     </html>
