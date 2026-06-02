@@ -61,31 +61,13 @@ export default function Navbar() {
     setIsMobileMenuOpen(false)
   }, [pathname, mounted])
 
-  // Close on ESC
-  useEffect(() => {
-    if (!mounted) return
-    
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false)
-      }
-    }
-    window.addEventListener('keydown', handleEsc)
-    return () => window.removeEventListener('keydown', handleEsc)
-  }, [isMobileMenuOpen, mounted])
-
   const openMenu = useCallback(() => setIsMobileMenuOpen(true), [])
   const closeMenu = useCallback(() => setIsMobileMenuOpen(false), [])
 
-  // Determine navbar style - aman untuk SSR
-  const isHomePage = pathname === '/'
-  const isTransparent = isHomePage && !isScrolled && !isMobileMenuOpen
-  const isWhite = !isTransparent
-
-  // Render minimal dulu saat mounting
+  // Don't render anything during SSR to prevent hydration mismatch
   if (!mounted) {
     return (
-      <nav className="fixed top-0 w-full z-50 bg-white shadow-lg py-3">
+      <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-3">
         <div className="container-custom flex justify-between items-center">
           <div className="flex items-center gap-2 sm:gap-3">
             <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl border-2 border-primary bg-white flex items-center justify-center">
@@ -101,6 +83,10 @@ export default function Navbar() {
     )
   }
 
+  const isHomePage = pathname === '/'
+  const isTransparent = isHomePage && !isScrolled && !isMobileMenuOpen
+  const isWhite = !isTransparent
+
   return (
     <>
       <nav 
@@ -114,7 +100,7 @@ export default function Navbar() {
           backgroundColor: isWhite ? 'white' : 'rgba(255, 255, 255, 0.05)',
         }}
       >
-        <div className={`container-custom mx-auto flex items-center justify-between transition-all duration-300 ${shrink && !isMobileMenuOpen ? 'h-[52px]' : 'h-[70px]'}`}>
+        <div className="container-custom flex justify-between items-center">
           {/* LOGO */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
             <div className={`
@@ -164,7 +150,7 @@ export default function Navbar() {
 
             <Link href="/contact" className={`
               px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5
-              ${isWhite ? 'bg-primary text-white shadow-md shadow-primary/30 hover:bg-primary-dark' : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'}
+              ${isWhite ? 'bg-primary text-white shadow-md shadow-primary/30' : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'}
             `}>
               Request Quote
             </Link>
@@ -176,97 +162,70 @@ export default function Navbar() {
             className="md:hidden w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300"
             aria-label="Open menu"
           >
-            <Menu size={24} className={isWhite ? 'text-primary' : 'text-white'} />
+            <HiMenu size={24} className={isWhite ? 'text-primary' : 'text-white'} />
           </button>
         </div>
       </nav>
 
-      {/* MOBILE MENU - BOTTOM SHEET */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
             <div className="fixed inset-0 bg-black/50 z-[998]" onClick={closeMenu} />
             
             <motion.div
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '100%' }}
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed bottom-0 left-0 right-0 z-[999] bg-white rounded-t-3xl shadow-2xl overflow-y-auto max-h-[85vh]"
+              className="fixed top-0 right-0 w-80 h-full bg-white shadow-2xl z-[999] overflow-y-auto"
             >
-              <div className="flex items-center justify-between p-5 border-b border-gray-100">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 border-2 border-primary/30 flex items-center justify-center">
-                    <span className="font-bold text-sm text-primary">CSS</span>
-                  </div>
-                  <div>
-                    <span className="font-poppins font-bold text-base text-primary">Cassindo</span>
-                    <p className="text-[9px] text-gray-400 -mt-0.5">Core Advanced Supply Solution</p>
-                  </div>
-                </div>
-                <button onClick={closeMenu} className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
-                  <HiX size={20} className="text-gray-600" />
-                </button>
-              </div>
-
-              <div className="p-5">
-                {/* Quick Contact */}
-                <div className="mb-6">
-                  <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-3">QUICK CONTACT</p>
-                  <a href="tel:+6281776848333" className="flex items-center gap-3 p-4 rounded-xl bg-primary/5 border border-primary/20">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <HiPhone className="text-primary text-base" />
+              <div className="flex flex-col h-full pt-16 pb-6">
+                <div className="flex justify-between items-center px-5 pb-4 border-b border-gray-100">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg border-2 border-primary bg-white flex items-center justify-center">
+                      <span className="font-bold text-xs text-primary">CSS</span>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500">Call us now</p>
-                      <p className="text-sm font-semibold text-gray-900">+62 817 7684 8333</p>
+                      <span className="font-poppins font-bold text-sm text-primary">Cassindo</span>
+                      <p className="text-[8px] text-gray-400 -mt-0.5">Core Advanced Supply Solution</p>
                     </div>
-                    <HiArrowRight className="ml-auto text-primary text-sm" />
-                  </a>
-                </div>
-
-                {/* Navigation */}
-                <div className="mb-6">
-                  <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-3">MENU</p>
-                  <div className="space-y-1">
-                    {NAV_ITEMS.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={closeMenu}
-                        className={`
-                          flex items-center justify-between py-3 px-4 rounded-xl font-medium
-                          transition-all duration-200
-                          ${pathname === item.href
-                            ? 'bg-primary/10 text-primary border-l-4 border-primary'
-                            : 'text-gray-700 hover:bg-gray-50'
-                          }
-                        `}
-                      >
-                        <span>{item.label}</span>
-                      </Link>
-                    ))}
                   </div>
+                  <button
+                    onClick={closeMenu}
+                    className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-gray-500"
+                  >
+                    <HiX className="text-sm" />
+                  </button>
                 </div>
 
-                {/* CTA */}
-                <div>
-                  <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-3">GET STARTED</p>
-                  <Link href="/contact" onClick={closeMenu} className="block w-full p-4 bg-primary rounded-xl text-white shadow-lg shadow-primary/30">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-semibold">Request Quote</span>
-                      <HiArrowRight className="text-white" />
-                    </div>
-                    <div className="flex items-center gap-4 text-xs text-white/80">
-                      <span>⏱ Response &lt; 24h</span>
-                      <span>✓ Free Consultation</span>
-                    </div>
+                <a href="tel:+6281776848333" className="flex items-center gap-2 mx-5 mt-5 p-3 rounded-xl bg-primary/5 text-primary border border-primary/20">
+                  <HiPhone className="text-sm" />
+                  <span className="text-sm font-medium">+62 817 7684 8333</span>
+                </a>
+                
+                <div className="flex-1 mt-4">
+                  {NAV_ITEMS.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={closeMenu}
+                      className={`block py-3 px-5 mx-2 rounded-xl font-medium transition-all duration-300 ${
+                        pathname === item.href
+                          ? 'bg-primary text-white'
+                          : 'text-gray-600 hover:bg-gray-100'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+
+                <div className="px-5 pt-4 pb-6 border-t border-gray-100 mt-auto">
+                  <Link href="/contact" onClick={closeMenu} className="btn-primary w-full justify-center py-2.5 text-sm">
+                    Request Quote →
                   </Link>
                 </div>
-              </div>
-
-              <div className="p-5 pt-0 pb-8 text-center text-[10px] text-gray-400 border-t border-gray-100 mt-4">
-                © 2026 <span className="text-primary font-semibold">Cassindo</span> Core Advanced Supply Solution
               </div>
             </motion.div>
           </>
