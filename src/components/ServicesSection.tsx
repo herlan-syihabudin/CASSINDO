@@ -145,23 +145,25 @@ export default function ServicesSection() {
                 href={`/services/${service.slug}`}
                 className="group block bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
-                {/* Image Section */}
-                <div className="relative h-48 overflow-hidden bg-gray-100">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.bgColor} z-0`} />
-                  <div className="absolute inset-0 flex items-center justify-center z-10">
-                    <div className="text-center">
-                      <div className="text-5xl mb-2">📦</div>
-                      <p className="text-gray-400 text-sm">{service.title}</p>
-                    </div>
-                  </div>
-                  {service.isHighlight && (
-                    <div className="absolute top-3 left-3 z-20">
-                      <span className="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md">
-                        ★ POPULER
-                      </span>
-                    </div>
-                  )}
-                </div>
+                {/* Image Section - Pake Foto Asli */}
+<div className="relative h-48 overflow-hidden bg-gray-100">
+  <img 
+    src={service.image}
+    alt={service.title}
+    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+  />
+  {/* Overlay gradient biar teks keliatan */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+  
+  {/* Highlight Badge */}
+  {service.isHighlight && (
+    <div className="absolute top-3 left-3 z-20">
+      <span className="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md">
+        ★ POPULER
+      </span>
+    </div>
+  )}
+</div>
 
                 {/* Content Section */}
                 <div className="p-5">
