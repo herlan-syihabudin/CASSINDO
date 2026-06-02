@@ -66,15 +66,10 @@ export default function Navbar() {
     return (
       <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-3">
         <div className="container-custom flex justify-between items-center">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl border-2 border-primary bg-white flex items-center justify-center">
-              <span className="font-bold text-xs sm:text-base text-primary">CSS</span>
-            </div>
-            <div>
-              <span className="font-poppins font-bold text-sm sm:text-xl text-primary">Cassindo</span>
-              <span className="text-[10px] sm:text-xs block -mt-0.5 text-primary/60">Core Advanced Supply Solution</span>
-            </div>
-          </div>
+          <Link href="/" className="flex items-center gap-2">
+            <span className="font-poppins font-bold text-lg sm:text-xl text-primary">Cassindo</span>
+            <span className="text-[10px] text-primary/60 hidden sm:block">Core Advanced Supply Solution</span>
+          </Link>
         </div>
       </nav>
     )
@@ -98,19 +93,21 @@ export default function Navbar() {
         }}
       >
         <div className="container-custom flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
-            <div className={`
-              w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105
-              ${isWhite ? 'border-2 border-primary bg-white shadow-md shadow-primary/20' : 'border-2 border-white bg-transparent'}
-            `}>
-              <span className={`font-bold text-xs sm:text-base ${isWhite ? 'text-primary' : 'text-white'}`}>CSS</span>
+          {/* LOGO - Clean, hanya Cassindo */}
+          <Link href="/" className="group shrink-0">
+            <div className="flex items-center gap-2">
+              <span className={`font-poppins font-bold text-lg sm:text-xl transition-colors duration-300 ${isWhite ? 'text-primary' : 'text-white'}`}>
+                Cassindo
+              </span>
+              <span className={`text-[10px] hidden sm:block transition-colors duration-300 ${isWhite ? 'text-primary/50' : 'text-white/50'}`}>
+                Core Advanced Supply Solution
+              </span>
             </div>
-            <div>
-              <span className={`font-poppins font-bold text-sm sm:text-xl ${isWhite ? 'text-primary' : 'text-white'}`}>Cassindo</span>
-              <span className={`text-[10px] sm:text-xs block -mt-0.5 ${isWhite ? 'text-primary/60' : 'text-white/60'}`}>Core Advanced Supply Solution</span>
-            </div>
+            {/* Underline animation on hover */}
+            <span className={`block h-0.5 bg-primary transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left ${isWhite ? 'bg-primary' : 'bg-white'}`} style={{ width: '100%' }} />
           </Link>
 
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {NAV_ITEMS.map((item) => (
               <Link
@@ -124,7 +121,8 @@ export default function Navbar() {
               >
                 {item.label}
                 <span className={`
-                  absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full
+                  absolute -bottom-0.5 left-0 h-0.5 transition-all duration-300 group-hover:w-full
+                  ${isWhite ? 'bg-primary' : 'bg-white'}
                   ${pathname === item.href ? 'w-full' : 'w-0'}
                 `} />
               </Link>
@@ -141,6 +139,7 @@ export default function Navbar() {
             `}>Request Quote</Link>
           </div>
 
+          {/* Mobile Menu Button */}
           <button
             onClick={openMenu}
             className="md:hidden w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 bg-white/10 backdrop-blur-sm border border-white/20"
@@ -181,14 +180,9 @@ export default function Navbar() {
               {/* Header */}
               <div className="px-5 pt-2 pb-4 border-b border-gray-100">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 flex items-center justify-center">
-                      <span className="font-bold text-sm text-primary">CSS</span>
-                    </div>
-                    <div>
-                      <span className="font-poppins font-bold text-base text-primary">Cassindo</span>
-                      <p className="text-[9px] text-gray-400 -mt-0.5">Core Advanced Supply Solution</p>
-                    </div>
+                  <div>
+                    <span className="font-poppins font-bold text-xl text-primary">Cassindo</span>
+                    <p className="text-[10px] text-gray-400 -mt-0.5">Core Advanced Supply Solution</p>
                   </div>
                   <button
                     onClick={closeMenu}
