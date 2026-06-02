@@ -6,7 +6,7 @@ import { useRef } from 'react'
 import { 
   HiOutlineEye, HiOutlineChip, HiOutlineShieldCheck, 
   HiOutlineLightningBolt, HiArrowRight, HiTruck,
-  HiCheckCircle, HiGlobeAlt, HiUsers, HiBuildingOffice
+  HiCheckCircle, HiGlobeAlt, HiUsers, HiOfficeBuilding
 } from 'react-icons/hi'
 
 export default function CompanyIntro() {
@@ -14,7 +14,7 @@ export default function CompanyIntro() {
   const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   const stats = [
-    { value: '500+', label: 'Projects Completed', icon: HiBuildingOffice },
+    { value: '500+', label: 'Projects Completed', icon: HiOfficeBuilding },  // ← GANTI
     { value: '50+', label: 'Trusted Partners', icon: HiUsers },
     { value: '34', label: 'Cities Covered', icon: HiGlobeAlt },
     { value: '100%', label: 'Satisfaction', icon: HiCheckCircle },
