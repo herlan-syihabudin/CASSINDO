@@ -22,7 +22,7 @@ export default function CompanyIntro() {
             </h2>
             
             <p className="text-gray-600 mb-4 leading-relaxed">
-              <strong className="text-primary">PT Cassindo Sukses Mandiri</strong> berdiri sejak 2014 
+              <strong className="text-primary">PT Catur Sarana Solusindo</strong> berdiri sejak 2021 
               sebagai perusahaan general trading dan supplier terkemuka yang telah melayani 
               berbagai kebutuhan industri dan proyek di seluruh Indonesia.
             </p>
@@ -61,7 +61,7 @@ export default function CompanyIntro() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-primary rounded-full" />
-                  <span><span className="font-bold text-primary">NPWP:</span> 01.234.567.8-123.000</span>
+                  <span><span className="font-bold text-primary">NPWP:</span> 63.541.230.7-021.000</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-accent rounded-full" />
