@@ -1,58 +1,175 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { HiArrowLeft, HiPhone, HiMail } from 'react-icons/hi'
+import Image from 'next/image'
+import { HiArrowLeft, HiPhone, HiMail, HiCheckCircle, HiArrowRight } from 'react-icons/hi'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
-// Data services lengkap untuk semua slug
+// Data services lengkap dengan produk dan gallery
 const servicesData: Record<string, {
   title: string
   description: string
   fullDescription: string
   tags?: string[]
-  image?: string
+  products?: {
+    name: string
+    description: string
+    image: string
+    specs?: string[]
+  }[]
+  gallery?: {
+    title: string
+    image: string
+  }[]
+  benefits?: string[]
 }> = {
   'industrial-supply': {
     title: 'Industrial Supply',
     description: 'Material fabrikasi & sparepart industri',
     fullDescription: 'Kami menyediakan berbagai material industrial seperti raw material, komponen mesin, fastener, tools, dan perlengkapan pabrik untuk mendukung operasional harian Anda.',
-    tags: ['Fast Moving', 'Genuine Parts', 'Bulk Order'],
+    tags: ['Fast Moving', 'Genuine Parts', 'Bulk Order', '24/7 Support'],
+    products: [
+      {
+        name: 'Raw Material',
+        description: 'Besi, baja, alumunium, tembaga untuk keperluan fabrikasi industri',
+        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
+        specs: ['SNI Certified', 'Various Sizes', 'Competitive Price']
+      },
+      {
+        name: 'Sparepart Mesin',
+        description: 'Komponen pengganti untuk mesin produksi dan peralatan pabrik',
+        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
+        specs: ['Genuine Parts', 'Warranty', 'Ready Stock']
+      },
+      {
+        name: 'Fastener & Tools',
+        description: 'Baut, mur, sekrup, dan peralatan workshop lengkap',
+        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
+        specs: ['High Quality', 'Bulk Discount', 'Industrial Grade']
+      }
+    ],
+    gallery: [
+      { title: 'Gudang Material', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
+      { title: 'Stock Inventory', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
+      { title: 'Quality Control', image: 'https://images.unsplash.com/photo-1581090464777-f3222bbe8b2b?w=800' },
+    ],
+    benefits: [
+      'Stok lengkap berbagai material industri',
+      'Harga kompetitif dari supplier langsung',
+      'Pengiriman cepat ke seluruh Indonesia',
+      'Garansi produk 100% original'
+    ]
   },
   'electrical-equipment': {
     title: 'Electrical Equipment',
     description: 'Panel, kabel, trafo & komponen listrik',
     fullDescription: 'Distributor resmi berbagai brand electrical ternama. Menyediakan kabel, panel listrik, trafo, MCB, dan kebutuhan kelistrikan industri.',
-    tags: ['SNI Certified', 'Warranty', 'Installation Ready'],
+    tags: ['SNI Certified', 'Warranty', 'Installation Ready', 'Official Distributor'],
+    products: [
+      {
+        name: 'Kabel Listrik',
+        description: 'Kabel NYY, NYM, NYAF untuk instalasi rumah dan industri',
+        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
+        specs: ['SNI Certified', 'Various Sizes', 'Fire Resistant']
+      },
+      {
+        name: 'Panel Listrik',
+        description: 'Panel distribusi, kontrol, dan proteksi kelistrikan',
+        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
+        specs: ['Custom Design', 'Safety Standard', 'Easy Installation']
+      },
+      {
+        name: 'Komponen Elektrikal',
+        description: 'MCB, kontaktor, relay, dan peralatan proteksi',
+        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
+        specs: ['Original Brand', 'Warranty', 'Ready Stock']
+      }
+    ],
+    gallery: [
+      { title: 'Panel Installation', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
+      { title: 'Warehouse Stock', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
+      { title: 'Quality Testing', image: 'https://images.unsplash.com/photo-1581090464777-f3222bbe8b2b?w=800' },
+    ],
+    benefits: [
+      'Produk bersertifikat SNI',
+      'Garansi resmi pabrik',
+      'Tim teknisi berpengalaman',
+      'Ready stock berbagai varian'
+    ]
   },
   'mechanical-parts': {
     title: 'Mechanical Parts',
     description: 'Pompa, gearbox, valve & alat berat',
     fullDescription: 'Sparepart mekanikal untuk mesin produksi, pompa industri, gearbox, valve, dan komponen hydraulic untuk pabrik dan pertambangan.',
-    tags: ['Original', 'Heavy Duty', 'Quick Ship'],
+    tags: ['Original', 'Heavy Duty', 'Quick Ship', 'Industrial Grade'],
+    products: [
+      {
+        name: 'Industrial Pump',
+        description: 'Pompa sentrifugal, pompa diaphragm, pompa submersible',
+        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
+        specs: ['Heavy Duty', 'Energy Efficient', 'Long Lifespan']
+      },
+      {
+        name: 'Gearbox & Reducer',
+        description: 'Reducer kecepatan untuk conveyor dan mesin produksi',
+        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
+        specs: ['High Torque', 'Precision Gear', 'Low Maintenance']
+      },
+      {
+        name: 'Hydraulic Components',
+        description: 'Valve, cylinder, pompa hydraulic untuk alat berat',
+        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
+        specs: ['Heavy Duty', 'Leak Proof', 'High Pressure']
+      }
+    ],
+    gallery: [
+      { title: 'Machine Parts', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
+      { title: 'Workshop', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
+      { title: 'Quality Inspection', image: 'https://images.unsplash.com/photo-1581090464777-f3222bbe8b2b?w=800' },
+    ],
+    benefits: [
+      'Sparepart original berkualitas',
+      'Pengiriman cepat ke seluruh Indonesia',
+      'Garansi produk',
+      'Tim teknis siap membantu'
+    ]
   },
+  // ... tambahkan untuk service lainnya
   'safety-equipment': {
     title: 'Safety Equipment',
     description: 'APD, fire extinguisher, rambu-rambu',
     fullDescription: 'Perlengkapan K3 lengkap mulai dari helm safety, rompi, sepatu safety, APAR, hingga rambu-rambu proyek sesuai standar SNI.',
-    tags: ['K3 Certified', 'Complete Set', 'Bulk Price'],
-  },
-  'building-material': {
-    title: 'Building Material',
-    description: 'Semen, baja ringan, cat, scaffolding',
-    fullDescription: 'Material konstruksi untuk proyek gedung, perumahan, dan infrastruktur. Termasuk semen, besi beton, baja ringan, cat tembok, dan perancah.',
-    tags: ['Project Grade', 'Factory Price', 'Free Delivery'],
-  },
-  'office-supply': {
-    title: 'Office Supply',
-    description: 'ATK, furniture, perangkat IT',
-    fullDescription: 'Perlengkapan kantor lengkap mulai dari alat tulis, meja kursi, printer, hingga perangkat IT untuk kebutuhan operasional perusahaan.',
-    tags: ['Same Day', 'Subscription', 'After Sales'],
-  },
-  'custom-procurement': {
-    title: 'Custom Procurement',
-    description: 'Sourcing spesifik sesuai kebutuhan proyek',
-    fullDescription: 'Layanan sourcing untuk barang khusus yang tidak tersedia di pasaran umum. Tim procurement kami akan mencari supplier terbaik untuk Anda.',
-    tags: ['Tailor Made', 'Global Sourcing', 'Fast Response'],
+    tags: ['K3 Certified', 'Complete Set', 'Bulk Price', 'SNI Standard'],
+    products: [
+      {
+        name: 'Alat Pelindung Diri (APD)',
+        description: 'Helm safety, sepatu safety, rompi, sarung tangan',
+        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
+        specs: ['SNI Certified', 'Comfortable', 'Durable']
+      },
+      {
+        name: 'Fire Extinguisher',
+        description: 'APAR berbagai jenis untuk proteksi kebakaran',
+        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
+        specs: ['SNI Certified', 'Easy to Use', 'Refill Service']
+      },
+      {
+        name: 'Safety Signage',
+        description: 'Rambu-rambu K3 untuk area proyek dan pabrik',
+        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
+        specs: ['Reflective', 'Weather Resistant', 'Custom Design']
+      }
+    ],
+    gallery: [
+      { title: 'Safety Equipment', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
+      { title: 'Warehouse Stock', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
+    ],
+    benefits: [
+      'Produk bersertifikat K3',
+      'Lengkap untuk semua kebutuhan',
+      'Harga bersaing',
+      'Pengiriman cepat'
+    ]
   },
 }
 
@@ -111,13 +228,78 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                 </div>
               )}
               
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
                 {service.fullDescription}
               </p>
-              
-              <p className="text-gray-500">
-                Butuh informasi lebih detail? Tim kami siap membantu Anda dengan solusi terbaik.
-              </p>
+
+              {/* Benefits Section */}
+              {service.benefits && (
+                <div className="bg-primary/5 rounded-2xl p-6 mb-8">
+                  <h3 className="text-lg font-bold text-dark mb-4">Keunggulan Layanan Kami</h3>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {service.benefits.map((benefit, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-gray-600 text-sm">
+                        <HiCheckCircle className="text-accent text-sm" />
+                        <span>{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Products Section */}
+              {service.products && service.products.length > 0 && (
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-dark mb-6">Produk Unggulan</h2>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {service.products.map((product, idx) => (
+                      <div key={idx} className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition">
+                        <div className="aspect-video relative overflow-hidden">
+                          <img 
+                            src={product.image} 
+                            alt={product.name}
+                            className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
+                          />
+                        </div>
+                        <div className="p-5">
+                          <h3 className="font-bold text-dark text-lg mb-2">{product.name}</h3>
+                          <p className="text-gray-500 text-sm mb-3">{product.description}</p>
+                          {product.specs && (
+                            <div className="flex flex-wrap gap-2">
+                              {product.specs.map((spec, i) => (
+                                <span key={i} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
+                                  {spec}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Gallery Section */}
+              {service.gallery && service.gallery.length > 0 && (
+                <div>
+                  <h2 className="text-2xl font-bold text-dark mb-6">Dokumentasi</h2>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {service.gallery.map((item, idx) => (
+                      <div key={idx} className="relative rounded-xl overflow-hidden aspect-square group cursor-pointer">
+                        <img 
+                          src={item.image} 
+                          alt={item.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                          <p className="text-white text-sm font-medium">{item.title}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Sidebar CTA - 1/3 width */}
