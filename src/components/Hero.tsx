@@ -9,7 +9,7 @@ import {
   HiBadgeCheck, HiUserGroup, HiLightningBolt, 
   HiChip, HiArrowRight, HiInformationCircle,
   HiBriefcase, HiCalendar, HiSupport, HiGlobeAlt,
-  HiOfficeBuilding, HiCog, HiHome, HiBeaker, HiBanknotes
+  HiOfficeBuilding, HiCog, HiHome, HiBeaker, HiCurrencyDollar
 } from 'react-icons/hi'
 
 export default function Hero() {
@@ -41,16 +41,16 @@ export default function Hero() {
     { value: '34', label: 'Cities Covered', icon: HiGlobeAlt },
   ]
 
-  // Industries Served
+  // Industries Served - FIXED icon (HiBanknotes -> HiCurrencyDollar)
   const industries = [
     { name: 'Manufacturing', icon: HiOfficeBuilding, color: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
     { name: 'Construction', icon: HiHome, color: 'bg-orange-500/10 text-orange-400 border-orange-500/20' },
     { name: 'Mining', icon: HiCog, color: 'bg-gray-500/10 text-gray-400 border-gray-500/20' },
     { name: 'Oil & Gas', icon: HiBeaker, color: 'bg-red-500/10 text-red-400 border-red-500/20' },
-    { name: 'Government', icon: HiBanknotes, color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' },
+    { name: 'Government', icon: HiCurrencyDollar, color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' },
   ]
 
-  // Core Values with SHORT descriptions & STATIC classes (no dynamic Tailwind)
+  // Core Values with SHORT descriptions & STATIC classes
   const coreValues = [
     { 
       icon: HiShieldCheck, 
@@ -237,7 +237,7 @@ export default function Hero() {
             ))}
           </motion.div>
 
-          {/* Industries Served - NEW SECTION */}
+          {/* Industries Served */}
           <motion.div 
             variants={itemVariants}
             className="mb-8"
@@ -303,7 +303,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Core Values - FIXED Tailwind classes (no dynamic) */}
+          {/* Core Values */}
           <motion.div 
             variants={itemVariants}
             className="mt-10"
