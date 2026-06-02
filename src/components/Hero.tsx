@@ -1,22 +1,65 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { 
   HiPhone, HiDocumentText, HiShieldCheck, 
   HiBadgeCheck, HiUserGroup, HiLightningBolt, 
-  HiChip, HiArrowRight 
+  HiChip, HiArrowRight, HiInformationCircle
 } from 'react-icons/hi'
 
 export default function Hero() {
-  // Core Values
+  const [activeValue, setActiveValue] = useState<string | null>(null)
+
+  // Core Values with descriptions
   const coreValues = [
-    { icon: HiShieldCheck, name: 'Trusted', color: 'text-blue-400', bg: 'bg-blue-500/20' },
-    { icon: HiBadgeCheck, name: 'Quality', color: 'text-green-400', bg: 'bg-green-500/20' },
-    { icon: HiUserGroup, name: 'Partnership', color: 'text-purple-400', bg: 'bg-purple-500/20' },
-    { icon: HiLightningBolt, name: 'Efficiency', color: 'text-yellow-400', bg: 'bg-yellow-500/20' },
-    { icon: HiChip, name: 'Innovation', color: 'text-cyan-400', bg: 'bg-cyan-500/20' },
+    { 
+      icon: HiShieldCheck, 
+      name: 'Trusted', 
+      color: 'text-blue-400', 
+      bg: 'bg-blue-500/20',
+      hoverBg: 'bg-blue-500/30',
+      description: 'Lebih dari 500+ klien mempercayakan kebutuhan supply chain mereka kepada kami sejak 2014.',
+      longDesc: 'Kami berkomitmen memberikan layanan terpercaya dengan integritas tinggi.'
+    },
+    { 
+      icon: HiBadgeCheck, 
+      name: 'Quality', 
+      color: 'text-green-400', 
+      bg: 'bg-green-500/20',
+      hoverBg: 'bg-green-500/30',
+      description: 'Produk bersertifikasi ISO 9001:2021 dengan quality control ketat sebelum pengiriman.',
+      longDesc: 'Setiap produk melalui inspeksi menyeluruh untuk memastikan kualitas terbaik.'
+    },
+    { 
+      icon: HiUserGroup, 
+      name: 'Partnership', 
+      color: 'text-purple-400', 
+      bg: 'bg-purple-500/20',
+      hoverBg: 'bg-purple-500/30',
+      description: 'Membangun hubungan jangka panjang dengan klien dan supplier terpercaya.',
+      longDesc: 'Kami percaya kesuksesan bersama adalah kunci pertumbuhan berkelanjutan.'
+    },
+    { 
+      icon: HiLightningBolt, 
+      name: 'Efficiency', 
+      color: 'text-yellow-400', 
+      bg: 'bg-yellow-500/20',
+      hoverBg: 'bg-yellow-500/30',
+      description: 'Respon cepat &lt; 2x24 jam dengan proses yang terintegrasi dan efisien.',
+      longDesc: 'Sistem manajemen modern untuk mempercepat proses pengadaan.'
+    },
+    { 
+      icon: HiChip, 
+      name: 'Innovation', 
+      color: 'text-cyan-400', 
+      bg: 'bg-cyan-500/20',
+      hoverBg: 'bg-cyan-500/30',
+      description: 'Terbuka dengan teknologi baru untuk solusi pengadaan yang lebih baik.',
+      longDesc: 'Kami terus berinovasi untuk memberikan nilai lebih kepada klien.'
+    },
   ]
 
   // Animation variants
@@ -69,12 +112,28 @@ export default function Hero() {
     },
   }
 
+  const tooltipVariants = {
+    hidden: { opacity: 0, y: 10, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: { duration: 0.2, ease: 'easeOut' }
+    },
+    exit: { 
+      opacity: 0, 
+      y: 10, 
+      scale: 0.95,
+      transition: { duration: 0.15 }
+    },
+  }
+
   return (
     <section 
       className="relative min-h-screen flex items-center overflow-hidden"
       aria-label="Hero section"
     >
-      {/* Background Image with Next.js Image optimization */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format"
@@ -167,23 +226,62 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Core Values - 5 Pillars */}
+          {/* Core Values - 5 Pillars with Tooltips */}
           <motion.div 
             variants={itemVariants}
             className="mt-12"
           >
-            <p className="text-white/60 text-sm uppercase tracking-wider mb-4">Our Core Values</p>
+            <div className="flex items-center gap-2 mb-4">
+              <p className="text-white/60 text-sm uppercase tracking-wider">Our Core Values</p>
+              <HiInformationCircle className="text-white/40 text-xs" />
+            </div>
             <div className="flex flex-wrap gap-3">
               {coreValues.map((value, idx) => (
-                <motion.div
+                <div
                   key={value.name}
-                  variants={valueVariants}
-                  whileHover="hover"
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full ${value.bg} backdrop-blur-sm border border-white/10`}
+                  className="relative"
+                  onMouseEnter={() => setActiveValue(value.name)}
+                  onMouseLeave={() => setActiveValue(null)}
                 >
-                  <value.icon className={`text-sm ${value.color}`} />
-                  <span className="text-white text-sm font-medium">{value.name}</span>
-                </motion.div>
+                  <motion.div
+                    variants={valueVariants}
+                    whileHover="hover"
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full ${value.bg} backdrop-blur-sm border border-white/10 cursor-pointer transition-all duration-300 hover:${value.hoverBg}`}
+                  >
+                    <value.icon className={`text-sm ${value.color}`} />
+                    <span className="text-white text-sm font-medium">{value.name}</span>
+                  </motion.div>
+
+                  {/* Tooltip */}
+                  <AnimatePresence>
+                    {activeValue === value.name && (
+                      <motion.div
+                        variants={tooltipVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 z-20"
+                      >
+                        <div className="bg-gray-900/95 backdrop-blur-md rounded-xl p-3 shadow-xl border border-white/10">
+                          <div className="flex items-center gap-2 mb-2">
+                            <value.icon className={`text-sm ${value.color}`} />
+                            <h4 className="text-white font-semibold text-sm">{value.name}</h4>
+                          </div>
+                          <p className="text-gray-300 text-xs leading-relaxed">
+                            {value.description}
+                          </p>
+                          <div className="mt-2 pt-2 border-t border-white/10">
+                            <p className="text-gray-400 text-xs italic">
+                              {value.longDesc}
+                            </p>
+                          </div>
+                          {/* Tooltip Arrow */}
+                          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900/95 rotate-45 border-r border-b border-white/10" />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               ))}
             </div>
           </motion.div>
@@ -212,7 +310,7 @@ export default function Hero() {
         </button>
       </motion.div>
 
-      {/* Gradient overlay at bottom for smooth transition */}
+      {/* Gradient overlay at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-10" />
     </section>
   )
