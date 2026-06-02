@@ -29,7 +29,7 @@ export default function CompanyIntro() {
 
       <div className="container-custom relative z-10">
         <div className="grid lg:grid-cols-2 gap-16">
-          {/* Left Side - Content (Text Only) */}
+          {/* Left Side - Content */}
           <motion.div
             ref={ref}
             initial={{ opacity: 0, x: -40 }}
@@ -58,7 +58,7 @@ export default function CompanyIntro() {
               konstruksi, komersial, dan proyek strategis di seluruh Indonesia.
             </p>
 
-            {/* Vision - Full width card */}
+            {/* Vision Card */}
             <div className="mb-8">
               <div className="bg-gradient-to-br from-primary/5 to-transparent rounded-2xl p-6 border-l-4 border-primary">
                 <div className="flex items-center gap-3 mb-3">
@@ -74,7 +74,7 @@ export default function CompanyIntro() {
               </div>
             </div>
 
-            {/* Mission - List */}
+            {/* Mission List */}
             <div className="mb-8">
               <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                 <h3 className="font-bold text-dark text-lg mb-4 flex items-center gap-2">
@@ -121,7 +121,7 @@ export default function CompanyIntro() {
             transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
             className="relative"
           >
-            {/* Main Image */}
+            {/* Main Image - Hanya 1 badge (ISO) */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl mb-6">
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
               <img 
@@ -130,7 +130,7 @@ export default function CompanyIntro() {
                 className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
               />
               
-              {/* Floating Card Top Right - ISO Badge */}
+              {/* ONLY 1 BADGE - ISO Certification */}
               <div className="absolute top-4 right-4 z-20">
                 <div className="bg-white/95 backdrop-blur-sm rounded-xl px-3 py-2 shadow-lg border border-white/20">
                   <div className="flex items-center gap-2">
@@ -144,39 +144,9 @@ export default function CompanyIntro() {
                   </div>
                 </div>
               </div>
-
-              {/* Floating Card Bottom Left - Client Stat */}
-              <div className="absolute bottom-4 left-4 z-20">
-                <div className="bg-white/95 backdrop-blur-sm rounded-xl px-4 py-2 shadow-lg border border-white/20">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
-                      <HiUsers className="text-accent text-base" />
-                    </div>
-                    <div>
-                      <p className="text-dark font-bold text-sm">500+ Clients</p>
-                      <p className="text-gray-400 text-[9px]">Trusted Nationwide</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating Card Bottom Right - Delivery */}
-              <div className="absolute bottom-4 right-4 z-20">
-                <div className="bg-white/95 backdrop-blur-sm rounded-xl px-3 py-2 shadow-lg border border-white/20">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <HiTruck className="text-primary text-sm" />
-                    </div>
-                    <div>
-                      <p className="text-primary font-bold text-xs">34 Cities</p>
-                      <p className="text-gray-400 text-[9px]">Nationwide</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            {/* Stats - Premium Cards (DI BAWAH FOTO) */}
+            {/* Stats Cards - 4 items */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
               {stats.map((stat, idx) => (
                 <motion.div
@@ -193,7 +163,7 @@ export default function CompanyIntro() {
               ))}
             </div>
 
-            {/* Legalitas - Badge Style (DI BAWAH STATS) */}
+            {/* Legal & Compliance Badges */}
             <div className="bg-gray-50 rounded-2xl p-4 border border-gray-100">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-6 h-6 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -212,11 +182,11 @@ export default function CompanyIntro() {
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white rounded-full text-xs border border-gray-200">
                   <HiCheckCircle className="text-accent text-[10px]" />
-                  ISO 9001:2021
+                  SKT Terdaftar
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white rounded-full text-xs border border-gray-200">
                   <HiCheckCircle className="text-accent text-[10px]" />
-                  SKT Terdaftar
+                  Vendor Registered
                 </span>
               </div>
             </div>
