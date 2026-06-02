@@ -14,7 +14,7 @@ export default function CompanyIntro() {
   const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   const stats = [
-    { value: '500+', label: 'Projects Completed', icon: HiOfficeBuilding },  // ← GANTI
+    { value: '500+', label: 'Projects Completed', icon: HiOfficeBuilding },
     { value: '50+', label: 'Trusted Partners', icon: HiUsers },
     { value: '34', label: 'Cities Covered', icon: HiGlobeAlt },
     { value: '100%', label: 'Satisfaction', icon: HiCheckCircle },
@@ -28,8 +28,8 @@ export default function CompanyIntro() {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-3xl" />
 
       <div className="container-custom relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left Side - Content */}
+        <div className="grid lg:grid-cols-2 gap-16">
+          {/* Left Side - Content (Text Only) */}
           <motion.div
             ref={ref}
             initial={{ opacity: 0, x: -40 }}
@@ -74,7 +74,7 @@ export default function CompanyIntro() {
               </div>
             </div>
 
-            {/* Mission - List dengan border kiri */}
+            {/* Mission - List */}
             <div className="mb-8">
               <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                 <h3 className="font-bold text-dark text-lg mb-4 flex items-center gap-2">
@@ -98,57 +98,11 @@ export default function CompanyIntro() {
               </div>
             </div>
 
-            {/* Stats - Premium Cards */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-              {stats.map((stat, idx) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-white rounded-xl p-3 text-center shadow-sm border border-gray-100 hover:shadow-md transition"
-                >
-                  <stat.icon className="text-primary text-lg mx-auto mb-1" />
-                  <div className="text-xl font-bold text-primary">{stat.value}</div>
-                  <div className="text-[10px] text-gray-400">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Legalitas - Badge Style */}
-            <div className="bg-gray-50 rounded-2xl p-4 border border-gray-100">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-6 h-6 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <HiCheckCircle className="text-primary text-xs" />
-                </div>
-                <h4 className="font-semibold text-dark text-sm">Legal & Compliance</h4>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white rounded-full text-xs border border-gray-200">
-                  <HiCheckCircle className="text-accent text-[10px]" />
-                  NIB Terverifikasi
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white rounded-full text-xs border border-gray-200">
-                  <HiCheckCircle className="text-accent text-[10px]" />
-                  NPWP Aktif
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white rounded-full text-xs border border-gray-200">
-                  <HiCheckCircle className="text-accent text-[10px]" />
-                  ISO 9001:2021
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white rounded-full text-xs border border-gray-200">
-                  <HiCheckCircle className="text-accent text-[10px]" />
-                  SKT Terdaftar
-                </span>
-              </div>
-            </div>
-
             {/* CTA Link */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 }}
-              className="mt-6"
             >
               <Link 
                 href="/about" 
@@ -160,17 +114,18 @@ export default function CompanyIntro() {
             </motion.div>
           </motion.div>
 
-          {/* Right Side - Image with Floating Cards */}
+          {/* Right Side - Image + Stats + Legalitas */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
             className="relative"
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            {/* Main Image */}
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl mb-6">
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
               <img 
-                src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800" 
+                <img src="/images/warehouse/main.jpg"
                 alt="Warehouse Cassindo"
                 className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
               />
@@ -218,6 +173,51 @@ export default function CompanyIntro() {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Stats - Premium Cards (DI BAWAH FOTO) */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+              {stats.map((stat, idx) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: idx * 0.1 }}
+                  className="bg-white rounded-xl p-3 text-center shadow-sm border border-gray-100 hover:shadow-md transition"
+                >
+                  <stat.icon className="text-primary text-lg mx-auto mb-1" />
+                  <div className="text-xl font-bold text-primary">{stat.value}</div>
+                  <div className="text-[10px] text-gray-400">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Legalitas - Badge Style (DI BAWAH STATS) */}
+            <div className="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-6 h-6 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <HiCheckCircle className="text-primary text-xs" />
+                </div>
+                <h4 className="font-semibold text-dark text-sm">Legal & Compliance</h4>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white rounded-full text-xs border border-gray-200">
+                  <HiCheckCircle className="text-accent text-[10px]" />
+                  NIB Terverifikasi
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white rounded-full text-xs border border-gray-200">
+                  <HiCheckCircle className="text-accent text-[10px]" />
+                  NPWP Aktif
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white rounded-full text-xs border border-gray-200">
+                  <HiCheckCircle className="text-accent text-[10px]" />
+                  ISO 9001:2021
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white rounded-full text-xs border border-gray-200">
+                  <HiCheckCircle className="text-accent text-[10px]" />
+                  SKT Terdaftar
+                </span>
               </div>
             </div>
           </motion.div>
