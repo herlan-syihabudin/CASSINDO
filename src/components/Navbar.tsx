@@ -67,18 +67,18 @@ export default function Navbar() {
         aria-label="Main navigation"
       >
         <div className="container-custom flex justify-between items-center">
-          {/* Logo - Border outline, tengah tanpa background warna */}
+          {/* Logo - Border dengan padding lebih lega */}
           <Link 
             href="/" 
-            className="flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
+            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
             aria-label="Cassindo Home"
           >
-            <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 ${
+            <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 ${
               isWhiteNavbar
                 ? 'border-2 border-primary bg-white'
                 : 'border-2 border-white bg-transparent'
             }`}>
-              <span className={`font-bold text-lg ${
+              <span className={`font-bold text-base ${
                 isWhiteNavbar ? 'text-primary' : 'text-white'
               }`}>CSS</span>
             </div>
@@ -90,7 +90,7 @@ export default function Navbar() {
               }`}>
                 Cassindo
               </span>
-              <span className={`text-xs block -mt-1 ${
+              <span className={`text-xs block -mt-0.5 ${
                 isWhiteNavbar ? 'text-primary/60' : 'text-white/60'
               }`}>
                 Core Advanced Supply Solution
@@ -120,7 +120,7 @@ export default function Navbar() {
             {/* Contact Quick Action */}
             <div className="flex items-center gap-4 ml-4 pl-4 border-l border-gray-200">
               <a 
-                href="tel:+6281234567890" 
+                href="tel:+6281776848333" 
                 className={`flex items-center gap-2 text-sm font-medium transition-colors ${
                   isWhiteNavbar 
                     ? 'text-gray-600 hover:text-primary' 
@@ -187,11 +187,11 @@ export default function Navbar() {
               <div className="flex flex-col gap-4">
                 {/* Phone number di mobile menu */}
                 <a 
-                  href="tel:+6281234567890"
+                  href="tel:+6281776848333"
                   className="flex items-center gap-3 py-3 px-4 bg-primary/10 rounded-xl text-primary font-semibold"
                 >
                   <HiPhone className="text-lg" />
-                  <span>+62 812 3456 7890</span>
+                  <span>+62 817 7684 8333</span>
                 </a>
                 
                 {navLinks.map((link, index) => (
