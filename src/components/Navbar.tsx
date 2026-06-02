@@ -93,7 +93,7 @@ export default function Navbar() {
               <span className="font-poppins font-bold text-xl bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
                 Cassindo
               </span>
-              <span className="text-xs text-accent block -mt-1">General Supplier</span>
+              <span className="text-xs text-accent block -mt-1">Core Advanced Supply Solution</span>
             </div>
           </Link>
 
