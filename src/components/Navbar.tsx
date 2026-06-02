@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { HiMenu, HiX, HiPhone } from 'react-icons/hi'
+import { HiMenu, HiX, HiPhone, HiArrowRight } from 'react-icons/hi'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
@@ -23,12 +23,23 @@ const mobileMenuVariants = {
       type: 'spring', 
       damping: 25, 
       stiffness: 300,
+      staggerChildren: 0.05,
+      delayChildren: 0.1
     } 
   },
   exit: { 
     x: '100%', 
     opacity: 0, 
     transition: { duration: 0.25, ease: 'easeInOut' } 
+  }
+}
+
+const mobileItemVariants = {
+  hidden: { x: 30, opacity: 0 },
+  visible: { 
+    x: 0, 
+    opacity: 1, 
+    transition: { duration: 0.3, ease: 'easeOut' }
   }
 }
 
@@ -72,11 +83,9 @@ export default function Navbar() {
       <nav 
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           isWhiteNavbar
-            ? 'bg-white/95 backdrop-blur-md shadow-lg py-3' 
-            : 'bg-white/5 backdrop-blur-sm py-5'
+            ? 'bg-white/95 backdrop-blur-xl shadow-lg py-3' 
+            : 'bg-white/5 backdrop-blur-md py-5'
         }`}
-        role="navigation"
-        aria-label="Main navigation"
         style={{
           backgroundColor: isWhiteNavbar 
             ? 'rgba(255, 255, 255, 0.95)' 
@@ -84,19 +93,26 @@ export default function Navbar() {
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
         }}
+        role="navigation"
+        aria-label="Main navigation"
       >
         <div className="container-custom flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo - Premium dengan subtle glow */}
           <Link 
             href="/" 
             className="flex items-center gap-2 sm:gap-3 group shrink-0"
             aria-label="Cassindo Home"
           >
-            <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center transition-all duration-300 ${
+            <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg ${
               isWhiteNavbar
-                ? 'border-2 border-primary bg-white'
-                : 'border-2 border-white bg-transparent'
-            }`}>
+                ? 'border-2 border-primary bg-white shadow-primary/20'
+                : 'border-2 border-white bg-transparent shadow-white/10'
+            }`}
+            style={{
+              boxShadow: isWhiteNavbar 
+                ? '0 0 15px rgba(30, 94, 255, 0.2)' 
+                : '0 0 15px rgba(255, 255, 255, 0.1)'
+            }}>
               <span className={`font-bold text-xs sm:text-base ${
                 isWhiteNavbar ? 'text-primary' : 'text-white'
               }`}>CSS</span>
@@ -115,7 +131,6 @@ export default function Navbar() {
                 Core Advanced Supply Solution
               </span>
             </div>
-            {/* Short logo untuk mobile */}
             <div className="sm:hidden">
               <span className={`font-poppins font-bold text-sm ${
                 isWhiteNavbar ? 'text-primary' : 'text-white'
@@ -144,7 +159,6 @@ export default function Navbar() {
               </Link>
             ))}
             
-            {/* Contact Quick Action */}
             <div className="flex items-center gap-4 ml-4 pl-4 border-l border-gray-200">
               <a 
                 href="tel:+6281776848333" 
@@ -161,7 +175,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* CTA Button Desktop */}
           <div className="hidden md:block">
             <Link 
               href="/contact" 
@@ -175,10 +188,10 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Touch target 44px */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary ${
+            className={`md:hidden w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary ${
               isWhiteNavbar 
                 ? 'text-primary hover:bg-gray-100' 
                 : 'text-white hover:bg-white/20'
@@ -186,94 +199,135 @@ export default function Navbar() {
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
           >
-            {isMobileMenuOpen ? <HiX className="text-lg sm:text-xl" /> : <HiMenu className="text-lg sm:text-xl" />}
+            {isMobileMenuOpen ? <HiX className="text-xl" /> : <HiMenu className="text-xl" />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Premium */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop with blur */}
+            {/* Backdrop dengan blur */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             
-            {/* Menu Panel with blur */}
+            {/* Menu Panel - Glassmorphism Premium */}
             <motion.div
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed top-0 right-0 w-64 h-full bg-white/95 backdrop-blur-xl shadow-2xl z-40 md:hidden"
+              className="fixed top-0 right-0 w-72 h-full z-40 md:hidden overflow-y-auto"
               style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(249,250,251,0.98) 100%)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
+                boxShadow: '-20px 0 50px rgba(0, 0, 0, 0.15)',
               }}
             >
-              <div className="flex flex-col h-full pt-16 pb-6">
-                {/* Header */}
-                <div className="flex justify-between items-center px-5 pb-4 border-b border-gray-100">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg border-2 border-primary bg-white flex items-center justify-center">
-                      <span className="font-bold text-xs text-primary">CSS</span>
+              <div className="flex flex-col min-h-full pt-16 pb-8">
+                {/* Header dengan gradient border */}
+                <div className="relative px-6 pb-5 mb-2 border-b border-gray-100">
+                  <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 border-2 border-primary/30 flex items-center justify-center shadow-lg">
+                        <span className="font-bold text-sm text-primary">CSS</span>
+                      </div>
+                      <div>
+                        <span className="font-poppins font-bold text-base text-primary">Cassindo</span>
+                        <p className="text-[9px] text-gray-400 -mt-0.5">Core Advanced Supply Solution</p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 active:scale-95 transition-transform"
+                    >
+                      <HiX className="text-sm" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Section: Contact CTA */}
+                <div className="px-6 mb-4">
+                  <p className="text-[10px] font-medium text-gray-400 uppercase tracking-wider mb-2">Contact Sales</p>
+                  <motion.a 
+                    href="tel:+6281776848333"
+                    variants={mobileItemVariants}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex items-center gap-3 p-4 rounded-xl bg-gradient-to-r from-primary/10 to-primary/5 text-primary font-semibold border border-primary/20 active:bg-primary/15 transition-all"
+                  >
+                    <div className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center">
+                      <HiPhone className="text-base" />
                     </div>
                     <div>
-                      <span className="font-poppins font-bold text-sm text-primary">Cassindo</span>
-                      <p className="text-[8px] text-gray-400 -mt-0.5">Core Advanced Supply Solution</p>
+                      <p className="text-xs text-gray-500">Call us now</p>
+                      <p className="text-sm font-bold">+62 817 7684 8333</p>
                     </div>
+                    <HiArrowRight className="ml-auto text-sm opacity-60" />
+                  </motion.a>
+                </div>
+
+                {/* Section: Navigation */}
+                <div className="px-6 mb-4">
+                  <p className="text-[10px] font-medium text-gray-400 uppercase tracking-wider mb-2">Menu</p>
+                  <div className="space-y-1">
+                    {navLinks.map((link, index) => (
+                      <motion.div
+                        key={link.href}
+                        variants={mobileItemVariants}
+                        custom={index}
+                      >
+                        <Link
+                          href={link.href}
+                          onClick={handleLinkClick}
+                          className={`group flex items-center justify-between py-4 px-4 rounded-xl font-medium transition-all duration-300 min-h-[52px] ${
+                            pathname === link.href
+                              ? 'bg-primary/10 text-primary border-l-4 border-primary'
+                              : 'text-gray-700 hover:bg-gray-50'
+                          }`}
+                          style={{ touchAction: 'manipulation' }}
+                        >
+                          <span>{link.label}</span>
+                          {pathname === link.href ? (
+                            <motion.div 
+                              className="w-1.5 h-1.5 bg-primary rounded-full"
+                              layoutId="activeIndicator"
+                            />
+                          ) : (
+                            <HiArrowRight className="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition" />
+                          )}
+                        </Link>
+                      </motion.div>
+                    ))}
                   </div>
-                  <button
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-gray-500"
-                  >
-                    <HiX className="text-sm" />
-                  </button>
                 </div>
 
-                {/* Phone Number */}
-                <a 
-                  href="tel:+6281776848333"
-                  className="flex items-center gap-2 mx-5 mt-5 p-3 rounded-xl bg-primary/5 text-primary border border-primary/20"
-                >
-                  <HiPhone className="text-sm" />
-                  <span className="text-sm font-medium">+62 817 7684 8333</span>
-                </a>
-                
-                {/* Navigation Links */}
-                <div className="flex-1 mt-4">
-                  {navLinks.map((link) => (
+                {/* Section: CTA Button */}
+                <div className="px-6 mt-auto pt-6">
+                  <motion.div
+                    variants={mobileItemVariants}
+                    whileTap={{ scale: 0.97 }}
+                  >
                     <Link
-                      key={link.href}
-                      href={link.href}
+                      href="/contact"
                       onClick={handleLinkClick}
-                      className={`block py-3 px-5 mx-2 rounded-xl font-medium transition-all duration-300 ${
-                        pathname === link.href
-                          ? 'bg-primary text-white'
-                          : 'text-gray-600 hover:bg-gray-100'
-                      }`}
+                      className="flex items-center justify-between gap-3 w-full py-4 px-5 bg-primary text-white rounded-xl font-semibold shadow-lg shadow-primary/30 active:scale-98 transition-all"
                     >
-                      {link.label}
+                      <span>Request Quote</span>
+                      <HiArrowRight className="text-base" />
                     </Link>
-                  ))}
-                </div>
-
-                {/* CTA Button */}
-                <div className="px-5 pt-4 pb-6 border-t border-gray-100 mt-auto">
-                  <Link
-                    href="/contact"
-                    onClick={handleLinkClick}
-                    className="btn-primary w-full justify-center py-2.5 text-sm"
-                  >
-                    Request Quote →
-                  </Link>
+                  </motion.div>
+                  <p className="text-center text-[9px] text-gray-400 mt-4">
+                    Core Advanced Supply Solution
+                  </p>
                 </div>
               </div>
             </motion.div>
