@@ -67,7 +67,9 @@ export default function Navbar() {
       <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-3">
         <div className="container-custom flex justify-between items-center">
           <div>
-            <span className="font-poppins font-bold text-lg sm:text-xl text-primary">Cassindo</span>
+            <span className={`font-poppins font-bold text-2xl sm:text-3xl transition-colors duration-300 ${isWhite ? 'text-primary' : 'text-white'}`}>
+      Cassindo
+    </span>
             <p className="text-[9px] text-primary/50 -mt-0.5">Core Advanced Supply Solution</p>
           </div>
         </div>
