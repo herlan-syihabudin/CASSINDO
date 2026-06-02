@@ -58,10 +58,10 @@ export default function ContactPage() {
   }
 
   const contactInfo = [
-    { icon: HiLocationMarker, title: 'Alamat', content: 'Wisma 46, Kota BNI, Jakarta Selatan 10220' },
+    { icon: HiLocationMarker, title: 'Alamat', content: 'Gedung Jaya Lantai 9 Blok A02, JL. M.H Thamrin No. 12, Kebon Sirih, Menteng, Jakarta Pusat' },
     { icon: HiPhone, title: 'Telepon', content: '+62 21 1234 5678', link: 'tel:+622112345678' },
-    { icon: HiDeviceMobile, title: 'WhatsApp', content: '+62 812 3456 7890', link: 'https://wa.me/6281234567890' },
-    { icon: HiMail, title: 'Email', content: 'info@cassindo.com', link: 'mailto:info@cassindo.com' },
+    { icon: HiDeviceMobile, title: 'WhatsApp', content: '+62 817 7684 8333', link: 'https://wa.me/6281776848333' },
+    { icon: HiMail, title: 'Email', content: 'sales@cassindo.com', link: 'mailto:sales@cassindo.com' },
     { icon: HiClock, title: 'Jam Operasional', content: 'Senin-Jumat: 08.00-17.00 WIB' },
   ]
 
