@@ -56,7 +56,7 @@ export default function Hero() {
 
   return (
     <section 
-      className="relative min-h-screen flex items-center overflow-hidden pt-16 sm:pt-20 md:pt-24"
+      className="relative min-h-screen flex items-center overflow-hidden pt-20 sm:pt-24 md:pt-28"
       aria-label="Hero section"
     >
       {/* Background Image */}
@@ -73,9 +73,9 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
       </div>
 
-      {/* Content */}
-      <div className="container-custom relative z-10 py-8 sm:py-12 md:py-16">
-        <div className="max-w-4xl mx-auto lg:mx-0">
+      {/* Content - kurangi padding bottom biar core values keliatan */}
+      <div className="container-custom relative z-10 py-8 md:py-12">
+        <div className="max-w-5xl mx-auto lg:mx-0">
           
           {/* Badge */}
           <motion.div
@@ -90,7 +90,7 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Main Heading */}
+          {/* Main Heading - fix alignment */}
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ export default function Hero() {
           >
             Your Strategic 
             <span className="text-accent block md:inline"> Procurement Partner</span>
-            <span className="text-white/80 text-base sm:text-lg md:text-xl lg:text-2xl block md:inline md:ml-2 mt-1 md:mt-0">Across Indonesia</span>
+            <span className="text-white/80 text-base sm:text-lg md:text-xl lg:text-2xl inline-block ml-0 md:ml-2 mt-1 md:mt-0">Across Indonesia</span>
           </motion.h1>
 
           {/* Description */}
@@ -107,7 +107,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 mb-6 md:mb-8 leading-relaxed max-w-2xl"
+            className="text-sm sm:text-base md:text-lg text-white/80 mb-6 md:mb-8 leading-relaxed max-w-2xl"
           >
             Empowering industrial growth through reliable, efficient, 
             and innovative supply chain solutions. <span className="text-accent font-semibold">24/7 Support.</span>
@@ -126,12 +126,12 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4 + idx * 0.1 }}
-                className="flex items-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl px-3 py-2 md:px-4 md:py-3 border border-white/10"
+                className="flex items-center gap-2 md:gap-3 bg-white/5 backdrop-blur-sm rounded-xl px-3 py-2 md:px-4 md:py-3 border border-white/10"
               >
-                <signal.icon className="text-accent text-lg md:text-xl" />
+                <signal.icon className="text-accent text-base md:text-xl" />
                 <div>
-                  <p className="text-white font-bold text-base md:text-lg">{signal.value}</p>
-                  <p className="text-white/50 text-xs md:text-sm hidden sm:block">{signal.fullLabel}</p>
+                  <p className="text-white font-bold text-sm md:text-lg">{signal.value}</p>
+                  <p className="text-white/50 text-xs hidden sm:block">{signal.fullLabel}</p>
                   <p className="text-white/50 text-xs sm:hidden">{signal.label}</p>
                 </div>
               </motion.div>
@@ -153,7 +153,7 @@ export default function Hero() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5 + idx * 0.05 }}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${industry.color} backdrop-blur-sm border border-white/10`}
+                  className={`flex items-center gap-1.5 md:gap-2 px-2.5 py-1 md:px-3 md:py-1.5 rounded-full ${industry.color} backdrop-blur-sm border border-white/10`}
                 >
                   <industry.icon className="text-xs md:text-sm" />
                   <span className="text-xs md:text-sm font-medium hidden sm:inline">{industry.name}</span>
@@ -168,7 +168,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-8 md:mb-10"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-6 md:mb-8"
           >
             <Link 
               href="/contact" 
@@ -176,13 +176,6 @@ export default function Hero() {
             >
               <HiPhone className="group-hover:rotate-12 transition-transform" />
               <span>Request Quotation</span>
-              <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 3 }}
-                className="hidden md:inline"
-              >
-                →
-              </motion.span>
             </Link>
 
             <Link 
@@ -195,7 +188,7 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-          {/* Core Values */}
+          {/* Core Values - reduced margin top biar gak tenggelam */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -246,30 +239,30 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - lebih kecil dan gak ganggu */}
       <motion.div 
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
-        animate={{ y: [0, 8, 0] }}
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10"
+        animate={{ y: [0, 6, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
       >
         <button
           onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-          className="group flex flex-col items-center gap-2 cursor-pointer"
+          className="group flex flex-col items-center gap-1 cursor-pointer"
           aria-label="Scroll down"
         >
-          <span className="text-white/60 text-xs font-medium tracking-wider">SCROLL</span>
-          <div className="w-5 h-8 md:w-6 md:h-10 border-2 border-white/30 rounded-full flex justify-center group-hover:border-accent transition-colors">
+          <span className="text-white/50 text-[8px] sm:text-[10px] font-medium tracking-wider">SCROLL</span>
+          <div className="w-4 h-6 sm:w-5 sm:h-7 border border-white/30 rounded-full flex justify-center group-hover:border-accent transition-colors">
             <motion.div 
-              className="w-1 h-1.5 md:w-1.5 md:h-2 bg-white rounded-full mt-1.5 md:mt-2"
-              animate={{ y: [0, 8, 0] }}
+              className="w-0.5 h-1 bg-white rounded-full mt-1.5"
+              animate={{ y: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
             />
           </div>
         </button>
       </motion.div>
 
-      {/* Gradient overlay */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-white to-transparent z-10" />
+      {/* Gradient overlay - lebih kecil */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 sm:h-24 bg-gradient-to-t from-white to-transparent z-10" />
     </section>
   )
 }
