@@ -63,19 +63,20 @@ export default function Navbar() {
   const closeMenu = useCallback(() => setIsMobileMenuOpen(false), [])
 
   if (!mounted) {
-    return (
-      <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-3">
-        <div className="container-custom flex justify-between items-center">
-          <div>
-            <span className={`font-poppins font-bold text-2xl sm:text-3xl transition-colors duration-300 ${isWhite ? 'text-primary' : 'text-white'}`}>
-      Cassindo
-    </span>
-            <p className="text-[9px] text-primary/50 -mt-0.5">Core Advanced Supply Solution</p>
-          </div>
+  return (
+    <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-3">
+      <div className="container-custom flex justify-between items-center">
+        <div>
+          {/* Hapus conditional styling, pake warna default */}
+          <span className="font-poppins font-bold text-2xl sm:text-3xl text-primary">
+            Cassindo
+          </span>
+          <p className="text-[9px] text-primary/50 -mt-0.5">Core Advanced Supply Solution</p>
         </div>
-      </nav>
-    )
-  }
+      </div>
+    </nav>
+  )
+}
 
   const isHomePage = pathname === '/'
   const isTransparent = isHomePage && !isScrolled && !isMobileMenuOpen
