@@ -155,7 +155,7 @@ export default function CompanyIntro() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10" />
               <img 
-                src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800" 
+                <img src="/images/warehouse/main.jpg" 
                 alt="Warehouse Cassindo"
                 className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
               />
