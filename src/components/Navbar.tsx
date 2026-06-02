@@ -14,7 +14,6 @@ const navLinks = [
   { href: '/contact', label: 'Kontak' },
 ]
 
-// Variants for animations
 const mobileMenuVariants = {
   hidden: { x: '100%', opacity: 0 },
   visible: { x: 0, opacity: 1, transition: { type: 'spring', damping: 20, stiffness: 300 } },
@@ -26,17 +25,15 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
-  // Cek posisi scroll dengan threshold lebih tinggi
   useEffect(() => {
     const checkScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > 20)
     }
     checkScroll()
     window.addEventListener('scroll', checkScroll, { passive: true })
     return () => window.removeEventListener('scroll', checkScroll)
   }, [])
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden'
@@ -48,7 +45,6 @@ export default function Navbar() {
     }
   }, [isMobileMenuOpen])
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false)
   }, [pathname])
@@ -57,10 +53,7 @@ export default function Navbar() {
     setIsMobileMenuOpen(false)
   }, [])
 
-  // Determine navbar style
-  const isHeroPage = pathname === '/'
-  const isTransparent = isHeroPage && !isScrolled
-  const isWhiteNavbar = !isTransparent
+  const isWhiteNavbar = isScrolled || pathname !== '/'
 
   return (
     <>
@@ -68,22 +61,22 @@ export default function Navbar() {
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           isWhiteNavbar
             ? 'bg-white shadow-lg py-3' 
-            : 'bg-white/5 backdrop-blur-md py-5 border-b border-white/10'
+            : 'bg-transparent py-5'
         }`}
         role="navigation"
         aria-label="Main navigation"
       >
         <div className="container-custom flex justify-between items-center">
-          {/* Logo - dengan border outline, tanpa background di tengah */}
+          {/* Logo - Border outline, tengah tanpa background warna */}
           <Link 
             href="/" 
             className="flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
             aria-label="Cassindo Home"
           >
             <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 ${
-              isWhiteNavbar 
-                ? 'border-2 border-primary bg-white' 
-                : 'border-2 border-white/80 bg-transparent'
+              isWhiteNavbar
+                ? 'border-2 border-primary bg-white'
+                : 'border-2 border-white bg-transparent'
             }`}>
               <span className={`font-bold text-lg ${
                 isWhiteNavbar ? 'text-primary' : 'text-white'
@@ -105,30 +98,26 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Menu - dengan underline animation */}
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`relative font-medium transition-colors duration-300 py-2 group ${
-                    isWhiteNavbar
-                      ? 'text-gray-600 hover:text-primary' 
-                      : 'text-white/80 hover:text-white'
-                  } ${isActive ? (isWhiteNavbar ? 'text-primary' : 'text-white') : ''}`}
-                >
-                  {link.label}
-                  {/* Underline animation - elegant */}
-                  <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full ${
-                    isActive ? 'w-full' : 'w-0'
-                  }`} />
-                </Link>
-              )
-            })}
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative font-medium transition-colors duration-300 py-2 group ${
+                  isWhiteNavbar
+                    ? 'text-gray-600 hover:text-primary' 
+                    : 'text-white/80 hover:text-white'
+                } ${pathname === link.href ? (isWhiteNavbar ? 'text-primary' : 'text-white') : ''}`}
+              >
+                {link.label}
+                <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full ${
+                  pathname === link.href ? 'w-full' : 'w-0'
+                }`} />
+              </Link>
+            ))}
             
-            {/* Contact Quick Action - Phone Number */}
+            {/* Contact Quick Action */}
             <div className="flex items-center gap-4 ml-4 pl-4 border-l border-gray-200">
               <a 
                 href="tel:+6281234567890" 
@@ -152,7 +141,7 @@ export default function Navbar() {
               className={`px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 ${
                 isWhiteNavbar
                   ? 'bg-primary text-white shadow-md shadow-primary/30 hover:bg-primary-dark'
-                  : 'bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20'
+                  : 'bg-white text-primary shadow-md hover:bg-gray-100'
               }`}
             >
               Request Quote
@@ -175,11 +164,10 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay - Full width lebih lega */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -189,7 +177,6 @@ export default function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
             />
             
-            {/* Menu Panel - Full width atau max-w-sm sesuai device */}
             <motion.div
               variants={mobileMenuVariants}
               initial="hidden"
