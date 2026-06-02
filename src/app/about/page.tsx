@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import CompanyIntro from '@/components/CompanyIntro'
+import CompanyIntroFull from '@/components/CompanyIntroFull'  // ← GANTI
 
 export const metadata: Metadata = {
   title: 'Tentang Cassindo | General Supplier & Trading Company',
@@ -13,7 +13,7 @@ export default function AboutPage() {
     <main>
       <Navbar />
       <div className="pt-20">
-        <CompanyIntro />
+        <CompanyIntroFull />  {/* ← Versi lengkap */}
       </div>
       <Footer />
     </main>
