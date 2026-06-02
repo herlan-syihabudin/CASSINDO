@@ -87,7 +87,7 @@ export default function Navbar() {
             aria-label="Cassindo Home"
           >
             <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition">
-              <span className="text-white font-bold text-xl">C</span>
+              <span className="text-white font-bold text-xl">CSS</span>
             </div>
             <div>
               <span className="font-poppins font-bold text-xl bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
