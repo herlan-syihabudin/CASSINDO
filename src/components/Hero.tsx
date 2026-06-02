@@ -84,8 +84,8 @@ export default function Hero() {
             variants={itemVariants}
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-5"
           >
-            Trusted General Supply & 
-            <span className="text-accent block md:inline"> Trading Partner</span>
+            Trusted Supply & 
+            <span className="text-accent block md:inline"> Solutions Partner</span>
           </motion.h1>
 
           {/* Description */}
