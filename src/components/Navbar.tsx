@@ -8,12 +8,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 // Tambah menu "Solusi" setelah Beranda
 const NAV_ITEMS = [
-  { href: '/', label: 'Beranda' },
-  { href: '/solutions', label: 'Solusi' },        // ← TAMBAH INI
-  { href: '/services', label: 'Produk' },         // ← Ganti "Layanan" jadi "Produk"
-  { href: '/projects', label: 'Proyek' },
-  { href: '/about', label: 'Tentang' },
-  { href: '/contact', label: 'Kontak' },
+  { href: '/', label: 'Home' },
+  { href: '/solutions', label: 'Solutions' },    
+  { href: '/services', label: 'Product & Services' },         
+  { href: '/projects', label: 'Project' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
