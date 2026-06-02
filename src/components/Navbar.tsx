@@ -80,7 +80,7 @@ export default function Navbar() {
             }`}>
               <span className={`font-bold text-lg ${
                 isWhiteNavbar ? 'text-primary' : 'text-white'
-              }`}>C</span>
+              }`}>CSS</span>
             </div>
             <div>
               <span className={`font-poppins font-bold text-xl ${
@@ -128,7 +128,7 @@ export default function Navbar() {
                 }`}
               >
                 <HiPhone className="text-sm" />
-                <span className="hidden lg:inline">+62 812 3456 7890</span>
+                <span className="hidden lg:inline">+62 817 7684 8333</span>
                 <span className="lg:hidden">Call</span>
               </a>
             </div>
