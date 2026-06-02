@@ -54,7 +54,7 @@ const features = [
 ]
 
 const stats = [
-  { icon: HiUsers, value: '500+', label: 'Klien Aktif', suffix: '+' },
+  { icon: HiUsers, value: '30+', label: 'Klien Aktif', suffix: '+' },
   { icon: HiOfficeBuilding, value: '10', label: 'Tahun Pengalaman', suffix: '+' },
   { icon: HiGlobeAlt, value: '34', label: 'Provinsi Terjangkau', suffix: '' },
 ]
@@ -65,40 +65,34 @@ export default function WhyChooseUs() {
   const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   return (
-    <section className="section-padding bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-      
-      <div className="container-custom relative z-10">
-        {/* Header dengan Trust Badge */}
+    <section className="section-padding bg-white">
+      <div className="container-custom">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-            <HiCheckCircle className="text-accent" />
-            Mengapa Perusahaan Mempercayai Kami
+          <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
+            Why Choose Us
           </span>
-          <h2 className="section-title">
-            Kenapa <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Pilih Kami?</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-dark mb-3">
+            Kenapa <span className="text-primary">Memilih Cassindo?</span>
           </h2>
-          <p className="section-subtitle">
-            Keunggulan kompetitif yang membuat <span className="font-semibold text-primary">500+ klien</span> terus mempercayakan 
-            kebutuhan supply chain mereka kepada kami
+          <p className="text-gray-500 max-w-2xl mx-auto">
+            Keunggulan kompetitif yang membuat klien terus mempercayakan kebutuhan supply chain mereka kepada kami
           </p>
         </motion.div>
 
-        {/* Stats Row */}
+        {/* Stats Row - 3 Cards */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
         >
           {stats.map((stat, idx) => (
             <motion.div
@@ -106,111 +100,74 @@ export default function WhyChooseUs() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={isInView ? { scale: 1, opacity: 1 } : {}}
               transition={{ delay: idx * 0.1, type: 'spring' }}
-              className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100"
+              className="text-center p-6 bg-gray-50 rounded-2xl border border-gray-100"
             >
-              <div className="w-14 h-14 bg-gradient-to-br from-primary/10 to-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <stat.icon className="text-2xl text-primary" />
               </div>
-              <motion.p 
-                className="text-3xl md:text-4xl font-bold text-primary mb-1"
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ delay: idx * 0.1 + 0.2 }}
-              >
+              <p className="text-3xl md:text-4xl font-bold text-primary mb-1">
                 {stat.value}{stat.suffix}
-              </motion.p>
+              </p>
               <p className="text-gray-500 text-sm">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Features Grid - 5 Kolom Responsive */}
+        {/* Features Grid - 5 Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {features.map((feature, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
               viewport={{ once: true }}
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
               className={`
-                relative group text-center p-6 rounded-2xl transition-all duration-500
+                relative group text-center p-5 rounded-xl transition-all duration-300
                 ${hoveredIndex === idx 
-                  ? 'shadow-2xl -translate-y-2 bg-white' 
-                  : 'shadow-md hover:shadow-xl bg-white'
+                  ? 'shadow-lg -translate-y-1 bg-white' 
+                  : 'shadow-sm hover:shadow-md bg-white'
                 }
-                border border-gray-100 overflow-hidden
+                border border-gray-100
               `}
             >
-              {/* Animated Gradient Background */}
-              <motion.div 
-                className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
-                animate={{ opacity: hoveredIndex === idx ? 0.05 : 0 }}
-              />
-              
               {/* Icon Container */}
-              <motion.div 
-                className={`
-                  w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 
-                  transition-all duration-500 relative
-                  ${hoveredIndex === idx ? 'bg-primary shadow-lg' : 'bg-primary/10'}
-                `}
-                animate={{ 
-                  rotate: hoveredIndex === idx ? 5 : 0,
-                  scale: hoveredIndex === idx ? 1.05 : 1
-                }}
-              >
+              <div className={`
+                w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3 
+                transition-all duration-300
+                ${hoveredIndex === idx ? 'bg-primary' : 'bg-primary/10'}
+              `}>
                 <feature.icon className={`
-                  text-3xl transition-all duration-300
-                  ${hoveredIndex === idx ? 'text-white scale-110' : 'text-primary'}
+                  text-xl transition-all duration-300
+                  ${hoveredIndex === idx ? 'text-white' : 'text-primary'}
                 `} />
-                
-                {/* Ripple Effect */}
-                {hoveredIndex === idx && (
-                  <motion.span
-                    initial={{ scale: 0.8, opacity: 0.6 }}
-                    animate={{ scale: 1.5, opacity: 0 }}
-                    transition={{ duration: 0.8, repeat: Infinity }}
-                    className="absolute inset-0 bg-primary rounded-2xl"
-                  />
-                )}
-              </motion.div>
+              </div>
 
               {/* Title */}
               <h3 className={`
-                font-bold text-lg mb-2 transition-all duration-300
-                ${hoveredIndex === idx ? 'text-primary' : 'text-gray-900'}
+                font-bold text-sm mb-1 transition-all duration-300
+                ${hoveredIndex === idx ? 'text-primary' : 'text-gray-800'}
               `}>
                 {feature.title}
               </h3>
               
               {/* Description */}
-              <p className="text-gray-500 text-sm mb-3 leading-relaxed">
+              <p className="text-gray-400 text-xs mb-2 leading-relaxed">
                 {feature.desc}
               </p>
 
               {/* Stat Badge */}
-              <div className={`
-                inline-block px-3 py-1 rounded-full text-xs font-semibold transition-all duration-300
+              <span className={`
+                inline-block px-2 py-0.5 rounded-full text-[10px] font-medium transition-all duration-300
                 ${hoveredIndex === idx 
                   ? 'bg-primary/10 text-primary' 
                   : 'bg-gray-100 text-gray-500'
                 }
               `}>
-                {feature.stat} • {feature.statLabel}
-              </div>
-
-              {/* Decorative Line */}
-              <motion.div 
-                className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent rounded-full"
-                animate={{ 
-                  width: hoveredIndex === idx ? '40%' : '0%',
-                  x: hoveredIndex === idx ? '-50%' : '-50%'
-                }}
-                transition={{ duration: 0.3 }}
-              />
+                {feature.stat}
+              </span>
             </motion.div>
           ))}
         </div>
@@ -219,20 +176,21 @@ export default function WhyChooseUs() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center mt-12 pt-8 border-t border-gray-200"
+          className="text-center mt-12"
         >
-          <p className="text-gray-500 mb-4">
-            Bergabung dengan <span className="font-semibold text-primary">500+ perusahaan</span> yang telah mempercayakan kebutuhan supply chain mereka
-          </p>
-          <a 
+          <div className="inline-flex items-center gap-2 text-gray-400 mb-3 text-sm">
+            <HiCheckCircle className="text-accent" />
+            <span>Siap menjadi mitra supply chain Anda?</span>
+          </div>
+          <Link 
             href="/contact" 
-            className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-white rounded-full hover:bg-primary-dark transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/30"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/30"
           >
-            Konsultasi Gratis
-            <HiLightningBolt className="text-sm" />
-          </a>
+            <span>Konsultasi Gratis</span>
+            <HiArrowRight className="text-sm" />
+          </Link>
         </motion.div>
       </div>
     </section>
