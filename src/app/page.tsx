@@ -8,6 +8,7 @@ import CTASection from '@/components/CTASection'
 import Footer from '@/components/Footer'
 import CompanyIntro from '@/components/CompanyIntro'
 import ServicesSection from '@/components/ServicesSection'
+import FAQSection from '@/components/FAQSection'  // ← TAMBAHKAN IMPORT
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <ServicesSection />
       <WhyChooseUs />
       <ProjectGallery />
+      <FAQSection />        {/* ← TAMBAHKAN DI SINI */}
       <CTASection />
       <Footer />
     </main>
