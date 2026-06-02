@@ -81,7 +81,7 @@ export default function Footer() {
               </div>
               <p className="text-sm leading-relaxed text-gray-400 mb-4">
                 Mitra terpercaya untuk solusi pengadaan industri, material proyek, 
-                dan distribusi nasional sejak 2014.
+                dan distribusi nasional sejak 2021.
               </p>
               
               {/* Trust Badges */}
@@ -151,8 +151,8 @@ export default function Footer() {
               <div className="flex items-start gap-3 group">
                 <HiLocationMarker className="text-primary mt-0.5 group-hover:scale-110 transition" />
                 <div>
-                  <p>Wisma 46, Kota BNI</p>
-                  <p className="text-gray-500">Jakarta Pusat, 10220</p>
+                  <p>Gedung Jaya Lantai 9 Blok A02 JL. M.H. Thamrin No. 12, Kebon Sirih, Menteng,</p>
+                  <p className="text-gray-500">Jakarta Pusat, 10340</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 group">
@@ -161,7 +161,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3 group">
                 <HiMail className="text-primary group-hover:-translate-y-0.5 transition" />
-                <a href="mailto:info@cassindo.com" className="hover:text-primary transition">info@cassindo.com</a>
+                <a href="mailto:info@cassindo.com" className="hover:text-primary transition">sales@cassindo.com</a>
               </div>
               <div className="flex items-center gap-3 group">
                 <HiClock className="text-primary" />
@@ -250,7 +250,7 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
             <p className="text-gray-500">
-              &copy; {currentYear} Cassindo General Supplier. 
+              &copy; {currentYear} Cassindo Core Advanced Supply Solution. 
               <span className="hidden md:inline"> All rights reserved.</span>
             </p>
             <div className="flex gap-6">
@@ -270,7 +270,7 @@ export default function Footer() {
 
       {/* Floating WhatsApp Button */}
       <motion.a
-        href="https://wa.me/6281234567890"
+        href="https://wa.me/6281776848333"
         target="_blank"
         rel="noopener noreferrer"
         initial={{ scale: 0 }}
