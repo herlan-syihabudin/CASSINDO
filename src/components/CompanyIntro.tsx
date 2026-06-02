@@ -6,7 +6,7 @@ import { useRef } from 'react'
 import { 
   HiOutlineEye, HiOutlineChip, HiOutlineShieldCheck, 
   HiOutlineLightningBolt, HiArrowRight, HiTruck,
-  HiCheckCircle, HiBuildingOffice, HiUsers, HiGlobeAlt
+  HiCheckCircle, HiGlobeAlt, HiUsers, HiBuildingOffice
 } from 'react-icons/hi'
 
 export default function CompanyIntro() {
@@ -140,10 +140,6 @@ export default function CompanyIntro() {
                   <HiCheckCircle className="text-accent text-[10px]" />
                   SKT Terdaftar
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white rounded-full text-xs border border-gray-200">
-                  <HiCheckCircle className="text-accent text-[10px]" />
-                  Vendor Management System
-                </span>
               </div>
             </div>
 
@@ -174,7 +170,7 @@ export default function CompanyIntro() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
               <img 
-                src="/images/warehouse/main.jpg" 
+                src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800" 
                 alt="Warehouse Cassindo"
                 className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
               />
@@ -184,7 +180,7 @@ export default function CompanyIntro() {
                 <div className="bg-white/95 backdrop-blur-sm rounded-xl px-3 py-2 shadow-lg border border-white/20">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                      <HiShieldCheck className="text-white text-sm" />
+                      <HiOutlineShieldCheck className="text-white text-sm" />
                     </div>
                     <div>
                       <p className="text-primary font-bold text-xs">ISO 9001:2021</p>
