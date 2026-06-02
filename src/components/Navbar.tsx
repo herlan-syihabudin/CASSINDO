@@ -66,10 +66,10 @@ export default function Navbar() {
     return (
       <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-3">
         <div className="container-custom flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2">
+          <div>
             <span className="font-poppins font-bold text-lg sm:text-xl text-primary">Cassindo</span>
-            <span className="text-[10px] text-primary/60 hidden sm:block">Core Advanced Supply Solution</span>
-          </Link>
+            <p className="text-[9px] text-primary/50 -mt-0.5">Core Advanced Supply Solution</p>
+          </div>
         </div>
       </nav>
     )
@@ -93,18 +93,18 @@ export default function Navbar() {
         }}
       >
         <div className="container-custom flex justify-between items-center">
-          {/* LOGO - Clean, hanya Cassindo */}
+          {/* LOGO - Cassindo di atas, tagline di bawah */}
           <Link href="/" className="group shrink-0">
-            <div className="flex items-center gap-2">
+            <div>
               <span className={`font-poppins font-bold text-lg sm:text-xl transition-colors duration-300 ${isWhite ? 'text-primary' : 'text-white'}`}>
                 Cassindo
               </span>
-              <span className={`text-[10px] hidden sm:block transition-colors duration-300 ${isWhite ? 'text-primary/50' : 'text-white/50'}`}>
+              <p className={`text-[8px] sm:text-[9px] transition-colors duration-300 leading-tight ${isWhite ? 'text-primary/40' : 'text-white/40'}`}>
                 Core Advanced Supply Solution
-              </span>
+              </p>
             </div>
             {/* Underline animation on hover */}
-            <span className={`block h-0.5 bg-primary transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left ${isWhite ? 'bg-primary' : 'bg-white'}`} style={{ width: '100%' }} />
+            <span className={`block h-0.5 transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left ${isWhite ? 'bg-primary' : 'bg-white'}`} style={{ width: '100%' }} />
           </Link>
 
           {/* Desktop Menu */}
@@ -182,7 +182,7 @@ export default function Navbar() {
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="font-poppins font-bold text-xl text-primary">Cassindo</span>
-                    <p className="text-[10px] text-gray-400 -mt-0.5">Core Advanced Supply Solution</p>
+                    <p className="text-[9px] text-gray-400 -mt-0.5">Core Advanced Supply Solution</p>
                   </div>
                   <button
                     onClick={closeMenu}
