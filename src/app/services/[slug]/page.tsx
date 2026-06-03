@@ -16,6 +16,7 @@ const servicesData: Record<string, {
     description: string
     image: string
     specs?: string[]
+    slug?: string
   }[]
   gallery?: {
     title: string
@@ -32,20 +33,23 @@ const servicesData: Record<string, {
       {
         name: 'Raw Material',
         description: 'Besi, baja, alumunium, tembaga untuk keperluan fabrikasi industri',
-        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
-        specs: ['SNI Certified', 'Various Sizes', 'Competitive Price']
+        image: '/images/products/raw-material.jpg',
+        specs: ['SNI Certified', 'Various Sizes', 'Competitive Price'],
+        slug: 'raw-material'
       },
       {
         name: 'Sparepart Mesin',
         description: 'Komponen pengganti untuk mesin produksi dan peralatan pabrik',
-        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
-        specs: ['Genuine Parts', 'Warranty', 'Ready Stock']
+        image: '/images/products/sparepart-mesin.jpg',
+        specs: ['Genuine Parts', 'Warranty', 'Ready Stock'],
+        slug: 'sparepart-mesin'
       },
       {
         name: 'Fastener & Tools',
         description: 'Baut, mur, sekrup, dan peralatan workshop lengkap',
-        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
-        specs: ['High Quality', 'Bulk Discount', 'Industrial Grade']
+        image: '/images/products/fastener-tools.jpg',
+        specs: ['High Quality', 'Bulk Discount', 'Industrial Grade'],
+        slug: 'fastener-tools'
       }
     ],
     gallery: [
@@ -69,20 +73,23 @@ const servicesData: Record<string, {
       {
         name: 'Kabel Listrik',
         description: 'Kabel NYY, NYM, NYAF untuk instalasi rumah dan industri',
-        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
-        specs: ['SNI Certified', 'Various Sizes', 'Fire Resistant']
+        image: '/images/products/kabel-listrik.jpg',
+        specs: ['SNI Certified', 'Various Sizes', 'Fire Resistant'],
+        slug: 'kabel-listrik'
       },
       {
         name: 'Panel Listrik',
         description: 'Panel distribusi, kontrol, dan proteksi kelistrikan',
-        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
-        specs: ['Custom Design', 'Safety Standard', 'Easy Installation']
+        image: '/images/products/panel-listrik.jpg',
+        specs: ['Custom Design', 'Safety Standard', 'Easy Installation'],
+        slug: 'panel-listrik'
       },
       {
         name: 'Komponen Elektrikal',
         description: 'MCB, kontaktor, relay, dan peralatan proteksi',
-        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
-        specs: ['Original Brand', 'Warranty', 'Ready Stock']
+        image: '/images/products/komponen-elektrikal.jpg',
+        specs: ['Original Brand', 'Warranty', 'Ready Stock'],
+        slug: 'komponen-elektrikal'
       }
     ],
     gallery: [
@@ -106,20 +113,23 @@ const servicesData: Record<string, {
       {
         name: 'Industrial Pump',
         description: 'Pompa sentrifugal, pompa diaphragm, pompa submersible',
-        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
-        specs: ['Heavy Duty', 'Energy Efficient', 'Long Lifespan']
+        image: '/images/products/industrial-pump.jpg',
+        specs: ['Heavy Duty', 'Energy Efficient', 'Long Lifespan'],
+        slug: 'industrial-pump'
       },
       {
         name: 'Gearbox & Reducer',
         description: 'Reducer kecepatan untuk conveyor dan mesin produksi',
-        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
-        specs: ['High Torque', 'Precision Gear', 'Low Maintenance']
+        image: '/images/products/gearbox.jpg',
+        specs: ['High Torque', 'Precision Gear', 'Low Maintenance'],
+        slug: 'gearbox-reducer'
       },
       {
         name: 'Hydraulic Components',
         description: 'Valve, cylinder, pompa hydraulic untuk alat berat',
-        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
-        specs: ['Heavy Duty', 'Leak Proof', 'High Pressure']
+        image: '/images/products/hydraulic.jpg',
+        specs: ['Heavy Duty', 'Leak Proof', 'High Pressure'],
+        slug: 'hydraulic-components'
       }
     ],
     gallery: [
@@ -143,20 +153,23 @@ const servicesData: Record<string, {
       {
         name: 'Alat Pelindung Diri (APD)',
         description: 'Helm safety, sepatu safety, rompi, sarung tangan',
-        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
-        specs: ['SNI Certified', 'Comfortable', 'Durable']
+        image: '/images/products/apd.jpg',
+        specs: ['SNI Certified', 'Comfortable', 'Durable'],
+        slug: 'apd'
       },
       {
         name: 'Fire Extinguisher',
         description: 'APAR berbagai jenis untuk proteksi kebakaran',
-        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
-        specs: ['SNI Certified', 'Easy to Use', 'Refill Service']
+        image: '/images/products/fire-extinguisher.jpg',
+        specs: ['SNI Certified', 'Easy to Use', 'Refill Service'],
+        slug: 'fire-extinguisher'
       },
       {
         name: 'Safety Signage',
         description: 'Rambu-rambu K3 untuk area proyek dan pabrik',
-        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
-        specs: ['Reflective', 'Weather Resistant', 'Custom Design']
+        image: '/images/products/safety-signage.jpg',
+        specs: ['Reflective', 'Weather Resistant', 'Custom Design'],
+        slug: 'safety-signage'
       }
     ],
     gallery: [
@@ -179,20 +192,23 @@ const servicesData: Record<string, {
       {
         name: 'Semen & Mortar',
         description: 'Semen berkualitas untuk konstruksi bangunan',
-        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
-        specs: ['SNI Certified', 'Bulk Order', 'Factory Price']
+        image: '/images/products/semen.jpg',
+        specs: ['SNI Certified', 'Bulk Order', 'Factory Price'],
+        slug: 'semen-mortar'
       },
       {
         name: 'Besi Beton & Baja Ringan',
         description: 'Material struktur untuk proyek gedung dan rumah',
-        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
-        specs: ['SNI Certified', 'Various Sizes', 'Cut to Size']
+        image: '/images/products/besi-beton.jpg',
+        specs: ['SNI Certified', 'Various Sizes', 'Cut to Size'],
+        slug: 'besi-beton'
       },
       {
         name: 'Cat & Finishing',
         description: 'Cat tembok, cat kayu, dan material finishing',
-        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
-        specs: ['Eco Friendly', 'Various Colors', 'Durable']
+        image: '/images/products/cat.jpg',
+        specs: ['Eco Friendly', 'Various Colors', 'Durable'],
+        slug: 'cat-finishing'
       }
     ],
     gallery: [
@@ -215,20 +231,23 @@ const servicesData: Record<string, {
       {
         name: 'Alat Tulis Kantor',
         description: 'ATK lengkap untuk kebutuhan operasional kantor',
-        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
-        specs: ['Complete Set', 'Bulk Order', 'Same Day Delivery']
+        image: '/images/products/atk.jpg',
+        specs: ['Complete Set', 'Bulk Order', 'Same Day Delivery'],
+        slug: 'alat-tulis-kantor'
       },
       {
         name: 'Furniture Kantor',
         description: 'Meja, kursi, lemari untuk kenyamanan kerja',
-        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
-        specs: ['Ergonomic', 'Modern Design', 'Assembly Service']
+        image: '/images/products/furniture.jpg',
+        specs: ['Ergonomic', 'Modern Design', 'Assembly Service'],
+        slug: 'furniture-kantor'
       },
       {
         name: 'Perangkat IT',
         description: 'Printer, komputer, dan aksesoris IT',
-        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
-        specs: ['Branded', 'Warranty', 'Installation']
+        image: '/images/products/it-equipment.jpg',
+        specs: ['Branded', 'Warranty', 'Installation'],
+        slug: 'perangkat-it'
       }
     ],
     gallery: [
@@ -251,20 +270,23 @@ const servicesData: Record<string, {
       {
         name: 'Sourcing Khusus',
         description: 'Pengadaan barang spesifik sesuai kebutuhan',
-        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
-        specs: ['Tailor Made', 'Global Network', 'Fast Delivery']
+        image: '/images/products/sourcing.jpg',
+        specs: ['Tailor Made', 'Global Network', 'Fast Delivery'],
+        slug: 'sourcing-khusus'
       },
       {
         name: 'Import Services',
         description: 'Layanan impor barang dari luar negeri',
-        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
-        specs: ['Custom Clearance', 'Door to Door', 'Document Complete']
+        image: '/images/products/import.jpg',
+        specs: ['Custom Clearance', 'Door to Door', 'Document Complete'],
+        slug: 'import-services'
       },
       {
         name: 'Tender Support',
         description: 'Pendukung pengadaan untuk proyek tender',
-        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
-        specs: ['Legalitas Lengkap', 'Pengalaman Tender', 'Dokumen Rapi']
+        image: '/images/products/tender-support.jpg',
+        specs: ['Legalitas Lengkap', 'Pengalaman Tender', 'Dokumen Rapi'],
+        slug: 'tender-support'
       }
     ],
     gallery: [
@@ -354,22 +376,28 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                 </div>
               )}
 
-              {/* Products Section */}
+              {/* Products Section - BISA DIKLIK */}
               {service.products && service.products.length > 0 && (
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold text-dark mb-6">Produk Unggulan</h2>
                   <div className="grid md:grid-cols-2 gap-6">
                     {service.products.map((product, idx) => (
-                      <div key={idx} className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition">
-                        <div className="aspect-video relative overflow-hidden">
+                      <Link 
+                        key={idx}
+                        href={`/products/${product.slug || product.name.toLowerCase().replace(/ /g, '-')}`}
+                        className="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 block"
+                      >
+                        <div className="aspect-video relative overflow-hidden bg-gray-100">
                           <img 
                             src={product.image} 
                             alt={product.name}
-                            className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                           />
                         </div>
                         <div className="p-5">
-                          <h3 className="font-bold text-dark text-lg mb-2">{product.name}</h3>
+                          <h3 className="font-bold text-dark text-lg mb-2 group-hover:text-primary transition">
+                            {product.name}
+                          </h3>
                           <p className="text-gray-500 text-sm mb-3">{product.description}</p>
                           {product.specs && (
                             <div className="flex flex-wrap gap-2">
@@ -380,8 +408,12 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                               ))}
                             </div>
                           )}
+                          <div className="mt-3 flex items-center gap-1 text-primary text-sm font-medium group-hover:gap-2 transition">
+                            <span>Lihat Detail</span>
+                            <HiArrowRight className="text-xs" />
+                          </div>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>
