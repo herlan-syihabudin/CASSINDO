@@ -37,6 +37,8 @@ export default function Footer() {
       { href: '/services/electrical-equipment', label: 'Electrical Equipment' },
       { href: '/services/mechanical-parts', label: 'Mechanical Parts' },
       { href: '/services/safety-equipment', label: 'Safety Equipment' },
+      { href: '/services/building-material', label: 'Building Material' },      // ← TAMBAH
+      { href: '/services/office-supply', label: 'Office Supply' },              // ← TAMBAH
       { href: '/services/custom-procurement', label: 'Custom Procurement' },
     ],
     support: [
@@ -96,11 +98,11 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Kolom 3: Layanan */}
+          {/* Kolom 3: Layanan - SEKARANG 7 LAYANAN */}
           <div>
             <h4 className="text-white font-semibold mb-4 text-sm">Layanan</h4>
             <ul className="space-y-2 text-sm">
-              {footerLinks.layanan.slice(0, 5).map((link) => (
+              {footerLinks.layanan.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="hover:text-primary transition-all duration-300 hover:translate-x-1 inline-flex items-center gap-1 group text-gray-400 hover:text-primary">
                     <HiArrowRight className="opacity-0 group-hover:opacity-100 text-[10px] transition" />
@@ -153,7 +155,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Kolom 5: Tagline + Newsletter (SEJAJAR dengan Ikuti Kami) */}
+          {/* Kolom 5: Tagline + Newsletter */}
           <div>
             {/* Tagline Premium */}
             <div className="mb-4">
