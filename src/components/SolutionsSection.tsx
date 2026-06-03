@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { HiArrowRight, HiSparkles, HiOfficeBuilding, HiHome, HiCog, HiBeaker, HiBuildingOffice, HiTruck } from 'react-icons/hi'
+import { HiArrowRight, HiSparkles, HiOfficeBuilding, HiHome, HiCog, HiBeaker, HiTruck } from 'react-icons/hi'
 
 const solutions = [
   {
@@ -45,7 +45,7 @@ const solutions = [
     slug: 'commercial-building',
     title: 'Commercial Building',
     description: 'Perlengkapan gedung komersial',
-    icon: HiBuildingOffice,
+    icon: HiOfficeBuilding,  // ← GANTI: HiBuildingOffice → HiOfficeBuilding
     bgGradient: 'from-purple-500/20 to-purple-600/10',
     borderColor: 'border-purple-500/30',
     image: '/images/solutions/commercial.jpg'
@@ -73,7 +73,7 @@ export default function SolutionsSection() {
       {/* Subtle Grid Pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%C2%A0/g%3E%3C/svg%3E")`,
           backgroundRepeat: 'repeat',
         }}
       />
@@ -100,7 +100,7 @@ export default function SolutionsSection() {
           </p>
         </motion.div>
 
-        {/* Grid Cards - 6 kolom dengan foto background */}
+        {/* Grid Cards - 6 kolom */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
           {solutions.map((sol, idx) => (
             <motion.div
@@ -139,7 +139,7 @@ export default function SolutionsSection() {
                     {sol.description}
                   </p>
                   
-                  {/* CTA */}
+                  {/* CTA - muncul saat hover */}
                   <div className="mt-3 flex items-center gap-1 text-accent text-[10px] font-medium opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <span>Pelajari</span>
                     <HiArrowRight className="text-[8px]" />
