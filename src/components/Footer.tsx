@@ -52,134 +52,87 @@ export default function Footer() {
     { icon: FaLinkedin, href: 'https://linkedin.com/company/cassindo', label: 'LinkedIn', color: '#0077B5' },
     { icon: FaInstagram, href: 'https://instagram.com/cassindo', label: 'Instagram', color: '#E4405F' },
     { icon: FaYoutube, href: 'https://youtube.com/c/cassindo', label: 'YouTube', color: '#FF0000' },
-    // TikTok dihapus
   ]
 
   return (
     <footer className="bg-gradient-to-b from-[#0A0F1A] to-[#06090F] text-gray-400">
-      {/* Main Footer */}
       <div className="container-custom pt-16 pb-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        {/* Main Footer Grid - 5 kolom */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
           
-          {/* Company Info - Logo tanpa CSS (sama dengan navbar) */}
-          <div className="lg:col-span-1.5">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="mb-6"
-            >
-              <Link href="/" className="flex flex-col gap-0 group">
-                <div>
-                  <span className="font-poppins font-bold text-2xl text-white group-hover:text-accent transition-colors">
-                    Cassindo
-                  </span>
-                  <p className="text-[10px] text-white/40 -mt-0.5">
-                    Core Advanced Supply Solution
-                  </p>
-                </div>
-                {/* Underline animation */}
-                <span className="block h-0.5 bg-accent transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left mt-1" style={{ width: '100%' }} />
-              </Link>
-              <p className="text-sm leading-relaxed text-gray-400 mt-4 mb-4">
-                Mitra terpercaya untuk solusi pengadaan industri, material proyek, 
-                dan distribusi nasional sejak 2021.
+          {/* Kolom 1: Company Info */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="flex flex-col gap-0 group mb-4">
+              <span className="font-poppins font-bold text-2xl text-white group-hover:text-accent transition-colors">
+                Cassindo
+              </span>
+              <p className="text-[10px] text-white/40 -mt-0.5">
+                Core Advanced Supply Solution
               </p>
-              
-              {/* Trust Badges */}
-              <div className="flex flex-wrap gap-2 mt-4">
-                <span className="text-xs bg-white/5 px-2 py-1 rounded-full">ISO 9001:2021</span>
-                <span className="text-xs bg-white/5 px-2 py-1 rounded-full">Terdaftar BKPM</span>
-                <span className="text-xs bg-white/5 px-2 py-1 rounded-full">Anggota ASI</span>
-              </div>
-            </motion.div>
+              <span className="block h-0.5 bg-accent transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left mt-1" style={{ width: '100%' }} />
+            </Link>
+            <p className="text-sm leading-relaxed text-gray-400 mb-4">
+              Mitra terpercaya untuk solusi pengadaan industri dan distribusi nasional.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <span className="text-xs bg-white/5 px-2 py-1 rounded-full">ISO 9001:2021</span>
+              <span className="text-xs bg-white/5 px-2 py-1 rounded-full">Terdaftar BKPM</span>
+              <span className="text-xs bg-white/5 px-2 py-1 rounded-full">Anggota ASI</span>
+            </div>
           </div>
 
-          {/* Perusahaan Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <h4 className="text-white font-semibold mb-4 text-lg">Perusahaan</h4>
-            <ul className="space-y-3 text-sm">
+          {/* Kolom 2: Perusahaan */}
+          <div>
+            <h4 className="text-white font-semibold mb-4 text-sm">Perusahaan</h4>
+            <ul className="space-y-2 text-sm">
               {footerLinks.perusahaan.map((link) => (
                 <li key={link.href}>
-                  <Link 
-                    href={link.href} 
-                    className="hover:text-primary transition-all duration-300 hover:translate-x-1 inline-flex items-center gap-1 group"
-                  >
-                    <HiArrowRight className="opacity-0 group-hover:opacity-100 text-xs transition" />
+                  <Link href={link.href} className="hover:text-primary transition-all duration-300 hover:translate-x-1 inline-flex items-center gap-1 group text-gray-400 hover:text-primary">
+                    <HiArrowRight className="opacity-0 group-hover:opacity-100 text-[10px] transition" />
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Layanan Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <h4 className="text-white font-semibold mb-4 text-lg">Layanan</h4>
-            <ul className="space-y-3 text-sm">
+          {/* Kolom 3: Layanan */}
+          <div>
+            <h4 className="text-white font-semibold mb-4 text-sm">Layanan</h4>
+            <ul className="space-y-2 text-sm">
               {footerLinks.layanan.slice(0, 5).map((link) => (
                 <li key={link.href}>
-                  <Link 
-                    href={link.href} 
-                    className="hover:text-primary transition-all duration-300 hover:translate-x-1 inline-flex items-center gap-1 group"
-                  >
-                    <HiArrowRight className="opacity-0 group-hover:opacity-100 text-xs transition" />
+                  <Link href={link.href} className="hover:text-primary transition-all duration-300 hover:translate-x-1 inline-flex items-center gap-1 group text-gray-400 hover:text-primary">
+                    <HiArrowRight className="opacity-0 group-hover:opacity-100 text-[10px] transition" />
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Kontak & Social */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <h4 className="text-white font-semibold mb-4 text-lg">Kontak</h4>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-start gap-3 group">
-                <HiLocationMarker className="text-primary mt-0.5 group-hover:scale-110 transition" />
-                <div>
-                  <p>Gedung Jaya Lantai 9 Blok A02</p>
-                  <p>JL. M.H. Thamrin No. 12, Kebon Sirih, Menteng,</p>
-                  <p className="text-gray-500">Jakarta Pusat, 10340</p>
-                </div>
+          {/* Kolom 4: Kontak & Social */}
+          <div>
+            <h4 className="text-white font-semibold mb-4 text-sm">Kontak</h4>
+            <div className="space-y-2 text-sm">
+              <div className="flex items-start gap-2 group">
+                <HiLocationMarker className="text-primary text-sm mt-0.5" />
+                <p className="text-gray-400 text-xs">Gedung Jaya, Jakarta Pusat</p>
               </div>
-              <div className="flex items-center gap-3 group">
-                <HiPhone className="text-primary group-hover:rotate-12 transition" />
-                <a href="tel:+6281776848333" className="hover:text-primary transition">+62 817 7684 8333</a>
+              <div className="flex items-center gap-2 group">
+                <HiPhone className="text-primary text-sm" />
+                <a href="tel:+6281776848333" className="text-gray-400 hover:text-primary text-xs">+62 817 7684 8333</a>
               </div>
-              <div className="flex items-center gap-3 group">
-                <HiMail className="text-primary group-hover:-translate-y-0.5 transition" />
-                <a href="mailto:sales@cassindo.com" className="hover:text-primary transition">sales@cassindo.com</a>
-              </div>
-              <div className="flex items-center gap-3 group">
-                <HiClock className="text-primary" />
-                <div>
-                  <p>Senin-Jumat: 08.00-17.00</p>
-                  <p className="text-gray-500">Sabtu-Minggu: Tutup</p>
-                </div>
+              <div className="flex items-center gap-2 group">
+                <HiMail className="text-primary text-sm" />
+                <a href="mailto:sales@cassindo.com" className="text-gray-400 hover:text-primary text-xs">sales@cassindo.com</a>
               </div>
             </div>
 
             {/* Social Media */}
-            <div className="mt-6">
-              <h4 className="text-white font-semibold mb-3 text-sm">Ikuti Kami</h4>
-              <div className="flex gap-3">
+            <div className="mt-4">
+              <h4 className="text-white font-semibold mb-2 text-sm">Ikuti Kami</h4>
+              <div className="flex gap-2">
                 {socialLinks.map((social) => (
                   <motion.a
                     key={social.label}
@@ -187,95 +140,74 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    whileHover={{ y: -3, scale: 1.1 }}
+                    whileHover={{ y: -2, scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300"
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = social.color
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = ''
-                    }}
+                    className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300"
+                    onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = social.color }}
+                    onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '' }}
                   >
-                    <social.icon className="text-white text-lg" />
+                    <social.icon className="text-white text-sm" />
                   </motion.a>
                 ))}
               </div>
             </div>
-          </motion.div>
-        </div>
-
-        {/* Newsletter Section - Dengan Tagline Premium */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="border-t border-white/10 pt-8 mb-8"
-        >
-          {/* Tagline Premium - Kontras */}
-          <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white uppercase tracking-wider">
-              Ready to Optimize
-              <span className="text-accent block"> Your Supply Chain?</span>
-            </h3>
-            <div className="w-20 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto mt-4 rounded-full" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 items-center">
-            <div>
-              <h4 className="text-white font-semibold text-lg mb-1">Langganan Newsletter</h4>
-              <p className="text-gray-500 text-sm">Dapatkan info harga terbaru dan promo spesial</p>
+          {/* Kolom 5: Tagline + Newsletter (SEJAJAR dengan Ikuti Kami) */}
+          <div>
+            {/* Tagline Premium */}
+            <div className="mb-4">
+              <h3 className="text-white font-bold text-sm uppercase tracking-wider">
+                Ready to Optimize
+              </h3>
+              <p className="text-accent font-bold text-base">
+                Your Supply Chain?
+              </p>
+              <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-accent mt-2 rounded-full" />
             </div>
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
-              <div className="flex-1 relative">
+
+            {/* Newsletter Form */}
+            <form onSubmit={handleSubscribe} className="mt-3">
+              <p className="text-gray-500 text-xs mb-2">Langganan Newsletter</p>
+              <div className="flex flex-col gap-2">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Masukkan email Anda"
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-primary transition"
+                  placeholder="Email Anda"
+                  className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 text-sm focus:outline-none focus:border-primary transition"
                   required
                 />
+                <button
+                  type="submit"
+                  className="px-3 py-2 bg-primary text-white text-xs font-semibold rounded-lg hover:bg-primary-dark transition-all duration-300 flex items-center justify-center gap-1 group"
+                >
+                  {isSubscribed ? (
+                    <>
+                      <HiCheckCircle className="text-sm" />
+                      <span>Terdaftar!</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Berlangganan</span>
+                      <HiArrowRight className="text-xs group-hover:translate-x-0.5 transition" />
+                    </>
+                  )}
+                </button>
               </div>
-              <button
-                type="submit"
-                className="px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
-              >
-                {isSubscribed ? (
-                  <>
-                    <HiCheckCircle className="text-lg" />
-                    <span>Terdaftar!</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Berlangganan</span>
-                    <HiArrowRight className="group-hover:translate-x-1 transition" />
-                  </>
-                )}
-              </button>
             </form>
           </div>
-        </motion.div>
+        </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-            <p className="text-gray-500">
-              &copy; {currentYear} Cassindo Core Advanced Supply Solution. 
-              <span className="hidden md:inline"> All rights reserved.</span>
-            </p>
-            <div className="flex gap-6">
-              <Link href="/privacy" className="text-gray-500 hover:text-primary transition text-xs">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-gray-500 hover:text-primary transition text-xs">
-                Terms of Service
-              </Link>
-              <Link href="/sitemap" className="text-gray-500 hover:text-primary transition text-xs">
-                Sitemap
-              </Link>
-            </div>
+        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs">
+          <p className="text-gray-500">
+            &copy; {currentYear} Cassindo Core Advanced Supply Solution. All rights reserved.
+          </p>
+          <div className="flex gap-4">
+            <Link href="/privacy" className="text-gray-500 hover:text-primary transition">Privacy</Link>
+            <Link href="/terms" className="text-gray-500 hover:text-primary transition">Terms</Link>
+            <Link href="/sitemap" className="text-gray-500 hover:text-primary transition">Sitemap</Link>
           </div>
         </div>
       </div>
@@ -290,11 +222,11 @@ export default function Footer() {
         transition={{ delay: 1, type: 'spring' }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
         aria-label="Chat on WhatsApp"
       >
-        <FaWhatsapp className="text-2xl group-hover:scale-110 transition" />
-        <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition">
+        <FaWhatsapp className="text-xl group-hover:scale-110 transition" />
+        <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-[10px] px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition">
           Chat via WhatsApp
         </span>
       </motion.a>
