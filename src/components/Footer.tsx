@@ -7,7 +7,7 @@ import {
   HiLocationMarker, HiMail, HiPhone, HiClock, 
   HiArrowRight, HiCheckCircle
 } from 'react-icons/hi'
-import { FaWhatsapp, FaLinkedin, FaInstagram, FaYoutube, FaTiktok } from 'react-icons/fa'
+import { FaWhatsapp, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa'
 
 export default function Footer() {
   const [email, setEmail] = useState('')
@@ -52,7 +52,7 @@ export default function Footer() {
     { icon: FaLinkedin, href: 'https://linkedin.com/company/cassindo', label: 'LinkedIn', color: '#0077B5' },
     { icon: FaInstagram, href: 'https://instagram.com/cassindo', label: 'Instagram', color: '#E4405F' },
     { icon: FaYoutube, href: 'https://youtube.com/c/cassindo', label: 'YouTube', color: '#FF0000' },
-    { icon: FaTiktok, href: 'https://tiktok.com/@cassindo', label: 'TikTok', color: '#000000' },
+    // TikTok dihapus
   ]
 
   return (
@@ -61,7 +61,7 @@ export default function Footer() {
       <div className="container-custom pt-16 pb-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           
-          {/* Company Info - Logo sama dengan navbar */}
+          {/* Company Info - Logo tanpa CSS (sama dengan navbar) */}
           <div className="lg:col-span-1.5">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -70,19 +70,17 @@ export default function Footer() {
               viewport={{ once: true }}
               className="mb-6"
             >
-              <Link href="/" className="flex items-center gap-3 group">
-                {/* Logo - border outline, tanpa background warna */}
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 border-2 border-white/80 bg-transparent">
-                  <span className="font-bold text-base text-white">CSS</span>
-                </div>
+              <Link href="/" className="flex flex-col gap-0 group">
                 <div>
-                  <span className="font-poppins font-bold text-xl text-white">
+                  <span className="font-poppins font-bold text-2xl text-white group-hover:text-accent transition-colors">
                     Cassindo
                   </span>
-                  <span className="block text-xs text-white/60">
+                  <p className="text-[10px] text-white/40 -mt-0.5">
                     Core Advanced Supply Solution
-                  </span>
+                  </p>
                 </div>
+                {/* Underline animation */}
+                <span className="block h-0.5 bg-accent transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left mt-1" style={{ width: '100%' }} />
               </Link>
               <p className="text-sm leading-relaxed text-gray-400 mt-4 mb-4">
                 Mitra terpercaya untuk solusi pengadaan industri, material proyek, 
@@ -192,7 +190,6 @@ export default function Footer() {
                     whileHover={{ y: -3, scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300"
-                    style={{ '--hover-color': social.color } as React.CSSProperties}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = social.color
                     }}
@@ -208,7 +205,7 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        {/* Newsletter Section */}
+        {/* Newsletter Section - Dengan Tagline Premium */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -216,6 +213,15 @@ export default function Footer() {
           viewport={{ once: true }}
           className="border-t border-white/10 pt-8 mb-8"
         >
+          {/* Tagline Premium - Kontras */}
+          <div className="text-center mb-8">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white uppercase tracking-wider">
+              Ready to Optimize
+              <span className="text-accent block"> Your Supply Chain?</span>
+            </h3>
+            <div className="w-20 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto mt-4 rounded-full" />
+          </div>
+
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <div>
               <h4 className="text-white font-semibold text-lg mb-1">Langganan Newsletter</h4>
