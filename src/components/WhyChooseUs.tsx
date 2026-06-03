@@ -1,13 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'  // ← TAMBAHKAN INI!
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { 
   HiLightningBolt, HiTag, HiShieldCheck, 
   HiTruck, HiClipboardCheck, HiCheckCircle,
   HiUsers, HiOfficeBuilding, HiGlobeAlt,
-  HiCurrencyDollar, HiClock
+  HiCurrencyDollar, HiClock, HiArrowRight
 } from 'react-icons/hi'
 
 const features = [
