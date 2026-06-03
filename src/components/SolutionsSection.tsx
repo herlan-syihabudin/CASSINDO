@@ -2,15 +2,19 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { HiArrowRight, HiSparkles, HiOfficeBuilding, HiHome, HiCog, HiBeaker, HiTruck } from 'react-icons/hi'
+import { HiArrowRight, HiSparkles } from 'react-icons/hi'
+import { 
+  FaIndustry, FaHardHat, FaOilCan, 
+  FaWarehouse, FaBuilding, FaHome 
+} from 'react-icons/fa'
 
 const solutions = [
   {
     slug: 'manufaktur',
     title: 'Manufaktur',
     description: 'Sparepart mesin & material produksi',
-    icon: HiOfficeBuilding,
-    bgGradient: 'from-blue-500/20 to-blue-600/10',
+    icon: FaIndustry,
+    iconColor: 'text-blue-400',
     borderColor: 'border-blue-500/30',
     image: '/images/solutions/manufaktur.jpg'
   },
@@ -18,8 +22,8 @@ const solutions = [
     slug: 'konstruksi',
     title: 'Konstruksi',
     description: 'Material proyek & peralatan bangunan',
-    icon: HiHome,
-    bgGradient: 'from-orange-500/20 to-orange-600/10',
+    icon: FaHome,
+    iconColor: 'text-orange-400',
     borderColor: 'border-orange-500/30',
     image: '/images/solutions/konstruksi.jpg'
   },
@@ -27,8 +31,8 @@ const solutions = [
     slug: 'energy-utility',
     title: 'Energy & Utility',
     description: 'Peralatan & komponen energi',
-    icon: HiCog,
-    bgGradient: 'from-cyan-500/20 to-blue-500/10',
+    icon: FaOilCan,
+    iconColor: 'text-cyan-400',
     borderColor: 'border-cyan-500/30',
     image: '/images/solutions/energy.jpg'
   },
@@ -36,8 +40,8 @@ const solutions = [
     slug: 'oil-gas',
     title: 'Oil & Gas',
     description: 'Peralatan & safety migas',
-    icon: HiBeaker,
-    bgGradient: 'from-red-500/20 to-red-600/10',
+    icon: FaHardHat,
+    iconColor: 'text-red-400',
     borderColor: 'border-red-500/30',
     image: '/images/solutions/oil-gas.jpg'
   },
@@ -45,8 +49,8 @@ const solutions = [
     slug: 'commercial-building',
     title: 'Commercial Building',
     description: 'Perlengkapan gedung komersial',
-    icon: HiOfficeBuilding,  // ← GANTI: HiBuildingOffice → HiOfficeBuilding
-    bgGradient: 'from-purple-500/20 to-purple-600/10',
+    icon: FaBuilding,
+    iconColor: 'text-purple-400',
     borderColor: 'border-purple-500/30',
     image: '/images/solutions/commercial.jpg'
   },
@@ -54,8 +58,8 @@ const solutions = [
     slug: 'warehouse-logistik',
     title: 'Warehouse & Logistik',
     description: 'Peralatan gudang & distribusi',
-    icon: HiTruck,
-    bgGradient: 'from-green-500/20 to-emerald-600/10',
+    icon: FaWarehouse,
+    iconColor: 'text-green-400',
     borderColor: 'border-green-500/30',
     image: '/images/solutions/warehouse.jpg'
   },
@@ -73,7 +77,7 @@ export default function SolutionsSection() {
       {/* Subtle Grid Pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%C2%A0/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           backgroundRepeat: 'repeat',
         }}
       />
@@ -100,7 +104,7 @@ export default function SolutionsSection() {
           </p>
         </motion.div>
 
-        {/* Grid Cards - 6 kolom */}
+        {/* Grid Cards - 6 kolom dengan icon premium */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
           {solutions.map((sol, idx) => (
             <motion.div
@@ -112,21 +116,21 @@ export default function SolutionsSection() {
             >
               <Link
                 href={`/solutions/${sol.slug}`}
-                className="group block relative rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 border border-white/10"
+                className={`group block relative rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 border ${sol.borderColor} hover:border-accent/50`}
               >
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
                   style={{ backgroundImage: `url(${sol.image})` }}
                 />
-                {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-gray-900/50" />
+                {/* Dark Overlay - Lebih gelap biar icon keliatan */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/60" />
                 
                 {/* Content - Posisi di tengah */}
                 <div className="relative flex flex-col items-center text-center p-5 min-h-[200px] justify-center">
-                  {/* Icon di tengah */}
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${sol.bgGradient} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
-                    <sol.icon className="text-xl text-white" />
+                  {/* Icon Premium - Lebih besar, tanpa border */}
+                  <div className="mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <sol.icon className={`text-3xl ${sol.iconColor} drop-shadow-lg`} />
                   </div>
                   
                   {/* Title */}
