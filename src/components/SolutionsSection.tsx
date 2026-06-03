@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { HiArrowRight, HiOfficeBuilding, HiHome, HiCog, HiCurrencyDollar, HiSparkles } from 'react-icons/hi'
+import { HiArrowRight, HiSparkles, HiOfficeBuilding, HiHome, HiCog, HiBeaker, HiBuildingOffice, HiTruck } from 'react-icons/hi'
 
 const solutions = [
   {
@@ -10,47 +10,61 @@ const solutions = [
     title: 'Manufaktur',
     description: 'Sparepart mesin & material produksi',
     icon: HiOfficeBuilding,
-    gradient: 'from-blue-600 to-blue-400',
+    color: 'from-blue-600 to-blue-400',
     bgGradient: 'from-blue-500/20 to-blue-600/10',
     borderColor: 'border-blue-500/30',
-    iconBg: 'bg-blue-500/20'
   },
   {
     slug: 'konstruksi',
     title: 'Konstruksi',
     description: 'Material proyek & peralatan bangunan',
     icon: HiHome,
-    gradient: 'from-orange-500 to-orange-400',
+    color: 'from-orange-500 to-orange-400',
     bgGradient: 'from-orange-500/20 to-orange-600/10',
     borderColor: 'border-orange-500/30',
-    iconBg: 'bg-orange-500/20'
   },
   {
-    slug: 'tambang',
-    title: 'Tambang & Energi',
-    description: 'Alat berat & komponen hydraulic',
+    slug: 'energy-utility',
+    title: 'Energy & Utility',
+    description: 'Peralatan & komponen energi',
     icon: HiCog,
-    gradient: 'from-gray-600 to-gray-500',
-    bgGradient: 'from-gray-500/20 to-gray-600/10',
-    borderColor: 'border-gray-500/30',
-    iconBg: 'bg-gray-500/20'
+    color: 'from-cyan-500 to-blue-500',
+    bgGradient: 'from-cyan-500/20 to-blue-500/10',
+    borderColor: 'border-cyan-500/30',
   },
   {
-    slug: 'pemerintah',
-    title: 'Pemerintah',
-    description: 'Pengadaan barang/jasa tender',
-    icon: HiCurrencyDollar,
-    gradient: 'from-emerald-600 to-emerald-400',
-    bgGradient: 'from-emerald-500/20 to-emerald-600/10',
-    borderColor: 'border-emerald-500/30',
-    iconBg: 'bg-emerald-500/20'
+    slug: 'oil-gas',
+    title: 'Oil & Gas',
+    description: 'Peralatan & safety migas',
+    icon: HiBeaker,
+    color: 'from-red-500 to-red-400',
+    bgGradient: 'from-red-500/20 to-red-600/10',
+    borderColor: 'border-red-500/30',
+  },
+  {
+    slug: 'commercial-building',
+    title: 'Commercial Building',
+    description: 'Perlengkapan gedung komersial',
+    icon: HiBuildingOffice,
+    color: 'from-purple-500 to-purple-400',
+    bgGradient: 'from-purple-500/20 to-purple-600/10',
+    borderColor: 'border-purple-500/30',
+  },
+  {
+    slug: 'warehouse-logistik',
+    title: 'Warehouse & Logistik',
+    description: 'Peralatan gudang & distribusi',
+    icon: HiTruck,
+    color: 'from-green-500 to-emerald-500',
+    bgGradient: 'from-green-500/20 to-emerald-600/10',
+    borderColor: 'border-green-500/30',
   },
 ]
 
 export default function SolutionsSection() {
   return (
     <section className="relative section-padding overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      {/* Premium Dark Background Decorations */}
+      {/* Background Decorations */}
       <div className="absolute inset-0">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-3xl" />
@@ -65,7 +79,7 @@ export default function SolutionsSection() {
       />
 
       <div className="container-custom relative z-10">
-        {/* Header - Kontras dengan CompanyInfo */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,7 +87,6 @@ export default function SolutionsSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          {/* Badge dengan gaya berbeda */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4">
             <HiSparkles className="text-accent text-xs" />
             <span className="text-white/80 text-sm font-medium tracking-wide">Industry Solutions</span>
@@ -87,46 +100,46 @@ export default function SolutionsSection() {
           </p>
         </motion.div>
 
-        {/* Grid Cards - Premium & Kontras */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Grid Cards - 6 kolom responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
           {solutions.map((sol, idx) => (
             <motion.div
               key={sol.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              transition={{ duration: 0.4, delay: idx * 0.05 }}
               viewport={{ once: true }}
             >
               <Link
                 href={`/solutions/${sol.slug}`}
-                className={`group block relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 transition-all duration-500 hover:-translate-y-2 border ${sol.borderColor} hover:shadow-2xl hover:shadow-primary/20 overflow-hidden`}
+                className={`group block relative bg-white/5 backdrop-blur-sm rounded-xl p-4 transition-all duration-300 hover:-translate-y-1 border ${sol.borderColor} hover:shadow-lg hover:shadow-primary/20 overflow-hidden`}
               >
                 {/* Hover Gradient Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${sol.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${sol.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                 
-                {/* Icon Container */}
-                <div className={`relative w-14 h-14 rounded-xl ${sol.iconBg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <sol.icon className="text-2xl text-white" />
+                {/* Icon Container - Lebih kecil */}
+                <div className={`relative w-10 h-10 rounded-lg ${sol.bgGradient.replace('/20', '/30')} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                  <sol.icon className="text-lg text-white" />
                 </div>
                 
-                {/* Title */}
-                <h3 className="relative text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors duration-300">
+                {/* Title - Lebih kecil */}
+                <h3 className="relative text-sm font-bold text-white mb-1 group-hover:text-accent transition-colors duration-300">
                   {sol.title}
                 </h3>
                 
-                {/* Description */}
-                <p className="relative text-white/60 text-sm mb-4">
+                {/* Description - Lebih ringkas */}
+                <p className="relative text-white/50 text-[10px] mb-3 leading-relaxed">
                   {sol.description}
                 </p>
                 
                 {/* CTA */}
-                <div className="relative flex items-center gap-1 text-accent text-sm font-medium group-hover:gap-2 transition-all duration-300">
+                <div className="relative flex items-center gap-1 text-accent text-[10px] font-medium group-hover:gap-1.5 transition-all duration-300">
                   <span>Pelajari</span>
-                  <HiArrowRight className="text-xs group-hover:translate-x-1 transition-transform" />
+                  <HiArrowRight className="text-[8px] group-hover:translate-x-0.5 transition-transform" />
                 </div>
 
                 {/* Decorative Line */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Link>
             </motion.div>
           ))}
@@ -138,11 +151,11 @@ export default function SolutionsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-10"
         >
           <Link 
             href="/solutions" 
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition hover:-translate-y-0.5 shadow-lg shadow-white/10 font-semibold"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition hover:-translate-y-0.5 shadow-lg shadow-white/10 font-semibold text-sm"
           >
             <span>Lihat Semua Solusi Industri</span>
             <HiArrowRight className="text-sm" />
