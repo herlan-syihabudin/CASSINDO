@@ -33,7 +33,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-5"
           >
             <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-            <span className="text-white/80 text-xs md:text-sm">Trusted Since 2014</span>
+            <span className="text-white/80 text-xs md:text-sm">Indonesia's Trusted Supply Partner</span>
           </motion.div>
 
           {/* Main Heading - SHARP & POWERFUL */}
@@ -54,7 +54,8 @@ export default function Hero() {
             transition={{ delay: 0.3 }}
             className="text-base sm:text-lg text-white/70 mb-8 leading-relaxed max-w-xl"
           >
-            Reliable supply chain solutions for industrial and commercial needs across Indonesia.
+            One partner for procurement, MRO products, facility support, 
+  and technical services across Indonesia.
           </motion.p>
 
           {/* CTA Buttons - CLEAN */}
@@ -90,11 +91,11 @@ export default function Hero() {
           >
             <div className="flex items-center gap-2">
               <span className="text-2xl font-bold text-white">500+</span>
-              <span className="text-white/50 text-sm">Projects</span>
+              <span className="text-white/50 text-sm">Products Categories</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-white">12+</span>
-              <span className="text-white/50 text-sm">Years</span>
+              <span className="text-2xl font-bold text-white">Nationwide</span>
+              <span className="text-white/50 text-sm">Coverage</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-2xl font-bold text-white">24/7</span>
