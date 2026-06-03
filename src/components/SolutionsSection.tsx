@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { HiArrowRight, HiSparkles } from 'react-icons/hi'
 import { 
-  FaIndustry, FaHardHat, FaOilCan, 
-  FaWarehouse, FaBuilding, FaHome 
+  FaIndustry, FaTools, FaOilCan, 
+  FaWarehouse, FaBuilding, FaGasPump 
 } from 'react-icons/fa'
 
 const solutions = [
@@ -14,17 +14,15 @@ const solutions = [
     title: 'Manufaktur',
     description: 'Sparepart mesin & material produksi',
     icon: FaIndustry,
-    iconColor: 'text-blue-400',
-    borderColor: 'border-blue-500/30',
+    borderColor: 'border-white/10', // Dibikin seragam soft white
     image: '/images/solutions/manufaktur.jpg'
   },
   {
     slug: 'konstruksi',
     title: 'Konstruksi',
     description: 'Material proyek & peralatan bangunan',
-    icon: FaHome,
-    iconColor: 'text-orange-400',
-    borderColor: 'border-orange-500/30',
+    icon: FaTools, // Diubah dari FaHome ke FaTools agar lebih industrial
+    borderColor: 'border-white/10',
     image: '/images/solutions/konstruksi.jpg'
   },
   {
@@ -32,17 +30,15 @@ const solutions = [
     title: 'Energy & Utility',
     description: 'Peralatan & komponen energi',
     icon: FaOilCan,
-    iconColor: 'text-cyan-400',
-    borderColor: 'border-cyan-500/30',
+    borderColor: 'border-white/10',
     image: '/images/solutions/energy.jpg'
   },
   {
     slug: 'oil-gas',
     title: 'Oil & Gas',
     description: 'Peralatan & safety migas',
-    icon: FaHardHat,
-    iconColor: 'text-red-400',
-    borderColor: 'border-red-500/30',
+    icon: FaGasPump, // Diubah agar tidak kembar dengan ikon konstruksi lama
+    borderColor: 'border-white/10',
     image: '/images/solutions/oil-gas.jpg'
   },
   {
@@ -50,8 +46,7 @@ const solutions = [
     title: 'Commercial Building',
     description: 'Perlengkapan gedung komersial',
     icon: FaBuilding,
-    iconColor: 'text-purple-400',
-    borderColor: 'border-purple-500/30',
+    borderColor: 'border-white/10',
     image: '/images/solutions/commercial.jpg'
   },
   {
@@ -59,8 +54,7 @@ const solutions = [
     title: 'Warehouse & Logistik',
     description: 'Peralatan gudang & distribusi',
     icon: FaWarehouse,
-    iconColor: 'text-green-400',
-    borderColor: 'border-green-500/30',
+    borderColor: 'border-white/10',
     image: '/images/solutions/warehouse.jpg'
   },
 ]
@@ -104,7 +98,7 @@ export default function SolutionsSection() {
           </p>
         </motion.div>
 
-        {/* Grid Cards - 6 kolom dengan icon premium */}
+        {/* Grid Cards - 6 kolom dengan icon premium putih */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
           {solutions.map((sol, idx) => (
             <motion.div
@@ -116,42 +110,42 @@ export default function SolutionsSection() {
             >
               <Link
                 href={`/solutions/${sol.slug}`}
-                className={`group block relative rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 border ${sol.borderColor} hover:border-accent/50`}
+                className={`group block relative rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 border ${sol.borderColor} hover:border-white/30`}
               >
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
                   style={{ backgroundImage: `url(${sol.image})` }}
                 />
-                {/* Dark Overlay - Lebih gelap biar icon keliatan */}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/60" />
+                {/* Dark Overlay - Konsisten & solid */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/85 to-gray-900/40 transition-colors duration-300 group-hover:from-gray-950 group-hover:via-gray-950/90" />
                 
                 {/* Content - Posisi di tengah */}
-                <div className="relative flex flex-col items-center text-center p-5 min-h-[200px] justify-center">
-                  {/* Icon Premium - Lebih besar, tanpa border */}
-                  <div className="mb-3 group-hover:scale-110 transition-transform duration-300">
-                    <sol.icon className={`text-3xl ${sol.iconColor} drop-shadow-lg`} />
+                <div className="relative flex flex-col items-center text-center p-5 min-h-[210px] justify-center z-10">
+                  {/* Icon Premium Putih dengan efek Hover Glare */}
+                  <div className="mb-4 p-2.5 rounded-lg bg-white/5 border border-white/10 group-hover:bg-white group-hover:border-white transition-all duration-300 shadow-inner">
+                    <sol.icon className="text-2xl text-white/80 group-hover:text-gray-900 transition-colors duration-300 filter drop-shadow-sm" />
                   </div>
                   
                   {/* Title */}
-                  <h3 className="text-sm font-bold text-white mb-1 group-hover:text-accent transition-colors duration-300">
+                  <h3 className="text-sm font-bold text-white mb-1.5 tracking-wide transition-colors duration-300">
                     {sol.title}
                   </h3>
                   
                   {/* Description */}
-                  <p className="text-white/50 text-[10px] leading-relaxed">
+                  <p className="text-white/40 text-[10px] leading-relaxed px-1 transition-colors duration-300 group-hover:text-white/60">
                     {sol.description}
                   </p>
                   
                   {/* CTA - muncul saat hover */}
-                  <div className="mt-3 flex items-center gap-1 text-accent text-[10px] font-medium opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <div className="mt-3 flex items-center gap-1 text-white text-[10px] font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
                     <span>Pelajari</span>
                     <HiArrowRight className="text-[8px]" />
                   </div>
                 </div>
 
-                {/* Decorative Line */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                {/* Decorative Bottom Line (White/Accent Glare) */}
+                <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-white/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
               </Link>
             </motion.div>
           ))}
@@ -167,7 +161,7 @@ export default function SolutionsSection() {
         >
           <Link 
             href="/solutions" 
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition hover:-translate-y-0.5 shadow-lg shadow-white/10 font-semibold text-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition hover:-translate-y-0.5 shadow-lg shadow-white/5 font-semibold text-sm"
           >
             <span>Lihat Semua Solusi Industri</span>
             <HiArrowRight className="text-sm" />
