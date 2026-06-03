@@ -4,7 +4,7 @@ import { HiArrowLeft, HiPhone, HiMail, HiCheckCircle, HiArrowRight } from 'react
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
-// Data produk LENGKAP untuk semua produk
+// Data produk
 const productsData: Record<string, {
   name: string
   description: string
@@ -14,7 +14,6 @@ const productsData: Record<string, {
   benefits?: string[]
   image: string
 }> = {
-  // Industrial Supply
   'raw-material': {
     name: 'Raw Material',
     description: 'Besi, baja, alumunium, tembaga untuk keperluan fabrikasi industri',
@@ -42,8 +41,6 @@ const productsData: Record<string, {
     benefits: ['Kualitas terjamin', 'Diskon volume', 'Lengkap berbagai ukuran', 'Pengiriman cepat'],
     image: '/images/products/fastener-tools.jpg'
   },
-  
-  // Electrical Equipment
   'kabel-listrik': {
     name: 'Kabel Listrik',
     description: 'Kabel NYY, NYM, NYAF untuk instalasi rumah dan industri',
@@ -71,8 +68,6 @@ const productsData: Record<string, {
     benefits: ['Original product', 'Garansi resmi', 'Harga kompetitif', 'Pengiriman cepat'],
     image: '/images/products/komponen-elektrikal.jpg'
   },
-  
-  // Mechanical Parts
   'industrial-pump': {
     name: 'Industrial Pump',
     description: 'Pompa sentrifugal, pompa diaphragm, pompa submersible',
@@ -100,8 +95,6 @@ const productsData: Record<string, {
     benefits: ['Tahan tekanan tinggi', 'Anti bocor', 'Daya tahan ekstra', 'Garansi'],
     image: '/images/products/hydraulic.jpg'
   },
-  
-  // Safety Equipment
   'apd': {
     name: 'APD (Alat Pelindung Diri)',
     description: 'Helm safety, sepatu safety, rompi, sarung tangan',
@@ -129,8 +122,6 @@ const productsData: Record<string, {
     benefits: ['Reflektor', 'Tahan cuaca', 'Custom design', 'Pengiriman cepat'],
     image: '/images/products/safety-signage.jpg'
   },
-  
-  // Building Material
   'semen-mortar': {
     name: 'Semen & Mortar',
     description: 'Semen berkualitas untuk konstruksi bangunan',
@@ -158,8 +149,6 @@ const productsData: Record<string, {
     benefits: ['Ramah lingkungan', 'Warna lengkap', 'Awet', 'Mudah diaplikasikan'],
     image: '/images/products/cat.jpg'
   },
-  
-  // Office Supply
   'alat-tulis-kantor': {
     name: 'Alat Tulis Kantor',
     description: 'ATK lengkap untuk kebutuhan operasional kantor',
@@ -187,8 +176,6 @@ const productsData: Record<string, {
     benefits: ['Produk original', 'Garansi resmi', 'Installation service', 'After sales support'],
     image: '/images/products/it-equipment.jpg'
   },
-  
-  // Custom Procurement
   'sourcing-khusus': {
     name: 'Sourcing Khusus',
     description: 'Pengadaan barang spesifik sesuai kebutuhan',
@@ -250,13 +237,11 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
               <div className="rounded-2xl overflow-hidden bg-gray-100">
+                {/* HAPUS onError - ini yang bikin error */}
                 <img 
                   src={product.image} 
                   alt={product.name} 
                   className="w-full h-auto object-cover"
-                  onError={(e) => {
-                    e.currentTarget.src = 'https://placehold.co/600x400?text=' + encodeURIComponent(product.name)
-                  }}
                 />
               </div>
             </div>
