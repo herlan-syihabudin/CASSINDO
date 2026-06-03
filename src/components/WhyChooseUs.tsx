@@ -5,14 +5,14 @@ import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { 
-  FiLightning, FiActivity, FiShield, 
+  FiZap, FiActivity, FiShield, 
   FiTruck, FiCheckSquare, FiArrowRight 
 } from 'react-icons/fi'
 import { HiCheckCircle } from 'react-icons/hi'
 
 const features = [
   { 
-    icon: FiLightning, 
+    icon: FiZap,  // ← GANTI: FiLightning → FiZap
     title: 'Fast Response', 
     desc: 'Quotation & follow up dalam waktu kurang dari 24 jam.',
     stat: '< 24 Jam',
