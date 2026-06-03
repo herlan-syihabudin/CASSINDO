@@ -134,7 +134,6 @@ const servicesData: Record<string, {
       'Tim teknis siap membantu'
     ]
   },
-  // ... tambahkan untuk service lainnya
   'safety-equipment': {
     title: 'Safety Equipment',
     description: 'APD, fire extinguisher, rambu-rambu',
@@ -171,6 +170,114 @@ const servicesData: Record<string, {
       'Pengiriman cepat'
     ]
   },
+  'building-material': {
+    title: 'Building Material',
+    description: 'Semen, baja ringan, cat, scaffolding',
+    fullDescription: 'Material konstruksi untuk proyek gedung, perumahan, dan infrastruktur. Termasuk semen, besi beton, baja ringan, cat tembok, dan perancah.',
+    tags: ['Project Grade', 'Factory Price', 'Free Delivery', 'SNI Certified'],
+    products: [
+      {
+        name: 'Semen & Mortar',
+        description: 'Semen berkualitas untuk konstruksi bangunan',
+        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
+        specs: ['SNI Certified', 'Bulk Order', 'Factory Price']
+      },
+      {
+        name: 'Besi Beton & Baja Ringan',
+        description: 'Material struktur untuk proyek gedung dan rumah',
+        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
+        specs: ['SNI Certified', 'Various Sizes', 'Cut to Size']
+      },
+      {
+        name: 'Cat & Finishing',
+        description: 'Cat tembok, cat kayu, dan material finishing',
+        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
+        specs: ['Eco Friendly', 'Various Colors', 'Durable']
+      }
+    ],
+    gallery: [
+      { title: 'Material Stock', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
+      { title: 'Construction Site', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
+    ],
+    benefits: [
+      'Material SNI certified',
+      'Harga pabrik langsung',
+      'Pengiriman ke lokasi proyek',
+      'Free konsultasi material'
+    ]
+  },
+  'office-supply': {
+    title: 'Office Supply',
+    description: 'ATK, furniture, perangkat IT',
+    fullDescription: 'Perlengkapan kantor lengkap mulai dari alat tulis, meja kursi, printer, hingga perangkat IT untuk kebutuhan operasional perusahaan.',
+    tags: ['Same Day', 'Subscription', 'After Sales', 'Ready Stock'],
+    products: [
+      {
+        name: 'Alat Tulis Kantor',
+        description: 'ATK lengkap untuk kebutuhan operasional kantor',
+        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
+        specs: ['Complete Set', 'Bulk Order', 'Same Day Delivery']
+      },
+      {
+        name: 'Furniture Kantor',
+        description: 'Meja, kursi, lemari untuk kenyamanan kerja',
+        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
+        specs: ['Ergonomic', 'Modern Design', 'Assembly Service']
+      },
+      {
+        name: 'Perangkat IT',
+        description: 'Printer, komputer, dan aksesoris IT',
+        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
+        specs: ['Branded', 'Warranty', 'Installation']
+      }
+    ],
+    gallery: [
+      { title: 'Office Supply Stock', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
+      { title: 'Furniture Display', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
+    ],
+    benefits: [
+      'Pengiriman same day untuk area Jabodetabek',
+      'Layanan subscription berkala',
+      'After sales service',
+      'Harga kompetitif'
+    ]
+  },
+  'custom-procurement': {
+    title: 'Custom Procurement',
+    description: 'Sourcing spesifik sesuai kebutuhan proyek',
+    fullDescription: 'Layanan sourcing untuk barang khusus yang tidak tersedia di pasaran umum. Tim procurement kami akan mencari supplier terbaik untuk Anda.',
+    tags: ['Tailor Made', 'Global Sourcing', 'Fast Response', 'End to End'],
+    products: [
+      {
+        name: 'Sourcing Khusus',
+        description: 'Pengadaan barang spesifik sesuai kebutuhan',
+        image: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600',
+        specs: ['Tailor Made', 'Global Network', 'Fast Delivery']
+      },
+      {
+        name: 'Import Services',
+        description: 'Layanan impor barang dari luar negeri',
+        image: 'https://images.unsplash.com/photo-1581092335871-5c6da6bd8ad8?w=600',
+        specs: ['Custom Clearance', 'Door to Door', 'Document Complete']
+      },
+      {
+        name: 'Tender Support',
+        description: 'Pendukung pengadaan untuk proyek tender',
+        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600',
+        specs: ['Legalitas Lengkap', 'Pengalaman Tender', 'Dokumen Rapi']
+      }
+    ],
+    gallery: [
+      { title: 'Global Sourcing', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
+      { title: 'Procurement Team', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
+    ],
+    benefits: [
+      'Sourcing dari supplier global',
+      'Proses transparan',
+      'Fast response & follow up',
+      'Dokumen lengkap'
+    ]
+  }
 }
 
 // Generate static params untuk build time
