@@ -10,54 +10,54 @@ const solutions = [
     title: 'Manufaktur',
     description: 'Sparepart mesin & material produksi',
     icon: HiOfficeBuilding,
-    color: 'from-blue-600 to-blue-400',
     bgGradient: 'from-blue-500/20 to-blue-600/10',
     borderColor: 'border-blue-500/30',
+    image: '/images/solutions/manufaktur.jpg'
   },
   {
     slug: 'konstruksi',
     title: 'Konstruksi',
     description: 'Material proyek & peralatan bangunan',
     icon: HiHome,
-    color: 'from-orange-500 to-orange-400',
     bgGradient: 'from-orange-500/20 to-orange-600/10',
     borderColor: 'border-orange-500/30',
+    image: '/images/solutions/konstruksi.jpg'
   },
   {
     slug: 'energy-utility',
     title: 'Energy & Utility',
     description: 'Peralatan & komponen energi',
     icon: HiCog,
-    color: 'from-cyan-500 to-blue-500',
     bgGradient: 'from-cyan-500/20 to-blue-500/10',
     borderColor: 'border-cyan-500/30',
+    image: '/images/solutions/energy.jpg'
   },
   {
     slug: 'oil-gas',
     title: 'Oil & Gas',
     description: 'Peralatan & safety migas',
     icon: HiBeaker,
-    color: 'from-red-500 to-red-400',
     bgGradient: 'from-red-500/20 to-red-600/10',
     borderColor: 'border-red-500/30',
+    image: '/images/solutions/oil-gas.jpg'
   },
   {
     slug: 'commercial-building',
     title: 'Commercial Building',
     description: 'Perlengkapan gedung komersial',
     icon: HiBuildingOffice,
-    color: 'from-purple-500 to-purple-400',
     bgGradient: 'from-purple-500/20 to-purple-600/10',
     borderColor: 'border-purple-500/30',
+    image: '/images/solutions/commercial.jpg'
   },
   {
     slug: 'warehouse-logistik',
     title: 'Warehouse & Logistik',
     description: 'Peralatan gudang & distribusi',
     icon: HiTruck,
-    color: 'from-green-500 to-emerald-500',
     bgGradient: 'from-green-500/20 to-emerald-600/10',
     borderColor: 'border-green-500/30',
+    image: '/images/solutions/warehouse.jpg'
   },
 ]
 
@@ -85,7 +85,7 @@ export default function SolutionsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4">
             <HiSparkles className="text-accent text-xs" />
@@ -100,7 +100,7 @@ export default function SolutionsSection() {
           </p>
         </motion.div>
 
-        {/* Grid Cards - 6 kolom responsive */}
+        {/* Grid Cards - 6 kolom dengan foto background */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
           {solutions.map((sol, idx) => (
             <motion.div
@@ -112,30 +112,38 @@ export default function SolutionsSection() {
             >
               <Link
                 href={`/solutions/${sol.slug}`}
-                className={`group block relative bg-white/5 backdrop-blur-sm rounded-xl p-4 transition-all duration-300 hover:-translate-y-1 border ${sol.borderColor} hover:shadow-lg hover:shadow-primary/20 overflow-hidden`}
+                className="group block relative rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 border border-white/10"
               >
-                {/* Hover Gradient Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${sol.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                {/* Background Image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                  style={{ backgroundImage: `url(${sol.image})` }}
+                />
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-gray-900/50" />
                 
-                {/* Icon Container - Lebih kecil */}
-                <div className={`relative w-10 h-10 rounded-lg ${sol.bgGradient.replace('/20', '/30')} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
-                  <sol.icon className="text-lg text-white" />
-                </div>
-                
-                {/* Title - Lebih kecil */}
-                <h3 className="relative text-sm font-bold text-white mb-1 group-hover:text-accent transition-colors duration-300">
-                  {sol.title}
-                </h3>
-                
-                {/* Description - Lebih ringkas */}
-                <p className="relative text-white/50 text-[10px] mb-3 leading-relaxed">
-                  {sol.description}
-                </p>
-                
-                {/* CTA */}
-                <div className="relative flex items-center gap-1 text-accent text-[10px] font-medium group-hover:gap-1.5 transition-all duration-300">
-                  <span>Pelajari</span>
-                  <HiArrowRight className="text-[8px] group-hover:translate-x-0.5 transition-transform" />
+                {/* Content - Posisi di tengah */}
+                <div className="relative flex flex-col items-center text-center p-5 min-h-[200px] justify-center">
+                  {/* Icon di tengah */}
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${sol.bgGradient} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                    <sol.icon className="text-xl text-white" />
+                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="text-sm font-bold text-white mb-1 group-hover:text-accent transition-colors duration-300">
+                    {sol.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-white/50 text-[10px] leading-relaxed">
+                    {sol.description}
+                  </p>
+                  
+                  {/* CTA */}
+                  <div className="mt-3 flex items-center gap-1 text-accent text-[10px] font-medium opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <span>Pelajari</span>
+                    <HiArrowRight className="text-[8px]" />
+                  </div>
                 </div>
 
                 {/* Decorative Line */}
