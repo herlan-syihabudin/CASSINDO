@@ -59,7 +59,7 @@ export default function ContactPage() {
 
   const contactInfo = [
     { icon: HiLocationMarker, title: 'Alamat', content: 'Gedung Jaya Lantai 9 Blok A02, JL. M.H Thamrin No. 12, Kebon Sirih, Menteng, Jakarta Pusat' },
-    { icon: HiPhone, title: 'Telepon', content: '+62 21 1234 5678', link: 'tel:+622112345678' },
+    { icon: HiPhone, title: 'Telepon', content: '+62 817 7684 8333', link: 'tel:+6281776848333' },
     { icon: HiDeviceMobile, title: 'WhatsApp', content: '+62 817 7684 8333', link: 'https://wa.me/6281776848333' },
     { icon: HiMail, title: 'Email', content: 'sales@cassindo.com', link: 'mailto:sales@cassindo.com' },
     { icon: HiClock, title: 'Jam Operasional', content: 'Senin-Jumat: 08.00-17.00 WIB' },
@@ -171,7 +171,7 @@ export default function ContactPage() {
                       className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
                         errors.phone ? 'border-red-500' : 'border-gray-200'
                       } focus:border-primary focus:outline-none transition`}
-                      placeholder="+62 812 3456 7890"
+                      placeholder="+62 817 7684 8333"
                     />
                   </div>
                   {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
@@ -246,11 +246,11 @@ export default function ContactPage() {
                       <div>
                         <h3 className="font-semibold text-dark">{info.title}</h3>
                         {info.link ? (
-                          <a href={info.link} className="text-gray-600 hover:text-primary transition">
+                          <a href={info.link} className="text-gray-600 hover:text-primary transition text-sm">
                             {info.content}
                           </a>
                         ) : (
-                          <p className="text-gray-600">{info.content}</p>
+                          <p className="text-gray-600 text-sm">{info.content}</p>
                         )}
                       </div>
                     </div>
@@ -267,9 +267,9 @@ export default function ContactPage() {
                 <div className="space-y-3">
                   {officeHours.map((item, idx) => (
                     <div key={idx} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
-                      <span className="text-gray-600">{item.day}</span>
+                      <span className="text-gray-600 text-sm">{item.day}</span>
                       <div className="flex items-center gap-3">
-                        <span className="text-dark font-medium">{item.hours}</span>
+                        <span className="text-dark font-medium text-sm">{item.hours}</span>
                         <span className={`text-xs px-2 py-1 rounded-full ${
                           item.status === 'Buka' 
                             ? 'bg-green-100 text-green-700' 
@@ -294,7 +294,7 @@ export default function ContactPage() {
             </motion.div>
           </div>
 
-          {/* Google Maps */}
+          {/* Google Maps - Updated dengan alamat Gedung Jaya */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -303,13 +303,13 @@ export default function ContactPage() {
           >
             <div className="bg-gray-200 rounded-3xl overflow-hidden shadow-lg h-80 relative">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.5710423003196!2d106.822489!3d-6.208759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f39c7c1a7a2b%3A0x4e8c3f5e6d8f9a2c!2sJakarta!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.579496287718!2d106.820215!3d-6.187246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2e764b12d%3A0x3d2ad6e1e0e2b8f!2sGedung%20Jaya!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                title="Office Location"
+                title="Office Location - Gedung Jaya, Jakarta Pusat"
               />
             </div>
           </motion.div>
