@@ -11,10 +11,8 @@ const services = [
     shortDesc: 'Material fabrikasi & sparepart industri',
     description: 'Raw material, komponen mesin, fastener, tools, dan perlengkapan pabrik.',
     tags: ['Fast Moving', 'Genuine Parts', 'Bulk Order'],
-    price: 'IDR 500K+',
     slug: 'industrial-supply',
     image: '/images/products/industrial-supply.jpg',
-    bgColor: 'from-blue-500/10 to-blue-500/5'
   },
   { 
     id: 2,
@@ -22,10 +20,8 @@ const services = [
     shortDesc: 'Panel, kabel, trafo & komponen listrik',
     description: 'Kabel, panel listrik, trafo, MCB, dan kebutuhan kelistrikan industri.',
     tags: ['SNI Certified', 'Warranty', 'Installation Ready'],
-    price: 'IDR 250K+',
     slug: 'electrical-equipment',
     image: '/images/products/electrical.jpg',
-    bgColor: 'from-yellow-500/10 to-yellow-500/5'
   },
   { 
     id: 3,
@@ -33,10 +29,8 @@ const services = [
     shortDesc: 'Pompa, gearbox, valve & alat berat',
     description: 'Sparepart mekanikal untuk mesin produksi, pompa industri, gearbox, valve.',
     tags: ['Original', 'Heavy Duty', 'Quick Ship'],
-    price: 'Custom Quote',
     slug: 'mechanical-parts',
     image: '/images/products/mechanical.jpg',
-    bgColor: 'from-gray-500/10 to-gray-500/5'
   },
   { 
     id: 4,
@@ -44,10 +38,8 @@ const services = [
     shortDesc: 'APD, fire extinguisher, rambu-rambu',
     description: 'Helm safety, rompi, sepatu safety, APAR, dan rambu-rambu proyek.',
     tags: ['K3 Certified', 'Complete Set', 'Bulk Price'],
-    price: 'IDR 150K+',
     slug: 'safety-equipment',
     image: '/images/products/safety.jpg',
-    bgColor: 'from-red-500/10 to-red-500/5'
   },
   { 
     id: 5,
@@ -55,10 +47,8 @@ const services = [
     shortDesc: 'Semen, baja ringan, cat, scaffolding',
     description: 'Material konstruksi untuk proyek gedung, perumahan, dan infrastruktur.',
     tags: ['Project Grade', 'Factory Price', 'Free Delivery'],
-    price: 'IDR 1M+',
     slug: 'building-material',
     image: '/images/products/building.jpg',
-    bgColor: 'from-orange-500/10 to-orange-500/5'
   },
   { 
     id: 6,
@@ -66,10 +56,8 @@ const services = [
     shortDesc: 'ATK, furniture, perangkat IT',
     description: 'Alat tulis, meja kursi, printer, dan perangkat IT untuk kantor.',
     tags: ['Same Day', 'Subscription', 'After Sales'],
-    price: 'IDR 50K+',
     slug: 'office-supply',
     image: '/images/products/office.jpg',
-    bgColor: 'from-teal-500/10 to-teal-500/5'
   },
   { 
     id: 7,
@@ -77,10 +65,8 @@ const services = [
     shortDesc: 'Sourcing spesifik sesuai kebutuhan',
     description: 'Layanan sourcing untuk barang khusus yang tidak tersedia di pasaran umum.',
     tags: ['Tailor Made', 'Global Sourcing', 'Fast Response'],
-    price: 'Contact Us',
     slug: 'custom-procurement',
     image: '/images/products/custom.jpg',
-    bgColor: 'from-purple-500/10 to-purple-500/5',
     isHighlight: true
   },
 ]
@@ -128,7 +114,7 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-        {/* Product Grid - Card dengan Foto */}
+        {/* Product Grid */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -145,37 +131,31 @@ export default function ServicesSection() {
                 href={`/services/${service.slug}`}
                 className="group block bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
-                {/* Image Section - Pake Foto Asli */}
-<div className="relative h-48 overflow-hidden bg-gray-100">
-  <img 
-    src={service.image}
-    alt={service.title}
-    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-  />
-  {/* Overlay gradient biar teks keliatan */}
-  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-  
-  {/* Highlight Badge */}
-  {service.isHighlight && (
-    <div className="absolute top-3 left-3 z-20">
-      <span className="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md">
-        ★ POPULER
-      </span>
-    </div>
-  )}
-</div>
+                {/* Image Section */}
+                <div className="relative h-48 overflow-hidden bg-gray-100">
+                  <img 
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  
+                  {/* Highlight Badge */}
+                  {service.isHighlight && (
+                    <div className="absolute top-3 left-3 z-20">
+                      <span className="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md">
+                        ★ POPULER
+                      </span>
+                    </div>
+                  )}
+                </div>
 
-                {/* Content Section */}
+                {/* Content Section - Tanpa Harga */}
                 <div className="p-5">
-                  {/* Title & Price */}
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <h3 className="text-lg font-bold text-dark group-hover:text-primary transition-colors">
-                      {service.title}
-                    </h3>
-                    <span className="text-sm font-bold text-primary whitespace-nowrap">
-                      {service.price}
-                    </span>
-                  </div>
+                  {/* Title */}
+                  <h3 className="text-lg font-bold text-dark mb-2 group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
                   
                   {/* Description */}
                   <p className="text-gray-500 text-sm mb-3 line-clamp-2">
