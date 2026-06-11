@@ -2,11 +2,11 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { HiMenu, HiX, HiPhone, HiArrowRight, HiCheckCircle, HiClock } from 'react-icons/hi'
 import { motion, AnimatePresence } from 'framer-motion'
 
-// Tambah menu "Solusi" setelah Beranda
 const NAV_ITEMS = [
   { href: '/', label: 'Home' },
   { href: '/solutions', label: 'Solutions' },    
@@ -63,20 +63,27 @@ export default function Navbar() {
   const closeMenu = useCallback(() => setIsMobileMenuOpen(false), [])
 
   if (!mounted) {
-  return (
-    <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-3">
-      <div className="container-custom flex justify-between items-center">
-        <div>
-          {/* Hapus conditional styling, pake warna default */}
-          <span className="font-poppins font-bold text-2xl sm:text-3xl text-primary">
-            Cassindo
-          </span>
-          <p className="text-[9px] text-primary/50 -mt-0.5">Core Advanced Supply Solution</p>
+    return (
+      <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-3">
+        <div className="container-custom flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 relative">
+              {/* Placeholder sementara */}
+              <div className="w-full h-full bg-primary/10 rounded-lg flex items-center justify-center">
+                <span className="text-primary text-xs">C</span>
+              </div>
+            </div>
+            <div>
+              <span className="font-poppins font-bold text-lg sm:text-xl text-primary">
+                Cassindo
+              </span>
+              <p className="text-[8px] text-primary/40 -mt-0.5 hidden sm:block">Core Advanced Supply Solution</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </nav>
-  )
-}
+      </nav>
+    )
+  }
 
   const isHomePage = pathname === '/'
   const isTransparent = isHomePage && !isScrolled && !isMobileMenuOpen
@@ -96,18 +103,28 @@ export default function Navbar() {
         }}
       >
         <div className="container-custom flex justify-between items-center">
-          {/* LOGO - Cassindo di atas, tagline di bawah */}
+          {/* LOGO - Dengan Logo PNG */}
           <Link href="/" className="group shrink-0">
-            <div>
-              <span className={`font-poppins font-bold text-lg sm:text-xl transition-colors duration-300 ${isWhite ? 'text-primary' : 'text-white'}`}>
-                Cassindo
-              </span>
-              <p className={`text-[8px] sm:text-[9px] transition-colors duration-300 leading-tight ${isWhite ? 'text-primary/40' : 'text-white/40'}`}>
-                Core Advanced Supply Solution
-              </p>
+            <div className="flex items-center gap-2 sm:gap-3">
+              {/* Logo Image */}
+              <div className="relative w-8 h-8 sm:w-10 sm:h-10">
+                <img 
+                  src="/images/logo/cassindo-logo.png"
+                  alt="Cassindo Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className={`font-poppins font-bold text-base sm:text-lg md:text-xl transition-colors duration-300 ${isWhite ? 'text-primary' : 'text-white'}`}>
+                  Cassindo
+                </span>
+                <p className={`text-[7px] sm:text-[8px] transition-colors duration-300 leading-tight hidden sm:block ${isWhite ? 'text-primary/40' : 'text-white/40'}`}>
+                  Core Advanced Supply Solution
+                </p>
+              </div>
             </div>
-            {/* Underline animation on hover */}
-            <span className={`block h-0.5 transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left ${isWhite ? 'bg-primary' : 'bg-white'}`} style={{ width: '100%' }} />
+            {/* Underline animation */}
+            <span className={`block h-0.5 transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left mt-0.5 ${isWhite ? 'bg-primary' : 'bg-white'}`} style={{ width: '100%' }} />
           </Link>
 
           {/* Desktop Menu */}
@@ -157,7 +174,6 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -167,7 +183,6 @@ export default function Navbar() {
               onClick={closeMenu}
             />
             
-            {/* Menu Panel - Bottom Sheet Style */}
             <motion.div
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
@@ -175,17 +190,24 @@ export default function Navbar() {
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
               className="fixed bottom-0 left-0 right-0 z-[999] bg-white rounded-t-3xl shadow-2xl overflow-hidden"
             >
-              {/* Handle Bar */}
               <div className="flex justify-center pt-3 pb-1">
                 <div className="w-12 h-1 bg-gray-300 rounded-full" />
               </div>
 
-              {/* Header */}
               <div className="px-5 pt-2 pb-4 border-b border-gray-100">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <span className="font-poppins font-bold text-xl text-primary">Cassindo</span>
-                    <p className="text-[9px] text-gray-400 -mt-0.5">Core Advanced Supply Solution</p>
+                  <div className="flex items-center gap-2">
+                    <div className="relative w-8 h-8">
+                      <img 
+                        src="/images/logo/cassindo-logo.png"
+                        alt="Cassindo Logo"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div>
+                      <span className="font-poppins font-bold text-base text-primary">Cassindo</span>
+                      <p className="text-[8px] text-gray-400 -mt-0.5">Core Advanced Supply Solution</p>
+                    </div>
                   </div>
                   <button
                     onClick={closeMenu}
@@ -196,7 +218,6 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* Contact Card */}
               <div className="px-5 py-4 border-b border-gray-50">
                 <a 
                   href="tel:+6281776848333"
@@ -215,9 +236,8 @@ export default function Navbar() {
                 </a>
               </div>
 
-              {/* Navigation Menu */}
               <div className="px-5 py-2">
-                {NAV_ITEMS.map((item, idx) => {
+                {NAV_ITEMS.map((item) => {
                   const isActive = pathname === item.href
                   return (
                     <Link
@@ -233,15 +253,12 @@ export default function Navbar() {
                       `}
                     >
                       <span>{item.label}</span>
-                      {isActive && (
-                        <span className="w-1.5 h-1.5 bg-white rounded-full" />
-                      )}
+                      {isActive && <span className="w-1.5 h-1.5 bg-white rounded-full" />}
                     </Link>
                   )
                 })}
               </div>
 
-              {/* CTA Section */}
               <div className="px-5 pt-2 pb-6">
                 <Link
                   href="/contact"
@@ -253,21 +270,14 @@ export default function Navbar() {
                     <HiArrowRight className="text-white" />
                   </div>
                   <div className="flex items-center gap-3 text-xs text-white/80">
-                    <span className="flex items-center gap-1">
-                      <HiClock className="text-xs" /> Response &lt; 24h
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <HiCheckCircle className="text-xs" /> Free Consultation
-                    </span>
+                    <span className="flex items-center gap-1"><HiClock className="text-xs" /> Response &lt; 24h</span>
+                    <span className="flex items-center gap-1"><HiCheckCircle className="text-xs" /> Free Consultation</span>
                   </div>
                 </Link>
               </div>
 
-              {/* Footer */}
               <div className="px-5 pb-6 pt-2 text-center border-t border-gray-50">
-                <p className="text-[9px] text-gray-400">
-                  © 2026 Cassindo Core Advanced Supply Solution
-                </p>
+                <p className="text-[9px] text-gray-400">© 2026 Cassindo Core Advanced Supply Solution</p>
               </div>
             </motion.div>
           </>
