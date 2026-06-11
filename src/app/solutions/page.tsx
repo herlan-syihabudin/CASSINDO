@@ -59,6 +59,16 @@ const solutions = [
     stats: 'Garansi produk'
   },
   {
+    slug: 'telecommunication',
+    title: 'Telecommunication',
+    description: 'Peralatan & infrastruktur telekomunikasi',
+    fullDesc: 'Peralatan dan komponen untuk infrastruktur telekomunikasi, tower, dan jaringan. Termasuk kabel fiber, antena, dan perangkat jaringan.',
+    icon: FaWarehouse,
+    benefits: ['Produk berkualitas', 'Pengiriman tepat waktu', 'Technical support', 'Garansi resmi'],
+    image: '/images/solutions/telecom.jpg',
+    stats: 'Ready stock'
+  },
+  {
     slug: 'warehouse-logistik',
     title: 'Warehouse & Logistik',
     description: 'Peralatan gudang & distribusi',
@@ -72,7 +82,7 @@ const solutions = [
 
 export const metadata = {
   title: 'Solusi Berdasarkan Industri | Cassindo',
-  description: 'Cassindo menyediakan solusi pengadaan untuk industri manufaktur, konstruksi, energi, oil & gas, commercial building, warehouse & logistik.',
+  description: 'Cassindo menyediakan solusi pengadaan untuk industri manufaktur, konstruksi, energi, oil & gas, commercial building, telecommunication, warehouse & logistik.',
 }
 
 export default function SolutionsPage() {
@@ -95,7 +105,7 @@ export default function SolutionsPage() {
             </p>
           </div>
 
-          {/* Solutions Grid - Sama kaya homepage */}
+          {/* Solutions Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {solutions.map((sol) => (
               <Link 
