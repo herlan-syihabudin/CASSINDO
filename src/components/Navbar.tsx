@@ -66,7 +66,7 @@ export default function Navbar() {
     return (
       <nav className="fixed top-0 w-full z-50 bg-white shadow-md">
         <div className="container-custom flex justify-between items-center py-2">
-          <div className="relative w-12 h-12">
+          <div className="relative w-14 h-14">
             <Image 
               src="/images/logo/cassindo-logo.png"
               alt="Cassindo Logo"
@@ -98,19 +98,14 @@ export default function Navbar() {
       >
         <div className="container-custom flex justify-between items-center py-2 md:py-1.5 transition-all duration-300">
           
-          {/* LOGO AREA - Dengan Negative Margin biar gede tapi gak nambah tinggi navbar */}
+          {/* LOGO AREA - SUPER GEDE dengan negative margin */}
           <Link href="/" className="shrink-0 relative z-10">
-            {/* 
-              Trik: kasih minus margin vertical (-my-3 / md:-my-4) supaya 
-              kontainer logo ini 'keluar' dari batasan padding navbar 
-              tanpa ngerusak tinggi navbar-nya.
-            */}
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 -my-3 sm:-my-4 md:-my-5 transition-transform duration-300 hover:scale-105">
+            <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 -my-5 sm:-my-6 md:-my-7 transition-transform duration-300 hover:scale-105">
               <Image 
                 src="/images/logo/cassindo-logo.png"
                 alt="Cassindo Logo"
                 fill
-                sizes="(max-width: 768px) 80px, 112px"
+                sizes="(max-width: 768px) 112px, 144px"
                 className="object-contain"
                 priority
               />
