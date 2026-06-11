@@ -66,20 +66,15 @@ export default function Navbar() {
     return (
       <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-3">
         <div className="container-custom flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 relative">
-              {/* Placeholder sementara */}
-              <div className="w-full h-full bg-primary/10 rounded-lg flex items-center justify-center">
-                <span className="text-primary text-xs">C</span>
-              </div>
+          <Link href="/" className="flex items-center">
+            <div className="relative w-10 h-10">
+              <img 
+                src="/images/logo/cassindo-logo.png"
+                alt="Cassindo Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
-            <div>
-              <span className="font-poppins font-bold text-lg sm:text-xl text-primary">
-                Cassindo
-              </span>
-              <p className="text-[8px] text-primary/40 -mt-0.5 hidden sm:block">Core Advanced Supply Solution</p>
-            </div>
-          </div>
+          </Link>
         </div>
       </nav>
     )
@@ -103,28 +98,15 @@ export default function Navbar() {
         }}
       >
         <div className="container-custom flex justify-between items-center">
-          {/* LOGO - Dengan Logo PNG */}
-          <Link href="/" className="group shrink-0">
-            <div className="flex items-center gap-2 sm:gap-3">
-              {/* Logo Image */}
-              <div className="relative w-8 h-8 sm:w-10 sm:h-10">
-                <img 
-                  src="/images/logo/cassindo-logo.png"
-                  alt="Cassindo Logo"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div>
-                <span className={`font-poppins font-bold text-base sm:text-lg md:text-xl transition-colors duration-300 ${isWhite ? 'text-primary' : 'text-white'}`}>
-                  Cassindo
-                </span>
-                <p className={`text-[7px] sm:text-[8px] transition-colors duration-300 leading-tight hidden sm:block ${isWhite ? 'text-primary/40' : 'text-white/40'}`}>
-                  Core Advanced Supply Solution
-                </p>
-              </div>
+          {/* LOGO - Hanya PNG, tanpa teks */}
+          <Link href="/" className="shrink-0">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 transition-transform duration-300 hover:scale-105">
+              <img 
+                src="/images/logo/cassindo-logo.png"
+                alt="Cassindo Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
-            {/* Underline animation */}
-            <span className={`block h-0.5 transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left mt-0.5 ${isWhite ? 'bg-primary' : 'bg-white'}`} style={{ width: '100%' }} />
           </Link>
 
           {/* Desktop Menu */}
@@ -194,10 +176,11 @@ export default function Navbar() {
                 <div className="w-12 h-1 bg-gray-300 rounded-full" />
               </div>
 
+              {/* Header - Dengan Logo */}
               <div className="px-5 pt-2 pb-4 border-b border-gray-100">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="relative w-8 h-8">
+                  <div className="flex items-center gap-3">
+                    <div className="relative w-10 h-10">
                       <img 
                         src="/images/logo/cassindo-logo.png"
                         alt="Cassindo Logo"
