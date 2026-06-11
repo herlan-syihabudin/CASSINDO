@@ -100,7 +100,7 @@ export default function Navbar() {
         <div className="container-custom flex justify-between items-center">
           {/* LOGO - Hanya PNG, tanpa teks */}
           <Link href="/" className="shrink-0">
-            <div className="relative w-10 h-10 sm:w-12 sm:h-12 transition-transform duration-300 hover:scale-105">
+            <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 transition-transform duration-300 hover:scale-105">
               <img 
                 src="/images/logo/cassindo-logo.png"
                 alt="Cassindo Logo"
