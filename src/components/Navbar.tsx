@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from 'next/image' // Kita maksimalkan komponen ini
 import { usePathname } from 'next/navigation'
 import { HiMenu, HiX, HiPhone, HiArrowRight, HiCheckCircle, HiClock } from 'react-icons/hi'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -18,7 +18,7 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [shrink, setShrink] = useState(false)
+  const [shrink, setShrink] = useState(false) // Bisa digunakan untuk mereduksi padding saat di-scroll jika mau
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
@@ -62,16 +62,20 @@ export default function Navbar() {
   const openMenu = useCallback(() => setIsMobileMenuOpen(true), [])
   const closeMenu = useCallback(() => setIsMobileMenuOpen(false), [])
 
+  // SKELETON / LOADING STATE (Disamakan ukurannya agar tidak melompat)
   if (!mounted) {
     return (
-      <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-2">
-        <div className="container-custom flex justify-between items-center">
+      <nav className="fixed top-0 w-full z-50 bg-white shadow-md">
+        <div className="container-custom flex justify-between items-center py-2 md:py-1">
           <Link href="/" className="flex items-center">
-            <div className="relative w-18 h-18">
-              <img 
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16">
+              <Image 
                 src="/images/logo/cassindo-logo.png"
                 alt="Cassindo Logo"
-                className="w-full h-full object-contain"
+                fill
+                sizes="(max-width: 768px) 56px, 64px"
+                className="object-contain"
+                priority
               />
             </div>
           </Link>
@@ -97,14 +101,20 @@ export default function Navbar() {
           backgroundColor: isWhite ? 'white' : 'rgba(255, 255, 255, 0.05)',
         }}
       >
-        <div className="container-custom flex justify-between items-center py-2">
-          {/* LOGO - Besar tapi navbar tetap low profile */}
+        {/* PERUBAHAN DI SINI: Padding dibuat lebih ketat di MD ke atas (py-1.5) karena logo membesar */}
+        <div className="container-custom flex justify-between items-center py-2 md:py-1.5 transition-all duration-300">
+          
+          {/* LOGO AREA */}
           <Link href="/" className="shrink-0">
-            <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 transition-transform duration-300 hover:scale-105">
-              <img 
+            {/* PERUBAHAN DI SINI: Ukuran disesuaikan dari w-20 (80px) ke md:w-16 md:h-16 (64px) agar tetap low profile, atau jika mau tetap besar, padding navbar yang mengalah */}
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 transition-transform duration-300 hover:scale-105">
+              <Image 
                 src="/images/logo/cassindo-logo.png"
                 alt="Cassindo Logo"
-                className="w-full h-full object-contain"
+                fill
+                sizes="(max-width: 768px) 56px, 64px"
+                className="object-contain"
+                priority
               />
             </div>
           </Link>
@@ -180,10 +190,12 @@ export default function Navbar() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="relative w-10 h-10">
-                      <img 
+                      <Image 
                         src="/images/logo/cassindo-logo.png"
                         alt="Cassindo Logo"
-                        className="w-full h-full object-contain"
+                        fill
+                        sizes="40px"
+                        className="object-contain"
                       />
                     </div>
                     <div>
