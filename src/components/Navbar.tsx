@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
-import Image from 'next/image' // Kita maksimalkan komponen ini
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { HiMenu, HiX, HiPhone, HiArrowRight, HiCheckCircle, HiClock } from 'react-icons/hi'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -18,7 +18,7 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [shrink, setShrink] = useState(false) // Bisa digunakan untuk mereduksi padding saat di-scroll jika mau
+  const [shrink, setShrink] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
@@ -62,23 +62,18 @@ export default function Navbar() {
   const openMenu = useCallback(() => setIsMobileMenuOpen(true), [])
   const closeMenu = useCallback(() => setIsMobileMenuOpen(false), [])
 
-  // SKELETON / LOADING STATE (Disamakan ukurannya agar tidak melompat)
   if (!mounted) {
     return (
       <nav className="fixed top-0 w-full z-50 bg-white shadow-md">
-        <div className="container-custom flex justify-between items-center py-2 md:py-1">
-          <Link href="/" className="flex items-center">
-            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16">
-              <Image 
-                src="/images/logo/cassindo-logo.png"
-                alt="Cassindo Logo"
-                fill
-                sizes="(max-width: 768px) 56px, 64px"
-                className="object-contain"
-                priority
-              />
-            </div>
-          </Link>
+        <div className="container-custom flex justify-between items-center py-2">
+          <div className="relative w-12 h-12">
+            <Image 
+              src="/images/logo/cassindo-logo.png"
+              alt="Cassindo Logo"
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
       </nav>
     )
@@ -101,18 +96,21 @@ export default function Navbar() {
           backgroundColor: isWhite ? 'white' : 'rgba(255, 255, 255, 0.05)',
         }}
       >
-        {/* PERUBAHAN DI SINI: Padding dibuat lebih ketat di MD ke atas (py-1.5) karena logo membesar */}
         <div className="container-custom flex justify-between items-center py-2 md:py-1.5 transition-all duration-300">
           
-          {/* LOGO AREA */}
-          <Link href="/" className="shrink-0">
-            {/* PERUBAHAN DI SINI: Ukuran disesuaikan dari w-20 (80px) ke md:w-16 md:h-16 (64px) agar tetap low profile, atau jika mau tetap besar, padding navbar yang mengalah */}
-            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 transition-transform duration-300 hover:scale-105">
+          {/* LOGO AREA - Dengan Negative Margin biar gede tapi gak nambah tinggi navbar */}
+          <Link href="/" className="shrink-0 relative z-10">
+            {/* 
+              Trik: kasih minus margin vertical (-my-3 / md:-my-4) supaya 
+              kontainer logo ini 'keluar' dari batasan padding navbar 
+              tanpa ngerusak tinggi navbar-nya.
+            */}
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 -my-3 sm:-my-4 md:-my-5 transition-transform duration-300 hover:scale-105">
               <Image 
                 src="/images/logo/cassindo-logo.png"
                 alt="Cassindo Logo"
                 fill
-                sizes="(max-width: 768px) 56px, 64px"
+                sizes="(max-width: 768px) 80px, 112px"
                 className="object-contain"
                 priority
               />
@@ -162,7 +160,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* MOBILE MENU - PREMIUM BOTTOM SHEET */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
@@ -189,12 +187,11 @@ export default function Navbar() {
               <div className="px-5 pt-2 pb-4 border-b border-gray-100">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="relative w-10 h-10">
+                    <div className="relative w-8 h-8">
                       <Image 
                         src="/images/logo/cassindo-logo.png"
                         alt="Cassindo Logo"
                         fill
-                        sizes="40px"
                         className="object-contain"
                       />
                     </div>
