@@ -59,7 +59,6 @@ export default function TrustedCompanies() {
     setIsAutoPlaying(false)
   }
 
-  // Auto play carousel
   useEffect(() => {
     if (!isAutoPlaying) return
     const interval = setInterval(() => {
@@ -71,7 +70,6 @@ export default function TrustedCompanies() {
     return () => clearInterval(interval)
   }, [isAutoPlaying, maxIndex])
 
-  // Reset auto play when carousel comes into view
   useEffect(() => {
     if (isInView) {
       setIsAutoPlaying(true)
@@ -79,58 +77,54 @@ export default function TrustedCompanies() {
   }, [isInView])
 
   return (
-    <section className="py-16 bg-white border-y border-gray-100">
+    <section className="py-12 bg-white border-y border-gray-100">
       <div className="container-custom">
-        <div className="grid lg:grid-cols-12 gap-8 items-center">
+        <div className="flex flex-wrap items-center justify-between gap-6">
           
-          {/* Left Side - Title */}
+          {/* Left Side - Title (ukuran kecil) */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
             viewport={{ once: true }}
-            className="lg:col-span-3"
+            className="flex-shrink-0"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-4">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary" />
-              </span>
-              <span className="text-primary text-[10px] font-semibold tracking-wide">OUR CLIENTS</span>
+            <div className="text-left">
+              <h2 className="text-sm md:text-base font-semibold text-dark">
+                Trusted by Companies
+              </h2>
+              <p className="text-primary text-xs md:text-sm font-medium">
+                Across Indonesia
+              </p>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-dark leading-tight">
-              Trusted by Companies
-              <span className="text-primary block"> Across Indonesia</span>
-            </h2>
           </motion.div>
 
-          {/* Center - Carousel Logos */}
+          {/* Center - Carousel Logos (flexible) */}
           <motion.div
             ref={carouselRef}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             viewport={{ once: true }}
-            className="lg:col-span-6"
+            className="flex-1 min-w-0"
           >
-            <div className="relative">
+            <div className="relative max-w-2xl mx-auto">
               {/* Carousel Container */}
               <div className="overflow-hidden">
                 <div
-                  className="flex transition-transform duration-500 ease-out gap-4 md:gap-6"
+                  className="flex transition-transform duration-500 ease-out gap-3 md:gap-4"
                   style={{ transform: `translateX(-${currentIndex * (100 / visibleItems)}%)` }}
                 >
                   {companies.map((company, idx) => (
                     <div
                       key={idx}
                       className="flex-shrink-0"
-                      style={{ width: `calc(${100 / visibleItems}% - ${(visibleItems - 1) * 4 / visibleItems}px)` }}
+                      style={{ width: `calc(${100 / visibleItems}% - ${(visibleItems - 1) * 3 / visibleItems}px)` }}
                     >
-                      <div className="bg-gray-50 rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
-                        <div className="h-12 flex items-center justify-center">
-                          {/* Placeholder logo - ganti dengan logo asli */}
+                      <div className="bg-gray-50 rounded-lg p-2 md:p-3 shadow-sm hover:shadow-md transition-all duration-300 group">
+                        <div className="h-8 md:h-10 flex items-center justify-center">
                           <div className="text-center">
-                            <div className="text-xs font-bold text-gray-400 group-hover:text-primary transition-colors">
+                            <div className="text-[10px] md:text-xs font-semibold text-gray-500 group-hover:text-primary transition-colors whitespace-nowrap">
                               {company.name}
                             </div>
                           </div>
@@ -147,31 +141,31 @@ export default function TrustedCompanies() {
                   <button
                     onClick={prevSlide}
                     disabled={currentIndex === 0}
-                    className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center transition-all duration-300 ${
+                    className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 w-6 h-6 rounded-full bg-white shadow-md flex items-center justify-center transition-all duration-300 ${
                       currentIndex === 0 
                         ? 'opacity-50 cursor-not-allowed' 
                         : 'hover:bg-primary hover:text-white'
                     }`}
                   >
-                    <HiChevronLeft className="text-sm" />
+                    <HiChevronLeft className="text-xs" />
                   </button>
                   <button
                     onClick={nextSlide}
                     disabled={currentIndex >= maxIndex}
-                    className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center transition-all duration-300 ${
+                    className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 w-6 h-6 rounded-full bg-white shadow-md flex items-center justify-center transition-all duration-300 ${
                       currentIndex >= maxIndex 
                         ? 'opacity-50 cursor-not-allowed' 
                         : 'hover:bg-primary hover:text-white'
                     }`}
                   >
-                    <HiChevronRight className="text-sm" />
+                    <HiChevronRight className="text-xs" />
                   </button>
                 </>
               )}
 
               {/* Dots Indicator */}
-              <div className="flex justify-center gap-1.5 mt-4">
-                {Array.from({ length: Math.min(5, Math.ceil(totalItems / visibleItems)) }).map((_, idx) => (
+              <div className="flex justify-center gap-1 mt-3">
+                {Array.from({ length: Math.min(3, Math.ceil(totalItems / visibleItems)) }).map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => {
@@ -180,8 +174,8 @@ export default function TrustedCompanies() {
                     }}
                     className={`h-1 rounded-full transition-all duration-300 ${
                       Math.floor(currentIndex / visibleItems) === idx
-                        ? 'w-6 bg-primary'
-                        : 'w-1.5 bg-gray-300 hover:bg-gray-400'
+                        ? 'w-4 bg-primary'
+                        : 'w-1 bg-gray-300 hover:bg-gray-400'
                     }`}
                   />
                 ))}
@@ -189,23 +183,23 @@ export default function TrustedCompanies() {
             </div>
           </motion.div>
 
-          {/* Right Side - CTA Button */}
+          {/* Right Side - CTA Button (ukuran kecil) */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
             viewport={{ once: true }}
-            className="lg:col-span-3 text-center lg:text-right"
+            className="flex-shrink-0"
           >
             <Link 
               href="/clients"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary/10 text-primary rounded-full hover:bg-primary hover:text-white transition-all duration-300 group text-sm font-medium"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary rounded-full hover:bg-primary hover:text-white transition-all duration-300 group text-xs font-medium whitespace-nowrap"
             >
-              <span>Lihat Semua Customer Kami</span>
-              <HiArrowRight className="text-sm group-hover:translate-x-1 transition" />
+              <span>Lihat Semua Customer</span>
+              <HiArrowRight className="text-xs group-hover:translate-x-0.5 transition" />
             </Link>
-            <p className="text-gray-400 text-xs mt-3">
-              100+ perusahaan telah mempercayakan kebutuhan supply chain mereka
+            <p className="text-gray-400 text-[9px] mt-1 text-center whitespace-nowrap">
+              100+ perusahaan terpercaya
             </p>
           </motion.div>
         </div>
