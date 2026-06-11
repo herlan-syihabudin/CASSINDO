@@ -67,7 +67,7 @@ export default function Navbar() {
       <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-2">
         <div className="container-custom flex justify-between items-center">
           <Link href="/" className="flex items-center">
-            <div className="relative w-14 h-14">
+            <div className="relative w-18 h-18">
               <img 
                 src="/images/logo/cassindo-logo.png"
                 alt="Cassindo Logo"
