@@ -6,7 +6,7 @@ import { HiArrowRight } from 'react-icons/hi'
 import { 
   FaIndustry, FaHardHat, FaOilCan, 
   FaWarehouse, FaBuilding, FaGasPump, 
-  FaTools, FaSolarPanel 
+  FaTools, FaSolarPanel, FaLandmark
 } from 'react-icons/fa'
 
 const solutions = [
@@ -54,7 +54,7 @@ const solutions = [
     slug: 'government',
     title: 'Government',
     description: 'Pengadaan barang/jasa tender',
-    icon: FaBuilding,
+    icon: FaLandmark,
     iconColor: 'text-emerald-400',
     image: '/images/solutions/government.jpg'
   },
@@ -65,6 +65,22 @@ const solutions = [
     icon: FaWarehouse,
     iconColor: 'text-purple-400',
     image: '/images/solutions/telecom.jpg'
+  },
+  {
+    slug: 'commercial-building',
+    title: 'Commercial Building',
+    description: 'Perlengkapan gedung komersial',
+    icon: FaBuilding,
+    iconColor: 'text-amber-400',
+    image: '/images/solutions/commercial.jpg'
+  },
+  {
+    slug: 'warehouse-logistik',
+    title: 'Warehouse & Logistik',
+    description: 'Peralatan gudang & distribusi',
+    icon: FaWarehouse,
+    iconColor: 'text-cyan-400',
+    image: '/images/solutions/warehouse.jpg'
   }
 ]
 
@@ -72,7 +88,6 @@ export default function SolutionsSection() {
   return (
     <section className="section-padding bg-white">
       <div className="container-custom">
-        {/* Header - Clean */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -88,8 +103,7 @@ export default function SolutionsSection() {
           </p>
         </motion.div>
 
-        {/* Grid Cards - 4-7 kolom responsif */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {solutions.map((sol, idx) => (
             <motion.div
               key={sol.slug}
@@ -102,12 +116,9 @@ export default function SolutionsSection() {
                 href={`/solutions/${sol.slug}`}
                 className="group block text-center p-4 rounded-xl hover:bg-gray-50 transition-all duration-300"
               >
-                {/* Icon - Clean tanpa background */}
                 <div className="mb-3">
                   <sol.icon className={`text-3xl mx-auto ${sol.iconColor} group-hover:text-primary transition-colors`} />
                 </div>
-                
-                {/* Title */}
                 <h3 className="text-sm font-semibold text-dark group-hover:text-primary transition-colors">
                   {sol.title}
                 </h3>
