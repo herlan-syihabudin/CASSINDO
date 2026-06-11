@@ -89,7 +89,7 @@ export default function Navbar() {
       <nav 
         className={`
           fixed top-0 w-full z-50 transition-all duration-500
-          ${isWhite ? 'bg-white shadow-md py-1.5 sm:py-2' : 'bg-transparent py-2 sm:py-3'}
+          ${isWhite ? 'bg-white shadow-md py-1' : 'bg-transparent py-1.5'}
         `}
         style={{
           backdropFilter: isWhite ? 'none' : 'blur(12px)',
@@ -98,13 +98,13 @@ export default function Navbar() {
         }}
       >
         <div className="container-custom flex justify-between items-center">
-          {/* LOGO - Ukuran lebih besar */}
+          {/* LOGO - Besar, padding tipis */}
           <Link href="/" className="shrink-0">
-            <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 transition-transform duration-300 hover:scale-110">
+            <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20">
               <img 
                 src="/images/logo/cassindo-logo.png"
                 alt="Cassindo Logo"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain transition-transform duration-300 hover:scale-110"
               />
             </div>
           </Link>
