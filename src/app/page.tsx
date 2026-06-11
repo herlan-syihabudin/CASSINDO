@@ -17,8 +17,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <SolutionsSection />
-      <ServicesSection />
-      <TrustedCompanies />        
+      <TrustedCompanies /> 
+      <ServicesSection />     
       <WhyChooseUs />
       <ProjectGallery />
       <FAQSection />
