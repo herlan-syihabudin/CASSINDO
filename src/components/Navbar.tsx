@@ -67,7 +67,7 @@ export default function Navbar() {
       <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-2">
         <div className="container-custom flex justify-between items-center">
           <Link href="/" className="flex items-center">
-            <div className="relative w-18 h-18">
+            <div className="relative w-10 h-10">
               <img 
                 src="/images/logo/cassindo-logo.png"
                 alt="Cassindo Logo"
@@ -100,7 +100,7 @@ export default function Navbar() {
         <div className="container-custom flex justify-between items-center py-2">
           {/* LOGO - Besar tapi navbar tetap low profile */}
           <Link href="/" className="shrink-0">
-            <div className="relative w-18 h-18 sm:w-16 sm:h-16 md:w-20 md:h-20 transition-transform duration-300 hover:scale-105">
+            <div className="relative w-24 h-24 sm:w-16 sm:h-16 md:w-20 md:h-20 transition-transform duration-300 hover:scale-105">
               <img 
                 src="/images/logo/cassindo-logo.png"
                 alt="Cassindo Logo"
