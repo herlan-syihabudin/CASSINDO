@@ -65,8 +65,9 @@ export default function Navbar() {
   if (!mounted) {
     return (
       <nav className="fixed top-0 w-full z-50 bg-white shadow-md">
-        <div className="container-custom flex justify-between items-center py-2">
-          <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 -my-5 sm:-my-6 md:-my-7">
+        {/* SKELETON STATE: Menyamakan padding dengan state saat running */}
+        <div className="container-custom flex justify-between items-center py-1 md:py-0.5">
+          <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 -my-7 sm:-my-9 md:-my-11">
             <Image 
               src="/images/logo/cassindo-logo.png"
               alt="Cassindo Logo"
@@ -97,13 +98,13 @@ export default function Navbar() {
           backgroundColor: isWhite ? 'white' : 'rgba(255, 255, 255, 0.05)',
         }}
       >
-        {/* PERUBAHAN: Padding ditambah jadi py-2 di mobile, py-1 di desktop */}
-        <div className="container-custom flex justify-between items-center py-2 md:py-1 transition-all duration-300">
+        {/* PERUBAHAN 1: Padding container utama dijepit ke py-1 di mobile dan py-0.5 di desktop */}
+        <div className="container-custom flex justify-between items-center py-1 md:py-0.5 transition-all duration-300">
           
           {/* LOGO AREA */}
           <Link href="/" className="shrink-0 relative z-10">
-            {/* Negative margin disesuaikan agar logo tetap besar tapi navbar gak kegedean */}
-            <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 -my-5 sm:-my-6 md:-my-7 transition-transform duration-300 hover:scale-105">
+            {/* PERUBAHAN 2: Menambah kekuatan negative margin (-my) secara ekstrem supaya kotak raksasa ini tidak memakan space vertical navbar */}
+            <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 -my-7 sm:-my-9 md:-my-11 transition-transform duration-300 hover:scale-105">
               <Image 
                 src="/images/logo/cassindo-logo.png"
                 alt="Cassindo Logo"
@@ -160,6 +161,7 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       <AnimatePresence>
+        {/* ... Sisa kode mobile menu ke bawah tetap sama dan tidak ada perubahan ... */}
         {isMobileMenuOpen && (
           <>
             <motion.div
