@@ -37,8 +37,8 @@ export default function Footer() {
       { href: '/services/electrical-equipment', label: 'Electrical Equipment' },
       { href: '/services/mechanical-parts', label: 'Mechanical Parts' },
       { href: '/services/safety-equipment', label: 'Safety Equipment' },
-      { href: '/services/building-material', label: 'Building Material' },      // ← TAMBAH
-      { href: '/services/office-supply', label: 'Office Supply' },              // ← TAMBAH
+      { href: '/services/building-material', label: 'Building Material' },
+      { href: '/services/office-supply', label: 'Office Supply' },
       { href: '/services/custom-procurement', label: 'Custom Procurement' },
     ],
     support: [
@@ -62,16 +62,16 @@ export default function Footer() {
         {/* Main Footer Grid - 5 kolom */}
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
           
-          {/* Kolom 1: Company Info */}
+          {/* Kolom 1: Logo PNG Only */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex flex-col gap-0 group mb-4">
-              <span className="font-poppins font-bold text-2xl text-white group-hover:text-accent transition-colors">
-                Cassindo
-              </span>
-              <p className="text-[10px] text-white/40 -mt-0.5">
-                Core Advanced Supply Solution
-              </p>
-              <span className="block h-0.5 bg-accent transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left mt-1" style={{ width: '100%' }} />
+            <Link href="/" className="block mb-4">
+              <div className="relative w-12 h-12 transition-transform duration-300 hover:scale-105">
+                <img 
+                  src="/images/logo/cassindo-logo.png"
+                  alt="Cassindo Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </Link>
             <p className="text-sm leading-relaxed text-gray-400 mb-4">
               Mitra terpercaya untuk solusi pengadaan industri dan distribusi nasional.
@@ -98,7 +98,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Kolom 3: Layanan - SEKARANG 7 LAYANAN */}
+          {/* Kolom 3: Layanan */}
           <div>
             <h4 className="text-white font-semibold mb-4 text-sm">Layanan</h4>
             <ul className="space-y-2 text-sm">
