@@ -6,22 +6,22 @@ import WhyChooseUs from '@/components/WhyChooseUs'
 import ProjectGallery from '@/components/ProjectGallery'
 import CTASection from '@/components/CTASection'
 import Footer from '@/components/Footer'
-import CompanyIntro from '@/components/CompanyIntro'
 import ServicesSection from '@/components/ServicesSection'
 import FAQSection from '@/components/FAQSection'
 import SolutionsSection from '@/components/SolutionsSection'
+import TrustedCompanies from '@/components/TrustedCompanies'  
 
 export default function Home() {
   return (
     <main>
       <Navbar />
       <Hero />
-      <CompanyIntro />
       <SolutionsSection />
       <ServicesSection />
+      <TrustedCompanies />        
       <WhyChooseUs />
       <ProjectGallery />
-      <FAQSection />        {/* ← TAMBAHKAN DI SINI */}
+      <FAQSection />
       <CTASection />
       <Footer />
     </main>
