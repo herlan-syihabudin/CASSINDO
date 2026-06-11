@@ -64,10 +64,10 @@ export default function Navbar() {
 
   if (!mounted) {
     return (
-      <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-1">
+      <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-2">
         <div className="container-custom flex justify-between items-center">
           <Link href="/" className="flex items-center">
-            <div className="relative w-12 h-12">
+            <div className="relative w-10 h-10">
               <img 
                 src="/images/logo/cassindo-logo.png"
                 alt="Cassindo Logo"
@@ -89,7 +89,7 @@ export default function Navbar() {
       <nav 
         className={`
           fixed top-0 w-full z-50 transition-all duration-500
-          ${isWhite ? 'bg-white shadow-md py-0.5' : 'bg-transparent py-1'}
+          ${isWhite ? 'bg-white shadow-md' : 'bg-transparent'}
         `}
         style={{
           backdropFilter: isWhite ? 'none' : 'blur(12px)',
@@ -97,10 +97,10 @@ export default function Navbar() {
           backgroundColor: isWhite ? 'white' : 'rgba(255, 255, 255, 0.05)',
         }}
       >
-        <div className="container-custom flex justify-between items-center">
-          {/* LOGO - SUPER BESAR */}
+        <div className="container-custom flex justify-between items-center py-2">
+          {/* LOGO - Besar tapi navbar tetap low profile */}
           <Link href="/" className="shrink-0">
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 transition-transform duration-300 hover:scale-105">
+            <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 transition-transform duration-300 hover:scale-105">
               <img 
                 src="/images/logo/cassindo-logo.png"
                 alt="Cassindo Logo"
