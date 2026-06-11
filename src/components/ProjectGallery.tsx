@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   HiX, HiArrowLeft, HiArrowRight, HiEye, 
@@ -11,10 +10,9 @@ import {
 const projects = [
   { 
     id: 1, 
-    title: 'Pengiriman Container', 
-    description: 'Proses pengiriman container menuju pelabuhan Tanjung Priok untuk pengiriman ke luar Jawa.',
-    image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800',
-    thumbnail: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=400',
+    title: 'Pengiriman Produck', 
+    description: 'Proses pengiriman produk menuju customer untuk pengiriman ke luar Jawa.',
+    image: '/images/gallery/pengiriman.jpg',     // ← CUKUP 1 FOTO
     category: 'Logistik',
     date: 'Jan 2026',
     location: 'Jakarta',
@@ -24,19 +22,17 @@ const projects = [
     id: 2, 
     title: 'Warehouse Operasional', 
     description: 'Area penyimpanan material dengan sistem manajemen inventaris modern.',
-    image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800',
-    thumbnail: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400',
+    image: '/images/gallery/warehouse.jpg',
     category: 'Warehouse',
     date: 'Feb 2026',
-    location: 'Surabaya',
+    location: 'Jakarta',
     stats: { area: '5.000m²', capacity: '10.000+ unit' }
   },
   { 
     id: 3, 
     title: 'Stock Material', 
     description: 'Persediaan material industrial yang siap didistribusikan ke seluruh Indonesia.',
-    image: 'https://images.unsplash.com/photo-1581090464777-f3222bbe8b2b?w=800',
-    thumbnail: 'https://images.unsplash.com/photo-1581090464777-f3222bbe8b2b?w=400',
+    image: '/images/gallery/stock.jpg',
     category: 'Inventory',
     date: 'Mar 2026',
     location: 'Jakarta',
@@ -46,8 +42,7 @@ const projects = [
     id: 4, 
     title: 'Tim Logistik', 
     description: 'Tim profesional yang siap mengelola distribusi dan pengiriman tepat waktu.',
-    image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800',
-    thumbnail: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=400',
+    image: '/images/gallery/team.jpg',
     category: 'Team',
     date: 'Apr 2026',
     location: 'Nasional',
@@ -57,8 +52,7 @@ const projects = [
     id: 5, 
     title: 'Pengiriman Darat', 
     description: 'Armada truk untuk distribusi antar kota dengan sistem tracking real-time.',
-    image: 'https://images.unsplash.com/photo-1590279921182-2f4d1a30372c?w=800',
-    thumbnail: 'https://images.unsplash.com/photo-1590279921182-2f4d1a30372c?w=400',
+    image: '/images/gallery/darat.jpg',
     category: 'Logistik',
     date: 'Mei 2026',
     location: 'Jawa',
@@ -68,8 +62,7 @@ const projects = [
     id: 6, 
     title: 'Kontrol Kualitas', 
     description: 'Proses quality control sebelum material dikirim ke klien.',
-    image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800',
-    thumbnail: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400',
+    image: '/images/gallery/qc.jpg',
     category: 'Quality',
     date: 'Jun 2026',
     location: 'Jakarta',
@@ -151,7 +144,7 @@ export default function ProjectGallery() {
             ))}
           </motion.div>
 
-          {/* Gallery Grid */}
+          {/* Gallery Grid - Pake 1 foto */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((project, idx) => (
               <motion.div
@@ -166,7 +159,7 @@ export default function ProjectGallery() {
                 {/* Image Container */}
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img 
-                    src={project.thumbnail}
+                    src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
