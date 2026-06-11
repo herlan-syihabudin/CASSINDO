@@ -89,7 +89,7 @@ export default function Navbar() {
       <nav 
         className={`
           fixed top-0 w-full z-50 transition-all duration-500
-          ${isWhite ? 'bg-white shadow-md py-2 sm:py-2.5' : 'bg-transparent py-3 sm:py-4'}
+          ${isWhite ? 'bg-white shadow-md py-1.5 sm:py-2' : 'bg-transparent py-2 sm:py-3'}
         `}
         style={{
           backdropFilter: isWhite ? 'none' : 'blur(12px)',
@@ -98,9 +98,9 @@ export default function Navbar() {
         }}
       >
         <div className="container-custom flex justify-between items-center">
-          {/* LOGO - Ukuran sedang, tidak terlalu besar */}
+          {/* LOGO - Ukuran lebih besar */}
           <Link href="/" className="shrink-0">
-            <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 transition-transform duration-300 hover:scale-105">
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 transition-transform duration-300 hover:scale-105">
               <img 
                 src="/images/logo/cassindo-logo.png"
                 alt="Cassindo Logo"
@@ -116,7 +116,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={`
-                  relative font-medium transition-all duration-300 py-1.5 group
+                  relative font-medium transition-all duration-300 py-1 group text-sm
                   ${isWhite ? 'text-gray-600 hover:text-primary' : 'text-white/80 hover:text-white'}
                   ${pathname === item.href ? (isWhite ? 'text-primary' : 'text-white') : ''}
                 `}
@@ -144,10 +144,10 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={openMenu}
-            className="md:hidden w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 bg-white/10 backdrop-blur-sm border border-white/20"
+            className="md:hidden w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 bg-white/10 backdrop-blur-sm border border-white/20"
             aria-label="Open menu"
           >
-            <HiMenu size={20} className="text-primary" />
+            <HiMenu size={18} className="text-primary" />
           </button>
         </div>
       </nav>
