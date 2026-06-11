@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { 
   HiLocationMarker, HiMail, HiPhone, HiClock, 
   HiArrowRight, HiCheckCircle
@@ -62,18 +63,25 @@ export default function Footer() {
         {/* Main Footer Grid - 5 kolom */}
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
           
-          {/* Kolom 1: Logo PNG Only */}
+          {/* Kolom 1: Logo - SUPER GEDE dengan negative margin */}
           <div className="lg:col-span-1">
-            <Link href="/" className="block mb-4">
-              <div className="relative w-12 h-12 transition-transform duration-300 hover:scale-105">
-                <img 
+            <Link href="/" className="block mb-4 relative z-10">
+              {/* 
+                Trik negative margin: logo besar tapi gak ganggu tinggi kolom
+                Ukuran logo disamakan dengan navbar: 
+                Mobile: 112px, Tablet: 128px, Desktop: 144px
+              */}
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 -my-6 sm:-my-7 md:-my-8 transition-transform duration-300 hover:scale-105">
+                <Image 
                   src="/images/logo/cassindo-logo.png"
                   alt="Cassindo Logo"
-                  className="w-full h-full object-contain"
+                  fill
+                  sizes="(max-width: 768px) 112px, 144px"
+                  className="object-contain"
                 />
               </div>
             </Link>
-            <p className="text-sm leading-relaxed text-gray-400 mb-4">
+            <p className="text-sm leading-relaxed text-gray-400 mb-4 mt-2">
               Mitra terpercaya untuk solusi pengadaan industri dan distribusi nasional.
             </p>
             <div className="flex flex-wrap gap-2">
