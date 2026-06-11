@@ -33,18 +33,18 @@ const solutionsData = {
     image: '/images/solutions/konstruksi.jpg'
   },
   
-  // 3. Energy & Utility
-  'energy-utility': {
-    title: 'Solusi Energy & Utility',
-    description: 'Pasokan komponen dan peralatan untuk sektor energi dan utilitas.',
+  // 3. Mining
+  mining: {
+    title: 'Solusi Pertambangan',
+    description: 'Komponen heavy duty untuk operasional tambang dan pertambangan.',
     benefits: [
-      'Komponen berkualitas industri',
-      'Pengiriman tepat waktu',
+      'Sparepart original untuk alat berat',
+      'Pengiriman cepat ke site tambang',
       'Technical support 24/7',
-      'Garansi produk resmi'
+      'Warranty resmi'
     ],
-    products: ['Generator Set', 'Panel Listrik', 'Kabel Power', 'Trafo', 'UPS'],
-    image: '/images/solutions/energy.jpg'
+    products: ['Alat Berat', 'Conveyor Belt', 'Pompa Tambang', 'Safety Equipment', 'Hydraulic Parts'],
+    image: '/images/solutions/mining.jpg'
   },
   
   // 4. Oil & Gas
@@ -61,7 +61,63 @@ const solutionsData = {
     image: '/images/solutions/oil-gas.jpg'
   },
   
-  // 5. Commercial Building
+  // 5. Energy & Utility
+  'energy-utility': {
+    title: 'Solusi Energy & Utility',
+    description: 'Pasokan komponen dan peralatan untuk sektor energi dan utilitas.',
+    benefits: [
+      'Komponen berkualitas industri',
+      'Pengiriman tepat waktu',
+      'Technical support 24/7',
+      'Garansi produk resmi'
+    ],
+    products: ['Generator Set', 'Panel Listrik', 'Kabel Power', 'Trafo', 'UPS'],
+    image: '/images/solutions/energy.jpg'
+  },
+  
+  // 6. Energy (alias dari energy-utility)
+  energy: {
+    title: 'Solusi Energi',
+    description: 'Pasokan komponen dan peralatan untuk sektor energi terbarukan dan kelistrikan.',
+    benefits: [
+      'Komponen berkualitas industri',
+      'Pengiriman tepat waktu',
+      'Technical support 24/7',
+      'Garansi produk resmi'
+    ],
+    products: ['Generator Set', 'Panel Surya', 'Kabel Power', 'Inverter', 'Baterai'],
+    image: '/images/solutions/energy.jpg'
+  },
+  
+  // 7. Government
+  government: {
+    title: 'Solusi Pemerintah',
+    description: 'Pengadaan barang/jasa dengan legalitas lengkap untuk instansi pemerintah.',
+    benefits: [
+      'NIB & NPWP terdaftar',
+      'Pengalaman tender BUMN',
+      'Dokumen administrasi lengkap',
+      'Harga kompetitif'
+    ],
+    products: ['Office Supply', 'Furniture', 'IT Equipment', 'Logistik', 'Pengadaan Barang'],
+    image: '/images/solutions/government.jpg'
+  },
+  
+  // 8. Telecommunication
+  telecommunication: {
+    title: 'Solusi Telekomunikasi',
+    description: 'Peralatan dan komponen untuk infrastruktur telekomunikasi.',
+    benefits: [
+      'Produk berkualitas tinggi',
+      'Pengiriman tepat waktu',
+      'Technical support',
+      'Garansi resmi'
+    ],
+    products: ['Kabel Fiber Optik', 'Antena', 'Perangkat Jaringan', 'Tower Equipment', 'Safety Gear'],
+    image: '/images/solutions/telecom.jpg'
+  },
+  
+  // 9. Commercial Building
   'commercial-building': {
     title: 'Solusi Commercial Building',
     description: 'Perlengkapan dan peralatan untuk gedung komersial dan perkantoran.',
@@ -75,7 +131,7 @@ const solutionsData = {
     image: '/images/solutions/commercial.jpg'
   },
   
-  // 6. Warehouse & Logistik
+  // 10. Warehouse & Logistik
   'warehouse-logistik': {
     title: 'Solusi Warehouse & Logistik',
     description: 'Peralatan gudang dan solusi logistik untuk operasional distribusi.',
