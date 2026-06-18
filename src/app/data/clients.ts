@@ -6,7 +6,7 @@ export const companies = [
   { name: 'ASTRA', logo: '/images/clients/astra.png' },
   { name: 'WIKA', logo: '/images/clients/wika.png' },
   { name: 'Adaro', logo: '/images/clients/adaro.png' },
-  { name: 'Freeport', logo: '/images/clients/freeport.png' },
+  { name: 'Versigent', logo: '/images/clients/Versigent.png' },
   { name: 'Petrokimia', logo: '/images/clients/petrokimia.png' },
   { name: 'Pupuk Indonesia', logo: '/images/clients/pupuk.png' },
   { name: 'Semen Indonesia', logo: '/images/clients/semen.png' },
