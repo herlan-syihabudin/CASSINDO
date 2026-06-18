@@ -69,6 +69,32 @@ export default function CompanyIntro() {
             </p>
           </motion.div>
 
+          {/* Stats Cards - Premium Style with updated wording */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10"
+          >
+            <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-gray-100 shadow-lg shadow-primary/5">
+              <p className="text-2xl md:text-3xl font-bold text-primary">500+</p>
+              <p className="text-xs text-gray-500">Supply Chain Complete</p>
+            </div>
+            <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-gray-100 shadow-lg shadow-primary/5">
+              <p className="text-2xl md:text-3xl font-bold text-primary">34</p>
+              <p className="text-xs text-gray-500">Kota di Indonesia</p>
+            </div>
+            <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-gray-100 shadow-lg shadow-primary/5">
+              <p className="text-2xl md:text-3xl font-bold text-primary">24/7</p>
+              <p className="text-xs text-gray-500">Dukungan Operasional</p>
+            </div>
+            <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-gray-100 shadow-lg shadow-primary/5">
+              <p className="text-2xl md:text-3xl font-bold text-primary">100%</p>
+              <p className="text-xs text-gray-500">Komitmen Kualitas</p>
+            </div>
+          </motion.div>
+
           {/* Vision Card - Premium Style */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
