@@ -53,9 +53,9 @@ const servicesData: Record<string, {
       }
     ],
     gallery: [
-      { title: 'Gudang Material', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
-      { title: 'Stock Inventory', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
-      { title: 'Quality Control', image: 'https://images.unsplash.com/photo-1581090464777-f3222bbe8b2b?w=800' },
+      { title: 'Gudang Material', image: '/images/gallery/warehouse-1.jpg' },
+      { title: 'Stock Inventory', image: '/images/gallery/warehouse-2.jpg' },
+      { title: 'Quality Control', image: '/images/gallery/quality-control.jpg' },
     ],
     benefits: [
       'Stok lengkap berbagai material industri',
@@ -93,9 +93,9 @@ const servicesData: Record<string, {
       }
     ],
     gallery: [
-      { title: 'Panel Installation', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
-      { title: 'Warehouse Stock', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
-      { title: 'Quality Testing', image: 'https://images.unsplash.com/photo-1581090464777-f3222bbe8b2b?w=800' },
+      { title: 'Panel Installation', image: '/images/gallery/electrical-1.jpg' },
+      { title: 'Warehouse Stock', image: '/images/gallery/electrical-2.jpg' },
+      { title: 'Quality Testing', image: '/images/gallery/electrical-3.jpg' },
     ],
     benefits: [
       'Produk bersertifikat SNI',
@@ -133,9 +133,9 @@ const servicesData: Record<string, {
       }
     ],
     gallery: [
-      { title: 'Machine Parts', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
-      { title: 'Workshop', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
-      { title: 'Quality Inspection', image: 'https://images.unsplash.com/photo-1581090464777-f3222bbe8b2b?w=800' },
+      { title: 'Machine Parts', image: '/images/gallery/mechanical-1.jpg' },
+      { title: 'Workshop', image: '/images/gallery/mechanical-2.jpg' },
+      { title: 'Quality Inspection', image: '/images/gallery/mechanical-3.jpg' },
     ],
     benefits: [
       'Sparepart original berkualitas',
@@ -173,8 +173,8 @@ const servicesData: Record<string, {
       }
     ],
     gallery: [
-      { title: 'Safety Equipment', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
-      { title: 'Warehouse Stock', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
+      { title: 'Safety Equipment', image: '/images/gallery/safety-1.jpg' },
+      { title: 'Warehouse Stock', image: '/images/gallery/safety-2.jpg' },
     ],
     benefits: [
       'Produk bersertifikat K3',
@@ -212,8 +212,8 @@ const servicesData: Record<string, {
       }
     ],
     gallery: [
-      { title: 'Material Stock', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
-      { title: 'Construction Site', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
+      { title: 'Material Stock', image: '/images/gallery/building-1.jpg' },
+      { title: 'Construction Site', image: '/images/gallery/building-2.jpg' },
     ],
     benefits: [
       'Material SNI certified',
@@ -251,8 +251,8 @@ const servicesData: Record<string, {
       }
     ],
     gallery: [
-      { title: 'Office Supply Stock', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
-      { title: 'Furniture Display', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
+      { title: 'Office Supply Stock', image: '/images/gallery/office-1.jpg' },
+      { title: 'Furniture Display', image: '/images/gallery/office-2.jpg' },
     ],
     benefits: [
       'Pengiriman same day untuk area Jabodetabek',
@@ -290,8 +290,8 @@ const servicesData: Record<string, {
       }
     ],
     gallery: [
-      { title: 'Global Sourcing', image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=800' },
-      { title: 'Procurement Team', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800' },
+      { title: 'Global Sourcing', image: '/images/gallery/procurement-1.jpg' },
+      { title: 'Procurement Team', image: '/images/gallery/procurement-2.jpg' },
     ],
     benefits: [
       'Sourcing dari supplier global',
