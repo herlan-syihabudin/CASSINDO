@@ -11,8 +11,8 @@ export default function Hero() {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format"
-          alt="Industrial warehouse background"
+          src="/images/hero-bg.jpg"
+          alt="Industrial warehouse and logistics center"
           fill
           priority
           sizes="100vw"
