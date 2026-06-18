@@ -14,7 +14,7 @@ export default function CompanyIntro() {
   const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   const stats = [
-    { value: '500+', label: 'Projects Completed', icon: HiOfficeBuilding },
+    { value: '500+', label: 'Supply Chain Complete', icon: HiTruck },
     { value: '50+', label: 'Trusted Partners', icon: HiUsers },
     { value: '34', label: 'Cities Covered', icon: HiGlobeAlt },
     { value: '100%', label: 'Satisfaction', icon: HiCheckCircle },
@@ -121,7 +121,7 @@ export default function CompanyIntro() {
             transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
             className="relative"
           >
-            {/* Main Image - Hanya 1 badge (ISO) */}
+            {/* Main Image - NO BADGE */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl mb-6">
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
               <img 
@@ -129,21 +129,7 @@ export default function CompanyIntro() {
                 alt="Warehouse Cassindo"
                 className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
               />
-              
-              {/* ONLY 1 BADGE - ISO Certification */}
-              <div className="absolute top-4 right-4 z-20">
-                <div className="bg-white/95 backdrop-blur-sm rounded-xl px-3 py-2 shadow-lg border border-white/20">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                      <HiOutlineShieldCheck className="text-white text-sm" />
-                    </div>
-                    <div>
-                      <p className="text-primary font-bold text-xs">ISO 9001:2021</p>
-                      <p className="text-gray-400 text-[9px]">Certified</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* BADGE ISO DIHAPUS */}
             </div>
 
             {/* Stats Cards - 4 items */}
@@ -163,7 +149,7 @@ export default function CompanyIntro() {
               ))}
             </div>
 
-            {/* Legal & Compliance Badges */}
+            {/* Legal & Compliance Badges - TANPA ISO */}
             <div className="bg-gray-50 rounded-2xl p-4 border border-gray-100">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-6 h-6 bg-primary/10 rounded-lg flex items-center justify-center">
