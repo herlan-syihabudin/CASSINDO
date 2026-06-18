@@ -1,18 +1,22 @@
+// src/app/layout.tsx
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Cassindo | General Supplier & Trading Company',
-  description: 'Cassindo provides trusted industrial supply, procurement, and trading solutions for commercial and project needs across Indonesia.',
-  keywords: 'general supplier, general trading, industrial supply, procurement Indonesia, B2B supply chain',
+  title: {
+    default: 'Cassindo | Solusi Pengadaan Industri Terpercaya',
+    template: '%s | Cassindo'
+  },
+  description: 'Cassindo Core Advanced Supply Solution - mitra terpercaya untuk solusi pengadaan industri, MRO, dan distribusi nasional di Indonesia.',
+  keywords: 'solusi pengadaan, supply chain Indonesia, MRO, distribusi industri, procurement partner',
 }
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  viewportFit: 'cover',
+  // maximumScale: 5, // ← HAPUS
+  // userScalable: true, // ← HAPUS (default sudah true)
+  // viewportFit: 'cover', // ← HAPUS
 }
 
 export default function RootLayout({
