@@ -3,6 +3,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image' // ← IMPORT Image
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { HiUsers, HiArrowRight, HiCheckCircle } from 'react-icons/hi'
@@ -94,12 +95,27 @@ export default function ClientsPage() {
                   viewport={{ once: true }}
                   className="bg-gray-50/80 rounded-2xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border border-gray-100"
                 >
-                  <div className="h-16 md:h-20 flex items-center justify-center">
-                    <div className="text-center w-full">
-                      <div className="text-xs md:text-sm font-bold text-gray-600 group-hover:text-primary transition-colors truncate px-2">
-                        {company.name}
-                      </div>
-                    </div>
+                  {/* 🔥 GANTI: Sekarang pake Image component dengan ukuran responsif */}
+                  <div className="relative w-full h-16 md:h-20 flex items-center justify-center">
+                    <Image
+                      src={company.logo}
+                      alt={company.name}
+                      width={120}
+                      height={60}
+                      className="object-contain w-full h-full grayscale hover:grayscale-0 transition duration-300"
+                      onError={(e) => {
+                        // Kalau gambar error, tampilkan teks sebagai fallback
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                        const parent = target.parentElement
+                        if (parent) {
+                          const text = document.createElement('div')
+                          text.className = 'text-xs md:text-sm font-bold text-gray-600 group-hover:text-primary transition-colors truncate px-2 text-center w-full'
+                          text.textContent = company.name
+                          parent.appendChild(text)
+                        }
+                      }}
+                    />
                   </div>
                 </motion.div>
               ))}
