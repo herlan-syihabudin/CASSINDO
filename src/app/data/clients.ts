@@ -3,7 +3,7 @@ export const companies = [
   { name: 'PERTAMINA', logo: '/images/clients/pertamina.png' },
   { name: 'PLN', logo: '/images/clients/pln.png' },
   { name: 'Telkom Indonesia', logo: '/images/clients/telkom.png' },
-  { name: 'ASTRA', logo: '/images/clients/astra.png' },
+  { name: 'ASTRA', logo: '/images/clients/Astra.png' },
   { name: 'WIKA', logo: '/images/clients/wika.png' },
   { name: 'Adaro', logo: '/images/clients/adaro.png' },
   { name: 'Versigent', logo: '/images/clients/Versigent.png' },
