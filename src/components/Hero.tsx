@@ -1,3 +1,4 @@
+// src/components/Hero.tsx
 'use client'
 
 import Link from 'next/link'
@@ -17,7 +18,9 @@ export default function Hero() {
           priority
           sizes="100vw"
           className="object-cover"
-          quality={90}
+          quality={75} // ← TURUNIN DARI 90 KE 75
+          placeholder="blur" // ← TAMBAHKAN
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A/9k="
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
       </div>
@@ -55,7 +58,7 @@ export default function Hero() {
             className="text-base sm:text-lg text-white/70 mb-8 leading-relaxed max-w-xl"
           >
             One partner for procurement, MRO products, facility support, 
-  and technical services across Indonesia.
+            and technical services across Indonesia.
           </motion.p>
 
           {/* CTA Buttons - CLEAN */}
