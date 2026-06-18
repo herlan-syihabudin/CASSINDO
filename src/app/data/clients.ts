@@ -1,0 +1,21 @@
+// app/data/clients.ts
+export const companies = [
+  { name: 'PERTAMINA', logo: '/images/clients/pertamina.png' },
+  { name: 'PLN', logo: '/images/clients/pln.png' },
+  { name: 'Telkom Indonesia', logo: '/images/clients/telkom.png' },
+  { name: 'ASTRA', logo: '/images/clients/astra.png' },
+  { name: 'WIKA', logo: '/images/clients/wika.png' },
+  { name: 'Adaro', logo: '/images/clients/adaro.png' },
+  { name: 'Freeport', logo: '/images/clients/freeport.png' },
+  { name: 'Petrokimia', logo: '/images/clients/petrokimia.png' },
+  { name: 'Pupuk Indonesia', logo: '/images/clients/pupuk.png' },
+  { name: 'Semen Indonesia', logo: '/images/clients/semen.png' },
+  { name: 'Bank Mandiri', logo: '/images/clients/mandiri.png' },
+  { name: 'BNI', logo: '/images/clients/bni.png' },
+  { name: 'Gudang Garam', logo: '/images/clients/gudanggaram.png' },
+  { name: 'Indofood', logo: '/images/clients/indofood.png' },
+  { name: 'Unilever', logo: '/images/clients/unilever.png' },
+  { name: 'Jababeka', logo: '/images/clients/jababeka.png' },
+  { name: 'Lippo Group', logo: '/images/clients/lippo.png' },
+  { name: 'Sinar Mas', logo: '/images/clients/sinarmas.png' },
+]
