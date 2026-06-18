@@ -1,79 +1,15 @@
 // app/clients/page.tsx
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { HiArrowRight, HiChevronLeft, HiChevronRight, HiUsers } from 'react-icons/hi'
-import { companies } from '@/app/data/clients' // ← import dari 1 sumber
+import { HiUsers, HiArrowRight, HiCheckCircle } from 'react-icons/hi'
+import { companies } from '@/app/data/clients'
 
 export default function ClientsPage() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-  const carouselRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(carouselRef, { once: true, amount: 0.3 })
-
-  const itemsPerView = {
-    mobile: 2,
-    tablet: 3,
-    desktop: 4,
-    large: 5
-  }
-
-  const [visibleItems, setVisibleItems] = useState(5)
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth
-      if (width >= 1536) setVisibleItems(itemsPerView.large)
-      else if (width >= 1024) setVisibleItems(itemsPerView.desktop)
-      else if (width >= 768) setVisibleItems(itemsPerView.tablet)
-      else setVisibleItems(itemsPerView.mobile)
-    }
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
-  const totalItems = companies.length
-  const maxIndex = Math.max(0, totalItems - visibleItems)
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => {
-      if (prev + visibleItems >= totalItems) return 0
-      return prev + 1
-    })
-    setIsAutoPlaying(false)
-  }
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => {
-      if (prev <= 0) return maxIndex
-      return prev - 1
-    })
-    setIsAutoPlaying(false)
-  }
-
-  useEffect(() => {
-    if (!isAutoPlaying) return
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => {
-        if (prev + visibleItems >= totalItems) return 0
-        return prev + 1
-      })
-    }, 4000)
-    return () => clearInterval(interval)
-  }, [isAutoPlaying, visibleItems, totalItems])
-
-  useEffect(() => {
-    if (isInView) {
-      setIsAutoPlaying(true)
-    }
-  }, [isInView])
-
-  // Hitung unique sectors (contoh)
+  // Hitung unique sectors dari data
   const uniqueSectors = ['Minyak & Gas', 'Energi', 'Telekomunikasi', 'Otomotif', 'Konstruksi', 'Pertambangan', 'Pupuk', 'Semen', 'Perbankan', 'FMCG', 'Properti']
 
   return (
@@ -105,120 +41,110 @@ export default function ClientsPage() {
           </div>
         </section>
 
-        {/* Carousel Section */}
-        <section className="py-12 md:py-16 bg-white">
+        {/* Stats Section */}
+        <section className="py-8 bg-white border-b border-gray-100">
+          <div className="container-custom">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <p className="text-3xl md:text-4xl font-bold text-primary">{companies.length}+</p>
+                <p className="text-xs text-gray-400">Perusahaan Terpercaya</p>
+              </div>
+              <div className="text-center">
+                <p className="text-3xl md:text-4xl font-bold text-primary">{uniqueSectors.length}+</p>
+                <p className="text-xs text-gray-400">Sektor Industri</p>
+              </div>
+              <div className="text-center">
+                <p className="text-3xl md:text-4xl font-bold text-primary">34</p>
+                <p className="text-xs text-gray-400">Kota di Indonesia</p>
+              </div>
+              <div className="text-center">
+                <p className="text-3xl md:text-4xl font-bold text-primary">99%</p>
+                <p className="text-xs text-gray-400">Tingkat Kepuasan</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Grid Clients Section - FULL PAGE */}
+        <section className="py-16 md:py-20 bg-white">
           <div className="container-custom">
             <motion.div
-              ref={carouselRef}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
+              className="mb-10"
             >
-              <div className="relative">
-                <div className="overflow-hidden">
-                  <div
-                    className="flex transition-transform duration-700 ease-out gap-3 md:gap-4"
-                    style={{ transform: `translateX(-${currentIndex * (100 / visibleItems)}%)` }}
-                  >
-                    {companies.map((company, idx) => (
-                      <div
-                        key={idx}
-                        className="flex-shrink-0"
-                        style={{ width: `calc(${100 / visibleItems}% - ${(visibleItems - 1) * 16 / visibleItems}px)` }}
-                      >
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: idx * 0.05 }}
-                          viewport={{ once: true }}
-                          className="bg-gray-50/80 rounded-2xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border border-gray-100"
-                        >
-                          <div className="h-16 md:h-20 flex items-center justify-center">
-                            <div className="text-center w-full">
-                              <div className="text-xs md:text-sm font-bold text-gray-600 group-hover:text-primary transition-colors truncate px-2">
-                                {company.name}
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {totalItems > visibleItems && (
-                  <>
-                    <button
-                      onClick={prevSlide}
-                      className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 z-10"
-                    >
-                      <HiChevronLeft className="text-lg" />
-                    </button>
-                    <button
-                      onClick={nextSlide}
-                      className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 z-10"
-                    >
-                      <HiChevronRight className="text-lg" />
-                    </button>
-                  </>
-                )}
-
-                {totalItems > visibleItems && (
-                  <div className="flex justify-center gap-2 mt-8">
-                    {Array.from({ length: Math.min(5, Math.ceil(totalItems / visibleItems)) }).map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => {
-                          setCurrentIndex(Math.min(idx * visibleItems, maxIndex))
-                          setIsAutoPlaying(false)
-                        }}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${
-                          Math.floor(currentIndex / visibleItems) === idx
-                            ? 'w-8 bg-primary'
-                            : 'w-2 bg-gray-300 hover:bg-gray-400'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-dark text-center">
+                Daftar Klien Kami
+              </h2>
+              <p className="text-gray-400 text-center mt-2">
+                {companies.length} perusahaan terpercaya yang telah bekerja sama dengan Cassindo
+              </p>
             </motion.div>
 
-            {/* Bottom Section - Trust Indicators */}
+            {/* Grid Layout - BUKAN CAROUSEL */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+              {companies.map((company, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.03, duration: 0.4 }}
+                  viewport={{ once: true }}
+                  className="bg-gray-50/80 rounded-2xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border border-gray-100"
+                >
+                  <div className="h-16 md:h-20 flex items-center justify-center">
+                    <div className="text-center w-full">
+                      <div className="text-xs md:text-sm font-bold text-gray-600 group-hover:text-primary transition-colors truncate px-2">
+                        {company.name}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Empty State Placeholder untuk logo sebenarnya */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              viewport={{ once: true }}
+              className="mt-12 p-8 bg-gray-50/50 rounded-2xl border border-dashed border-gray-300 text-center"
+            >
+              <div className="flex items-center justify-center gap-2 text-gray-400">
+                <HiCheckCircle className="text-primary" />
+                <span className="text-sm">
+                  {companies.length}+ perusahaan terpercaya • Sedang dalam proses penambahan data
+                </span>
+              </div>
+              <p className="text-xs text-gray-400 mt-2">
+                *Data klien akan diperbarui secara berkala
+              </p>
+            </motion.div>
+
+            {/* CTA Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mt-12 pt-8 border-t border-gray-100"
+              className="mt-16 text-center"
             >
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-primary">{companies.length}+</p>
-                  <p className="text-xs text-gray-400">Perusahaan Terpercaya</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-primary">{uniqueSectors.length}+</p>
-                  <p className="text-xs text-gray-400">Sektor Industri</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-primary">34</p>
-                  <p className="text-xs text-gray-400">Kota di Indonesia</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-primary">99%</p>
-                  <p className="text-xs text-gray-400">Tingkat Kepuasan</p>
-                </div>
-              </div>
-
-              <div className="text-center mt-8">
+              <div className="bg-gradient-to-br from-primary/5 via-white to-accent/5 rounded-3xl p-8 md:p-12 border border-gray-100">
+                <h3 className="text-xl md:text-2xl font-bold text-dark mb-3">
+                  Ingin Bergabung dengan Klien Terpercaya Kami?
+                </h3>
+                <p className="text-gray-500 text-sm md:text-base mb-6 max-w-2xl mx-auto">
+                  Dapatkan solusi pengadaan dan supply chain terbaik untuk perusahaan Anda.
+                </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition shadow-lg shadow-primary/30"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40"
                 >
-                  <span>Bergabung dengan Klien Terpercaya Kami</span>
-                  <HiArrowRight className="text-sm" />
+                  <span>Hubungi Kami Sekarang</span>
+                  <HiArrowRight className="text-sm group-hover:translate-x-1 transition" />
                 </Link>
               </div>
             </motion.div>
