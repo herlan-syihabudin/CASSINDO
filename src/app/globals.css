@@ -454,3 +454,7 @@ button:focus-visible, a:focus-visible {
     -webkit-tap-highlight-color: transparent;
   }
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: revert;
+}
