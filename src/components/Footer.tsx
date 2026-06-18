@@ -85,9 +85,15 @@ export default function Footer() {
               Mitra terpercaya untuk solusi pengadaan industri dan distribusi nasional.
             </p>
             <div className="flex flex-wrap gap-2">
-              <span className="text-xs bg-white/5 px-2 py-1 rounded-full">ISO 9001:2021</span>
-              <span className="text-xs bg-white/5 px-2 py-1 rounded-full">Terdaftar BKPM</span>
-              <span className="text-xs bg-white/5 px-2 py-1 rounded-full">Anggota ASI</span>
+              <span className="text-xs bg-white/5 px-2 py-1 rounded-full text-gray-400 border border-white/5">
+                ✓ Supplier Terverifikasi
+              </span>
+              <span className="text-xs bg-white/5 px-2 py-1 rounded-full text-gray-400 border border-white/5">
+                ✓ 34 Kota di Indonesia
+              </span>
+              <span className="text-xs bg-white/5 px-2 py-1 rounded-full text-gray-400 border border-white/5">
+                ✓ 24/7 Support
+              </span>
             </div>
           </div>
 
