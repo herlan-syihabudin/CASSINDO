@@ -1,24 +1,11 @@
+// components/TrustedCompanies.tsx
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import { HiArrowRight, HiChevronLeft, HiChevronRight } from 'react-icons/hi'
-
-const companies = [
-  { name: 'PERTAMINA', logo: '/images/clients/pertamina.png' },
-  { name: 'PLN', logo: '/images/clients/pln.png' },
-  { name: 'Telkom Indonesia', logo: '/images/clients/telkom.png' },
-  { name: 'ASTRA', logo: '/images/clients/astra.png' },
-  { name: 'WIKA', logo: '/images/clients/wika.png' },
-  { name: 'Adaro', logo: '/images/clients/adaro.png' },
-  { name: 'Freeport', logo: '/images/clients/freeport.png' },
-  { name: 'Petrokimia', logo: '/images/clients/petrokimia.png' },
-  { name: 'Pupuk Indonesia', logo: '/images/clients/pupuk.png' },
-  { name: 'Semen Indonesia', logo: '/images/clients/semen.png' },
-  { name: 'Bank Mandiri', logo: '/images/clients/mandiri.png' },
-  { name: 'BNI', logo: '/images/clients/bni.png' },
-]
+import { companies } from '@/app/data/clients' // ← import dari 1 sumber
 
 export default function TrustedCompanies() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -67,7 +54,6 @@ export default function TrustedCompanies() {
     setIsAutoPlaying(false)
   }
 
-  // Auto play carousel
   useEffect(() => {
     if (!isAutoPlaying) return
     const interval = setInterval(() => {
@@ -79,7 +65,6 @@ export default function TrustedCompanies() {
     return () => clearInterval(interval)
   }, [isAutoPlaying, visibleItems, totalItems])
 
-  // Reset auto play when carousel comes into view
   useEffect(() => {
     if (isInView) {
       setIsAutoPlaying(true)
@@ -119,7 +104,6 @@ export default function TrustedCompanies() {
             className="flex-1 min-w-0 px-2"
           >
             <div className="relative">
-              {/* Carousel Container */}
               <div className="overflow-hidden">
                 <div
                   className="flex transition-transform duration-700 ease-out gap-3 md:gap-4"
@@ -145,7 +129,6 @@ export default function TrustedCompanies() {
                 </div>
               </div>
 
-              {/* Navigation Buttons */}
               {totalItems > visibleItems && (
                 <>
                   <button
@@ -163,7 +146,6 @@ export default function TrustedCompanies() {
                 </>
               )}
 
-              {/* Dots Indicator */}
               {totalItems > visibleItems && (
                 <div className="flex justify-center gap-1.5 mt-4">
                   {Array.from({ length: Math.min(5, Math.ceil(totalItems / visibleItems)) }).map((_, idx) => (
@@ -201,7 +183,7 @@ export default function TrustedCompanies() {
               <HiArrowRight className="text-xs group-hover:translate-x-0.5 transition" />
             </Link>
             <p className="text-gray-400 text-[9px] mt-1">
-              100+ perusahaan terpercaya
+              {companies.length}+ perusahaan terpercaya
             </p>
           </motion.div>
         </div>
