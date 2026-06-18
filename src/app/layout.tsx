@@ -68,7 +68,7 @@ export const metadata: Metadata = {
   
   // ===== VERIFICATION =====
   verification: {
-    google: 'your-google-verification-code', // ← GANTI DENGAN KODE VERIFIKASI GOOGLE
+    google: '_yAiab3dgXQZKknrDxLYcqJCH15KrMT0yjcSjXqSdzs', // ← GANTI DENGAN KODE VERIFIKASI GOOGLE
   },
   
   // ===== CATEGORY =====
