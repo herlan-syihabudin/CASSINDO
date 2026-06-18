@@ -116,14 +116,14 @@ export default function TrustedCompanies() {
                       className="flex-shrink-0"
                       style={{ width: `calc(${100 / visibleItems}% - ${(visibleItems - 1) * 24 / visibleItems}px)` }}
                     >
-                      <div className="bg-gray-50/80 rounded-xl p-4 md:p-5 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group border border-gray-100 h-full flex items-center justify-center min-h-[72px] md:min-h-[88px]">
-                        {/* 🔥 UKURAN LOGO DIPERBESAR */}
-                        <div className="relative w-full h-12 md:h-16 flex items-center justify-center">
+                      {/* 🔥 GANTI PAKE CARA BARU */}
+                      <div className="bg-gray-50/80 rounded-xl p-3 md:p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group border border-gray-100 h-20 md:h-24 flex items-center justify-center">
+                        <div className="relative w-full h-full flex items-center justify-center">
                           <Image
                             src={company.logo}
                             alt={company.name}
                             fill
-                            className="object-contain grayscale hover:grayscale-0 transition duration-300 p-1"
+                            className="object-contain grayscale hover:grayscale-0 transition duration-300 p-0.5"
                             sizes="(max-width: 768px) 100px, 140px"
                             onError={(e) => {
                               const target = e.target as HTMLImageElement
