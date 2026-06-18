@@ -4,8 +4,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image' // ← IMPORT Image
 import { HiArrowRight, HiChevronLeft, HiChevronRight } from 'react-icons/hi'
-import { companies } from '@/app/data/clients' // ← import dari 1 sumber
+import { companies } from '@/app/data/clients'
 
 export default function TrustedCompanies() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -117,11 +118,26 @@ export default function TrustedCompanies() {
                     >
                       <div className="bg-gray-50/80 rounded-xl p-3 md:p-4 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 group border border-gray-100">
                         <div className="h-10 md:h-12 flex items-center justify-center">
-                          <div className="text-center w-full">
-                            <div className="text-[11px] md:text-xs font-bold text-gray-500 group-hover:text-primary transition-colors truncate px-1">
-                              {company.name}
-                            </div>
-                          </div>
+                          {/* 🔥 GANTI: Sekarang pake Image component */}
+                          <Image
+                            src={company.logo}
+                            alt={company.name}
+                            width={80}
+                            height={40}
+                            className="object-contain grayscale hover:grayscale-0 transition duration-300"
+                            onError={(e) => {
+                              // Kalau gambar error, tampilkan teks sebagai fallback
+                              const target = e.target as HTMLImageElement
+                              target.style.display = 'none'
+                              const parent = target.parentElement
+                              if (parent) {
+                                const text = document.createElement('div')
+                                text.className = 'text-[11px] md:text-xs font-bold text-gray-500 group-hover:text-primary transition-colors truncate px-1 text-center w-full'
+                                text.textContent = company.name
+                                parent.appendChild(text)
+                              }
+                            }}
+                          />
                         </div>
                       </div>
                     </div>
