@@ -2,9 +2,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    formats: ['image/avif', 'image/webp'], // ← TAMBAHKAN
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048], // ← TAMBAHKAN
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384], // ← TAMBAHKAN
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     remotePatterns: [
       {
         protocol: 'https',
@@ -21,11 +21,11 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   swcMinify: true,
-  compress: true, // ← TAMBAHKAN
+  compress: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  // TAMBAHKAN HEADERS UNTUK SECURITY
+  // ===== HEADERS UNTUK SECURITY =====
   async headers() {
     return [
       {
