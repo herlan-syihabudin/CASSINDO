@@ -40,6 +40,26 @@
   input, select, textarea {
     font-size: 16px !important;
   }
+
+  /* 🔥 FIX: Heading font-size biar gak deprecated */
+  h1 {
+    font-size: revert;
+  }
+  h2 {
+    font-size: revert;
+  }
+  h3 {
+    font-size: revert;
+  }
+  h4 {
+    font-size: revert;
+  }
+  h5 {
+    font-size: revert;
+  }
+  h6 {
+    font-size: revert;
+  }
 }
 
 @layer components {
@@ -455,6 +475,7 @@ button:focus-visible, a:focus-visible {
   }
 }
 
+/* 🔥 FIX: Ini yang paling penting - Heading font-size */
 h1, h2, h3, h4, h5, h6 {
   font-size: revert;
 }
