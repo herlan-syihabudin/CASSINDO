@@ -1,4 +1,3 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // ===== IMAGE OPTIMIZATION =====
@@ -6,7 +5,7 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60, // ← TAMBAHKAN: Cache gambar lebih lama
+    minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
@@ -27,10 +26,10 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // ===== EXPERIMENTAL (PERFORMA LEBIH CEPAT) =====
+  // ===== EXPERIMENTAL =====
   experimental: {
-    optimizeCss: true, // ← TAMBAHKAN: Optimasi CSS
-    scrollRestoration: true, // ← TAMBAHKAN: Restore scroll position
+    // optimizeCss: true, // ← KOMENTARIN DULU SAMPAI CRITTERS TERINSTALL
+    scrollRestoration: true,
   },
 
   // ===== ESLINT & TYPESCRIPT =====
@@ -42,13 +41,13 @@ const nextConfig = {
   },
 
   // ===== TRAILING SLASH =====
-  trailingSlash: false, // ← TAMBAHKAN: Biar URL bersih
+  trailingSlash: false,
 
   // ===== POWERED BY HEADER =====
-  poweredByHeader: false, // ← TAMBAHKAN: Hapus X-Powered-By
+  poweredByHeader: false,
 
   // ===== REACT STRICT MODE =====
-  reactStrictMode: true, // ← TAMBAHKAN
+  reactStrictMode: true,
 
   // ===== HEADERS UNTUK SECURITY & CACHE =====
   async headers() {
@@ -56,7 +55,6 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          // Security Headers
           {
             key: 'X-Content-Type-Options',
             value: 'nosniff',
@@ -73,14 +71,12 @@ const nextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=63072000; includeSubDomains; preload',
           },
-          // ← TAMBAHKAN: Cache Control untuk static assets
           {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
           },
         ],
       },
-      // ← TAMBAHKAN: Cache untuk images
       {
         source: '/_next/image(.*)',
         headers: [
@@ -90,7 +86,6 @@ const nextConfig = {
           },
         ],
       },
-      // ← TAMBAHKAN: Cache untuk static files
       {
         source: '/images/(.*)',
         headers: [
@@ -100,7 +95,6 @@ const nextConfig = {
           },
         ],
       },
-      // ← TAMBAHKAN: Cache untuk fonts
       {
         source: '/fonts/(.*)',
         headers: [
@@ -115,7 +109,7 @@ const nextConfig = {
 
   // ===== WEBPACK OPTIMIZATION =====
   webpack: (config, { isServer }) => {
-    // ← TAMBAHKAN: Optimasi bundle size
+    // Optimasi bundle size
     if (!isServer) {
       config.optimization = {
         ...config.optimization,
@@ -137,22 +131,12 @@ const nextConfig = {
               priority: -20,
               reuseExistingChunk: true,
             },
-            // Pisahkan framer-motion
             framer: {
               test: /[\\/]node_modules[\\/](framer-motion)[\\/]/,
               name: 'framer-motion',
               chunks: 'all',
               priority: 10,
             },
-            webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve = {
-        ...config.resolve,
-        fallback: {
-          ...config.resolve?.fallback,
-          critters: false,
-        },
-            // Pisahkan react-icons
             icons: {
               test: /[\\/]node_modules[\\/](react-icons)[\\/]/,
               name: 'react-icons',
@@ -160,6 +144,15 @@ const nextConfig = {
               priority: 10,
             },
           },
+        },
+      }
+
+      // Fallback untuk critters
+      config.resolve = {
+        ...config.resolve,
+        fallback: {
+          ...config.resolve?.fallback,
+          critters: false,
         },
       }
     }
