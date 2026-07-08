@@ -5,22 +5,26 @@ import './globals.css'
 export const metadata: Metadata = {
   // ===== TITLE & DESCRIPTION =====
   title: {
-    default: 'Cassindo | Solusi Pengadaan & Supply Chain Indonesia',
+    default: 'Cassindo | Solusi Pengadaan & Supply Chain Indonesia - Jawa & Nasional',
     template: '%s | Cassindo'
   },
-  description: 'Cassindo adalah mitra terpercaya untuk solusi pengadaan industri, MRO, dan distribusi nasional di Indonesia. Layanan end-to-end supply chain untuk perusahaan B2B.',
-  keywords: 'solusi pengadaan, supply chain Indonesia, MRO, distribusi industri, procurement partner, industrial supply, pengadaan barang, logistik industri, B2B procurement',
+  description: 'Cassindo adalah mitra terpercaya untuk solusi pengadaan industri, MRO, dan distribusi nasional di Indonesia. Melayani Jakarta, Surabaya, Bandung, Semarang, Yogyakarta, dan seluruh wilayah Indonesia. Layanan end-to-end supply chain untuk perusahaan B2B.',
+  keywords: 'solusi pengadaan Indonesia, supply chain Jakarta, MRO Surabaya, distribusi industri Bandung, procurement partner Semarang, industrial supply Jogja, pengadaan barang B2B, logistik industri nasional, jasa pengadaan terpercaya, vendor MRO Indonesia',
   
   // ===== CANONICAL URL =====
   metadataBase: new URL('https://www.cassindo.com'),
   alternates: {
     canonical: '/',
+    languages: {
+      'id': '/',
+      'en': '/en',
+    },
   },
   
   // ===== OPEN GRAPH (OG) - UNTUK SOCIAL MEDIA =====
   openGraph: {
-    title: 'Cassindo | Solusi Pengadaan & Supply Chain Indonesia',
-    description: 'Mitra terpercaya untuk solusi pengadaan industri, MRO, dan distribusi nasional di Indonesia.',
+    title: 'Cassindo | Solusi Pengadaan & Supply Chain - Jawa & Nasional',
+    description: 'Mitra terpercaya untuk solusi pengadaan industri, MRO, dan distribusi di Jakarta, Surabaya, Bandung, Semarang, Jogja, dan seluruh Indonesia.',
     url: 'https://www.cassindo.com',
     siteName: 'Cassindo',
     images: [
@@ -28,7 +32,7 @@ export const metadata: Metadata = {
         url: 'https://www.cassindo.com/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Cassindo - Solusi Pengadaan Industri Terpercaya',
+        alt: 'Cassindo - Solusi Pengadaan Industri Terpercaya di Jawa & Indonesia',
       },
     ],
     locale: 'id_ID',
@@ -38,8 +42,8 @@ export const metadata: Metadata = {
   // ===== TWITTER CARDS =====
   twitter: {
     card: 'summary_large_image',
-    title: 'Cassindo | Solusi Pengadaan & Supply Chain Indonesia',
-    description: 'Mitra terpercaya untuk solusi pengadaan industri, MRO, dan distribusi nasional di Indonesia.',
+    title: 'Cassindo | Solusi Pengadaan & Supply Chain - Jawa & Nasional',
+    description: 'Mitra terpercaya untuk solusi pengadaan industri di Jakarta, Surabaya, Bandung, Semarang, Jogja, dan seluruh Indonesia.',
     images: ['https://www.cassindo.com/og-image.jpg'],
   },
   
@@ -103,7 +107,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         
-        {/* ===== STRUCTURED DATA (JSON-LD) ===== */}
+        {/* ===== STRUCTURED DATA (JSON-LD) - ORGANIZATION ===== */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -111,13 +115,14 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Cassindo",
-              "description": "Mitra terpercaya untuk solusi pengadaan industri, MRO, dan distribusi nasional di Indonesia.",
+              "description": "Mitra terpercaya untuk solusi pengadaan industri, MRO, dan distribusi nasional di Indonesia. Melayani Jakarta, Surabaya, Bandung, Semarang, Yogyakarta, dan seluruh Indonesia.",
               "url": "https://www.cassindo.com",
               "logo": "https://www.cassindo.com/logo.png",
               "image": "https://www.cassindo.com/og-image.jpg",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Jakarta",
+                "addressRegion": "DKI Jakarta",
                 "addressCountry": "ID"
               },
               "contactPoint": {
@@ -135,7 +140,59 @@ export default function RootLayout({
           }}
         />
         
-        {/* ===== ADDITIONAL STRUCTURED DATA - BREADCRUMB ===== */}
+        {/* ===== STRUCTURED DATA - LOCAL BUSINESS (JAWA FOCUS) ===== */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Cassindo",
+              "description": "Penyedia solusi pengadaan dan supply chain di Pulau Jawa dan seluruh Indonesia.",
+              "url": "https://www.cassindo.com",
+              "telephone": "+62-817-7684-8333",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jakarta",
+                "addressRegion": "DKI Jakarta",
+                "addressCountry": "ID"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -6.2088,
+                "longitude": 106.8456
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Jakarta"
+                },
+                {
+                  "@type": "City",
+                  "name": "Surabaya"
+                },
+                {
+                  "@type": "City",
+                  "name": "Bandung"
+                },
+                {
+                  "@type": "City",
+                  "name": "Semarang"
+                },
+                {
+                  "@type": "City",
+                  "name": "Yogyakarta"
+                },
+                {
+                  "@type": "Country",
+                  "name": "Indonesia"
+                }
+              ]
+            })
+          }}
+        />
+        
+        {/* ===== STRUCTURED DATA - BREADCRUMB ===== */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -153,6 +210,29 @@ export default function RootLayout({
             })
           }}
         />
+        
+        {/* ===== STRUCTURED DATA - FAQ (BISA DITAMBAHKAN NANTI) ===== */}
+        {/* 
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Apakah Cassindo melayani pengiriman ke Surabaya?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ya, Cassindo melayani pengiriman ke seluruh wilayah Indonesia, termasuk Surabaya, Jakarta, Bandung, Semarang, dan Yogyakarta."
+                  }
+                }
+              ]
+            })
+          }}
+        />
+        */}
       </head>
       <body suppressHydrationWarning>
         {children}
