@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: '%s | Cassindo'
   },
   description: 'Cassindo adalah mitra terpercaya untuk solusi pengadaan industri, MRO, dan distribusi nasional di Indonesia. Melayani Jakarta, Surabaya, Bandung, Semarang, Yogyakarta, dan seluruh wilayah Indonesia. Layanan end-to-end supply chain untuk perusahaan B2B.',
-  keywords: 'solusi pengadaan Indonesia, supply chain Jakarta, MRO Surabaya, distribusi industri Bandung, procurement partner Semarang, industrial supply Jogja, pengadaan barang B2B, logistik industri nasional, jasa pengadaan terpercaya, vendor MRO Indonesia',
+  keywords: 'solusi pengadaan Indonesia, supply chain Jakarta, MRO Surabaya, distribusi industri Bandung, procurement partner Semarang, industrial supply Jogja, pengadaan barang B2B, logistik industri nasional, jasa pengadaan terpercaya, vendor MRO Indonesia, solusi supply chain Jawa, jasa procurement Jakarta, distributor MRO Surabaya, pengadaan industri Bandung, supply chain Semarang, vendor industri Jogja',
   
   // ===== CANONICAL URL =====
   metadataBase: new URL('https://www.cassindo.com'),
@@ -211,8 +211,7 @@ export default function RootLayout({
           }}
         />
         
-        {/* ===== STRUCTURED DATA - FAQ (BISA DITAMBAHKAN NANTI) ===== */}
-        {/* 
+        {/* ===== STRUCTURED DATA - FAQ (JAWA FOCUS) ===== */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -225,14 +224,53 @@ export default function RootLayout({
                   "name": "Apakah Cassindo melayani pengiriman ke Surabaya?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Ya, Cassindo melayani pengiriman ke seluruh wilayah Indonesia, termasuk Surabaya, Jakarta, Bandung, Semarang, dan Yogyakarta."
+                    "text": "Ya, Cassindo melayani pengiriman ke seluruh wilayah Indonesia, termasuk Surabaya, Jakarta, Bandung, Semarang, dan Yogyakarta. Kami memiliki jaringan distribusi yang kuat di Pulau Jawa."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Berapa lama waktu respons untuk permintaan quotation di Jakarta?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Cassindo memberikan respons quotation dan follow up dalam waktu kurang dari 24 jam untuk seluruh wilayah, termasuk Jakarta, Surabaya, Bandung, Semarang, dan Yogyakarta."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Apakah Cassindo terdaftar di e-katalog untuk perusahaan BUMN di Jawa?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ya, Cassindo terdaftar resmi di e-katalog dan merupakan mitra terpercaya BUMN di seluruh Indonesia, termasuk di Pulau Jawa."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Industri apa saja yang dilayani Cassindo di Bandung?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Cassindo melayani berbagai industri di Bandung dan Jawa Barat, termasuk manufaktur tekstil, otomotif, elektronik, farmasi, dan food & beverage."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Apakah Cassindo memiliki layanan quality control sebelum pengiriman ke Semarang?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ya, Cassindo menerapkan inspeksi ketat (100% Quality Control) sebelum pengiriman ke seluruh wilayah, termasuk Semarang dan Jawa Tengah."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Bagaimana cara menghubungi Cassindo untuk kebutuhan pengadaan di Yogyakarta?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Anda dapat menghubungi tim Cassindo melalui telepon +62-817-7684-8333 atau melalui form kontak di website kami. Tim kami siap membantu 24/7 untuk kebutuhan pengadaan di Yogyakarta dan seluruh Indonesia."
                   }
                 }
               ]
             })
           }}
         />
-        */}
       </head>
       <body suppressHydrationWarning>
         {children}
