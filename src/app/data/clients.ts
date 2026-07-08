@@ -1,6 +1,6 @@
 // app/data/clients.ts
 export const companies = [
-  { name: 'APTIV', logo: '/images/clients/aptiv.jpg' },
+  { name: 'APTIV', logo: '/images/clients/aptiv.png' },
   { name: 'PLN', logo: '/images/clients/pln.png' },
   { name: 'Telkom Indonesia', logo: '/images/clients/telkom.png' },
   { name: 'CGS', logo: '/images/clients/cgs.png' },
