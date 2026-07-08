@@ -1,6 +1,16 @@
 // src/app/layout.tsx
 import type { Metadata, Viewport } from 'next'
+import { Inter } from 'next/font/google' // ← TAMBAHKAN: next/font
 import './globals.css'
+
+// ===== FONT OPTIMIZATION =====
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap', // ← PENTING: Biar teks muncul cepat
+  preload: true,
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-inter', // ← TAMBAHKAN: CSS variable
+})
 
 export const metadata: Metadata = {
   // ===== TITLE & DESCRIPTION =====
@@ -82,6 +92,11 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  // ===== TAMBAHKAN: Theme color untuk mobile =====
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0f1a' },
+  ],
 }
 
 export default function RootLayout({
@@ -90,7 +105,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="id" suppressHydrationWarning>
+    <html lang="id" className={inter.variable} suppressHydrationWarning>
       <head>
         {/* ===== FAVICON ===== */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -106,6 +121,28 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        
+        {/* ===== TAMBAHKAN: Preconnect ke CDN ===== */}
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
+        
+        {/* ===== TAMBAHKAN: Preload Critical Images ===== */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/logo/cassindo-logo.webp"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero-bg.webp"
+          fetchPriority="high"
+        />
+        
+        {/* ===== TAMBAHKAN: DNS Prefetch ===== */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         
         {/* ===== STRUCTURED DATA (JSON-LD) - ORGANIZATION ===== */}
         <script
@@ -271,8 +308,28 @@ export default function RootLayout({
             })
           }}
         />
+        
+        {/* ===== TAMBAHKAN: Script untuk menghapus console.log di production ===== */}
+        {process.env.NODE_ENV === 'production' && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                // Hapus console.log di production
+                if (typeof window !== 'undefined') {
+                  const noop = () => {};
+                  console.log = noop;
+                  console.warn = noop;
+                  console.error = noop;
+                }
+              `
+            }}
+          />
+        )}
       </head>
-      <body suppressHydrationWarning>
+      <body 
+        suppressHydrationWarning
+        className="antialiased" // ← TAMBAHKAN: Anti-aliased font
+      >
         {children}
       </body>
     </html>
