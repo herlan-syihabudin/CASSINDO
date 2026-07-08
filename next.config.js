@@ -144,6 +144,14 @@ const nextConfig = {
               chunks: 'all',
               priority: 10,
             },
+            webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve = {
+        ...config.resolve,
+        fallback: {
+          ...config.resolve?.fallback,
+          critters: false,
+        },
             // Pisahkan react-icons
             icons: {
               test: /[\\/]node_modules[\\/](react-icons)[\\/]/,
